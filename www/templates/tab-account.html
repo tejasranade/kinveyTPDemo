@@ -1,0 +1,56 @@
+<ion-view title="Account">
+    <ion-content>
+        <div class="padding">
+        <h4>Login</h4>
+        <div class="block-input-label">
+            <label id="login-email-label" ng-class="{'error-style': submittedEmail}" for="login-email">Email:</label>
+            <input id="login-email" type="email" name="email" ng-class="{'error-style': submittedEmail}" ng-model="userData.email"
+                   placeholder="john@example.com"
+                   required/>
+            <span class="login" id="login-span"  ng-show="submittedEmail">A valid email address is required.</span>
+        </div>
+        <div>
+            <label class="password-label" ng-class="{'error-style': submittedPassword}" for="login-password">Password:</label>
+            <input id="login-password" class="password-input" type="password" name="password" ng-model="userData.password" ng-class="{'error-style': submittedPassword}"
+                   placeholder="********" required/>
+            <span class="login"  ng-show="submittedPassword">A password is required.</span>
+        </div>
+        </div>
+        <div class="padding">
+            <button class="button button-block acmebutton" ng-click="validateUser()">
+                Login
+            </button>
+            <span class="error" ng-show="submittedError">{{errorDescription}}</span>
+        </div>
+        <div class="padding">
+        <h4>Signup</h4>
+        <div class="block-input-label">
+            <label id="signup-email-label" ng-class="{'error-style': submittedEmail}" for="signup-email">Email:</label>
+            <input id="signup-email" type="email" name="email" ng-class="{'error-style': submittedEmail}" ng-model="userData.email" placeholder="john@example.com"
+                  required/>
+            <span class="login" id="signup-email-span"  ng-show="submittedEmail">A valid email address is required.</span>
+        </div>
+
+        <div>
+            <label class="password-label" for="signup-password" ng-class="{'error-style': submittedPassword}">Password:</label>
+            <input id="signup-password" class="password-input" type="password" ng-model="userData.password" name="password" ng-class="{'error-style': submittedPassword}"
+                   placeholder="********"
+                   ng-change="checkPassword()" required/>
+            <span class="login"  ng-show="submittedPassword">A password is required.</span>
+        </div>
+        </div>
+        <div class="padding">
+            <button class="button button-block acmebutton" ng-click="signUp()">
+                Sign up
+            </button>
+            <span class="error" ng-show="submittedError">{{errorDescription}}</span>
+        </div>
+        <div class="padding">
+            <button class="button button-block acmebutton" ng-click="logout()">
+                Logout
+            </button>
+            <span class="error" ng-show="submittedError">{{errorDescription}}</span>
+        </div>
+
+    </ion-content>
+</ion-view>                

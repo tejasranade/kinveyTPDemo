@@ -1,0 +1,45 @@
+/* Empty. Add your own CSS if you like */
+.bar-acme {
+	background-color: #0088c2 !important;
+	color: #0088c2;	
+}
+
+.acme-text {
+	color: #0088c2 !important;
+}
+
+
+.acmebutton {
+   border-top: 1px solid #000000;
+   background: #0088c2;
+   /*background: -webkit-gradient(linear, left top, left bottom, from(#333333), to(#0088c2));
+   background: -webkit-linear-gradient(top, #333333, #0088c2);
+   background: -moz-linear-gradient(top, #333333, #0088c2);
+   background: -ms-linear-gradient(top, #333333, #0088c2);
+   background: -o-linear-gradient(top, #333333, #0088c2);*/
+   padding: 9px 18px;
+   -webkit-border-radius: 8px;
+   -moz-border-radius: 8px;
+   border-radius: 8px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #ffffff;
+   font-size: 14px;
+   font-family: "HelveticaNeueBlack", "HelveticaNeue-Black", "Helvetica Neue Black", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosBold', "Arial Black", sans-serif; font-weight:800; font-stretch:normal; 
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.acmebutton:hover {
+   border-top-color: #333333;
+   background: #0088c2;
+   color: #000000;
+   }
+.acmebutton:active {
+   border-top-color: #1b435e;
+   background: #0088c2;
+   color: #000000;
+   }
+
+
