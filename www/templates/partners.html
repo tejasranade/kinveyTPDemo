@@ -1,5 +1,5 @@
-<ion-view view-title="Accounts">
-    <ion-nav-bar class="bar-acme" title="Hello">
+<ion-view view-title="{{accountsname}}">
+    <ion-nav-bar title="Hello" ng-style="{'background-color': primarycolor}">
 
         <ion-nav-buttons side="left">
           <button class="button button-icon button-clear ion-navicon" ng-click="toggleLeft()"></button>
@@ -15,9 +15,9 @@
 
   
     <ion-list>
-      <ion-item class="item-remove-animate  item-icon-right" ng-repeat="partner in partners" type="item-text-wrap">
-        <h2>{{partner.partnername}}</h2>
-    <p>{{partner.partnercompany}}</p>
+      <ion-item class="item-remove-animate  item-icon-right" ng-repeat="account in accounts" type="item-text-wrap">
+        <h2>{{account.accountname}}</h2>
+    <p>{{account.accountcompany}}</p>
         <i class="icon ion-android-contact icon-accessory"></i>
       </ion-item>
     </ion-list>

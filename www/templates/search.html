@@ -1,56 +1,27 @@
 <ion-view cache-view="false" view-title="Search">
-  <ion-content>
-  <!--<option ng-repeat="account in accountlist"</option>-->
-
-    <div class="list">
-
-  <label class="item item-input item-select">
-    <div class="input-label">
-      Account
-    </div>
-    
-    <select id="chosenCompany" ng-model="selectValue" ng-change="searchme()">
-      <option ng-repeat="company in companies">{{company.companyname}}</option>
-     
-    </select>
-  </label>
-
-</div>
-
-<!--<div class="item item-input-inset">-->
-      <!--<label class="item-input-wrapper">
-        <input type="text" placeholder="Company" id="mycompanyname">
-      </label>-->
-      <!--<button class="button button-small" ng-click="searchme()">
-        Lookup
-      </button>
-
-      <button class="button icon-left ion-search" ng-click="searchme()">Find</button>
-  
-
-    </div>-->
-    <!--<ion-list>
-      <ion-item class="item-avatar" ng-repeat="account in accountlist" type="item-text-wrap">
-        <h2>{{account.companyname}}</h2>
-      </ion-item>
-    </ion-list>-->
-<div class="list">
-    <div class="list card">
-      <ion-item class="item-avatar" ng-repeat="account in accountlist" type="item-text-wrap">
-        <!--<div class="item item-avatar">-->
-          <img src="{{account.logoicon}}"></img>
-          <h2>{{account.companyname}}</h2>
-          <p>{{account.numemployees}} employees</p>
-          <p>Opportunity Size: {{account.oppsize}}</p>
-       <!-- </div>-->
-
-        <div class="item item-body">
-          <p>
-            {{account.lastcallnotes}}
-          </p>
+    <ion-content>
+        <!--<option ng-repeat="account in accountlist"</option>-->
+        <div class="list">
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Product
+                </div>
+                <select id="chosenProduct" ng-model="selectValue" ng-change="searchme()">
+                    <option ng-repeat="product in products">{{product.title}}</option>
+                </select>
+            </label>
         </div>
+       <div class="list">
+    <div class="list card">
+      <ion-item ng-repeat="product in thisproduct" type="item item-text-wrap">
+        <!--<div class="item item-avatar">-->
+          <center><img src="{{product.img}}" height="200"></img></center>
+          <div class="item item-text-wrap">
+          <h2 class="item-text-wrap"><center>{{product.title}}</center></h2>
+          <p ng-bind-html="product.description" class="item-text-wrap"></p></div>
+          
       </ion-item>
     </div></div>
 
-  </ion-content>
+    </ion-content>
 </ion-view>
