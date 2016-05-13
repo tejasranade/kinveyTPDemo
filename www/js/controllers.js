@@ -337,26 +337,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
             $rootScope.productsname = brand[0].ProductsName;
             $scope.$digest();
             return result.networkPromise;
-        })/*.then(function(brand) {
-            console.log(brand);
-            $rootScope.primarycolor = brand[0].PrimaryColor;
-
-            if (brand[0].LogoFileName.indexOf('http') == -1) {
-                console.log('local path');
-                brand[0].LogoFileName = "img/" + brand[0].LogoFileName;
-            }
-            $rootScope.logo = brand[0].LogoFileName;
-            $rootScope.screenText = brand[0].HomeScreenText;
-            $rootScope.textColor = brand[0].PrimaryTextColor;
-            $rootScope.customer = brand[0].CustomerName;
-            $rootScope.accountsname = brand[0].AccountsName;
-            $rootScope.tasksname = brand[0].TasksName;
-            $rootScope.addtaskname = brand[0].AddTaskName;
-            $rootScope.calcname = brand[0].CalculatorName;
-            $rootScope.productsname = brand[0].ProductsName;
-            $scope.$digest();
-            return;
-        })*/.catch(function(error) {
+        }).catch(function(error) {
             console.log(error);
         });
     });
@@ -372,10 +353,16 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
         password: ""
     };
 
+    $scope.validateUserKinvey = function() {
 
-    $scope.validateUser = function() {
-        console.log('login user');
-        /*var promise = $kinvey.User.login({
+        
+        //var myemail = document.getElementById("myemail").value;
+        //var mypassword = document.getElementById("mypassword").value;
+
+        //console.log( myemail );
+        console.log( $scope.userData.email);
+
+        var promise = $kinvey.User.login({
             username: $scope.userData.email,
             password: $scope.userData.password
         });
@@ -383,7 +370,9 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
             function(response) {
                 //Kinvey login finished with success
                 $scope.submittedError = false;
+                console.log ('logged in with KinveyAuth');
                 $state.go('menu.tabs.home');
+                return $kinvey.Push.register();
             },
             function(error) {
                 //Kinvey login finished with error
@@ -392,7 +381,13 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
                 console.log("Error login " + error.description); //
             }
         );
-    };*/
+    };
+    
+
+
+    $scope.validateUser = function() {
+        console.log('login user');
+        
         var user = new $kinvey.User();
         user.loginWithMIC('http://localhost:8100', $kinvey.AuthorizationGrant.AuthorizationCodeLoginPage, {
             version: 2
@@ -402,36 +397,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
             console.log(user);
             
             return $kinvey.Push.register();
-            // you have a user, now register the token
-            //
-            // console.log('we have an active user');
-
-            // only do this if a token hasn't been registered
-            // if (true) {
-
-                /*$cordovaPush.register({ "badge": true, "sound": true, "alert": true }).then(function(deviceToken) {
-                    console.log('registering for push');
-                    console.log(deviceToken);
-                    var registerURL = "https://baas.kinvey.com/push/" + 'kid_ZJk02vOUFg' + "/register-device";
-                    var body = {
-                        platform: "ios",
-                        deviceId: deviceToken
-                    };
-                    var options = {
-                        headers: {
-                            "Authorization": "Kinvey " + $kinvey.getActiveUser()._kmd.authtoken
-                        }
-                    };
-                    $http.post(registerURL, body, options)
-                        .success(function() { alert("Registered!"); })
-                        .error(function() { alert("Did not Register!: " + error.message); });
-                }, function(error) {
-                    console.log(error);
-                });*/
-
-
-
-            // }
+            
         }).catch(function(error) {
             console.log(error);
             return null;

@@ -16,35 +16,26 @@
             <span class="login"  ng-show="submittedPassword">A password is required.</span>
         </div>
         </div>-->
-        <div class="padding"><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+        <div class="list">
+  <label class="item item-input">
+    <span class="input-label">Username</span>
+    <input type="text" ng-model="userData.email">
+  </label>
+  <label class="item item-input">
+    <span class="input-label">Password</span>
+    <input type="password" ng-model="userData.password">
+  </label>
+</div>
+        <div class="padding"><br><br>
+            <button class="button button-block kinveybutton" ng-click="validateUserKinvey()">
+                Login with Kinvey Auth
+            </button>
             <button class="button button-block kinveybutton" ng-click="validateUser()">
-                Login
+                Login with MIC
             </button>
             <span class="error acemtext" ng-show="submittedError">{{errorDescription}}</span>
         </div>
-        <!--<div class="padding">
-        <h4>Signup</h4>
-        <div class="block-input-label">
-            <label id="signup-email-label" ng-class="{'error-style': submittedEmail}" for="signup-email">Email:</label>
-            <input id="signup-email" type="email" name="email" ng-class="{'error-style': submittedEmail}" ng-model="userData.email" placeholder="john@example.com"
-                  required/>
-            <span class="login" id="signup-email-span"  ng-show="submittedEmail">A valid email address is required.</span>
-        </div>
-
-        <div>
-            <label class="password-label" for="signup-password" ng-class="{'error-style': submittedPassword}">Password:</label>
-            <input id="signup-password" class="password-input" type="password" ng-model="userData.password" name="password" ng-class="{'error-style': submittedPassword}"
-                   placeholder="********"
-                   ng-change="checkPassword()" required/>
-            <span class="login"  ng-show="submittedPassword">A password is required.</span>
-        </div>
-        </div>
-        <div class="padding">
-            <button class="button button-block acmebutton" ng-click="signUp()">
-                Sign up
-            </button>
-            <span class="error" ng-show="submittedError">{{errorDescription}}</span>
-        </div>-->
         <div class="padding">
             <button class="button button-block kinveybutton" ng-click="logout()">
                 Logout
