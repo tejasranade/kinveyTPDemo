@@ -27,79 +27,7 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
       console.log(notification);
     });
 
-    /*window.addEventListener("offline", function() {
-                     console.log('going offline');
-                     $kinvey.Sync.offline();
-                 }, false);
-                 window.addEventListener("online", function() {
-                     console.log("going online");
-                     $kinvey.Sync.online({
-                         conflict: $kinvey.Sync.clientAlwaysWins
-                     });
-                 }, false);*/
-
-                 //determineBehavior($kinvey, $rootScope, $state);
-
-    /* Kinvey.Push.onNotification(function(data) {
-  alert("Registered");
-});
-
-Kinvey.Push.init({
-  android: {
-    senderID: ''
-  },
-  ios: {
-    alert: true,
-    badge: true,
-    sound: true
-  }
-}).then(function(response) {
-  console.log( response);
-}).catch(function(error) {
-  console.log(error);
-});*/
-
-
-
-
-    /* $rootScope.$on('$locationChangeStart', function(event, newUrl, oldUrl) {
-         if (!config.initialized) {
-             console.log('not initialized');
-             event.preventDefault();
-             Kinvey.MICAPIVersion = 2;
-
-             // Kinvey initialization starts
-             var promise = $kinvey.init(config).then(function() {
-                 config.initialized = true;
-                 // Kinvey initialization finished with success
-                 //alert("Kinvey init with success");
-                 window.addEventListener("offline", function() {
-                     console.log('going offline');
-                     $kinvey.Sync.offline();
-                 }, false);
-                 window.addEventListener("online", function() {
-                     console.log("going online");
-                     $kinvey.Sync.online({
-                         conflict: $kinvey.Sync.clientAlwaysWins
-                     });
-                 }, false);
-
-                 determineBehavior($kinvey, $rootScope, $state);
-             }, function(errorCallback) {
-                 // Kinvey initialization finished with error
-                 alert("Kinvey init with error: " + JSON.stringify(errorCallback));
-                 determineBehavior($kinvey, $rootScope, $state);
-             });
-
-         } else {
-             console.log('*BEEN THERE, DONE THAT');
-
-
-         }
-     });*/
-
-
-
+    
 
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -112,34 +40,6 @@ Kinvey.Push.init({
             StatusBar.styleLightContent();
         }
     });
-
-    $rootScope.$on('$cordovaPush:notificationReceived', function(event, notification) {
-        console.log('push received, root');
-        //var payload = JSON.parse(event.payload);
-        //console.log(JSON.stringify([notification]));
-        console.log(event);
-        console.log('here');
-        if (notification.alert) {
-            console.log(notification.alert);
-            alert(notification.alert);
-        }
-
-        if (notification.sound) {
-            var snd = new Media(event.sound);
-            snd.play();
-        }
-
-        if (notification.badge) {
-            $cordovaPush.setBadgeNumber(notification.badge).then(function(result) {
-                // Success!
-            }, function(err) {
-                console.log(err);
-            });
-        }
-    });
-
-
-
 })
 
 
@@ -247,6 +147,16 @@ Kinvey.Push.init({
         }
     })
 
+    .state('menu.geo', {
+        url: "/geo",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/map.html",
+                controller: 'MapCtrl'
+            }
+        }
+    })
+
 
 
     .state('menu.tabs.products', {
@@ -285,110 +195,6 @@ Kinvey.Push.init({
 
 });
 
-
-/*angular.module('cordova', [])
-
-  .factory('cordovaReady', function ($rootScope, $q, $timeout) {
-    var loadingDeferred = $q.defer();
-    
-    document.addEventListener('deviceready', function () {
-      $timeout(function() {
-        $rootScope.$apply(loadingDeferred.resolve);
-      });
-    });
-    
-    return function cordovaReady() {
-      return loadingDeferred.promise;
-    };
-  })
-
-  .service('phone', function () {
-    this.isAndroid = function () {
-      var uagent = navigator.userAgent.toLowerCase();
-      return uagent.search('android') > -1 ? true : false;
-    };
-  })
-
-  .factory('push', function ($rootScope, phone, cordovaReady) {
-    return {
-      registerPush: function (fn) {
-        cordovaReady().then(function () {
-          var
-            pushNotification = window.plugins.pushNotification,
-            successHandler = function (result) {},
-            errorHandler = function (error) {},
-            tokenHandler = function (result) {
-              return fn({
-                'type': 'registration',
-                'id': result,
-                'device': 'ios'
-              });
-            };
-
-          app.onNotificationAPN = function (event) {
-            if (event.alert) {
-              navigator.notification.alert(event.alert);
-            }
-
-            if (event.sound) {
-              var snd = new Media(event.sound);
-              snd.play();
-            }
-
-            if (event.badge) {
-              pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, event.badge);
-            }
-          };
-
-          app.onNotificationGCM = function (event) {
-            switch (event.event) {
-              case 'registered':
-                if (event.regid.length > 0) {
-                  return fn({
-                    'type': 'registration',
-                    'id': event.regid,
-                    'device': 'android'
-                  });
-                }
-                break;
-
-              case 'message':
-                if (event.foreground) {
-                  var my_media = new Media("/android_asset/www/" + event.soundname);
-                  my_media.play();
-                } else {
-                  if (event.coldstart) {
-                  } else {
-                  }
-                }
-                break;
-
-              case 'error':
-                break;
-
-              default:
-                break;
-            }
-          };
-
-          if (phone.isAndroid()) {
-            pushNotification.register(successHandler, errorHandler, {
-              'senderID': '{your_sender_id}',
-              'ecb': 'app.onNotificationGCM'
-            });
-          } else {
-            console.log('register ios');
-            pushNotification.register(tokenHandler, errorHandler, {
-              'badge': 'true',
-              'sound': 'true',
-              'alert': 'true',
-              'ecb': 'app.onNotificationAPN'
-            });
-          }
-        });
-      }
-    };
-  });*/
 
 
 
@@ -437,10 +243,4 @@ console.log( 'INSIDE DETERMINEBEHAVIOR');
         $rootScope.calcname = brand[0].CalculatorName;
     });
   }
-
-
-    /*console.log("activeUser not null determine behavior");
-    if ($state.current.name != 'menu.tab.home') {
-        $state.go('menu.tabs.home');
-    }*/
 }

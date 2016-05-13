@@ -253,4 +253,9 @@
   overflow: hidden;
 }
 
+#mymap {
+    width: 320px;
+    height: 500px;
+}
+
 
