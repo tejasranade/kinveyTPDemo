@@ -8,6 +8,37 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
     };
 })
 
+.controller('PlacesCtrl', function($kinvey, $scope, $rootScope) {
+
+   console.log('places ctrl');
+
+   $scope.doRefresh = function() {
+        console.log( 'current_loc = ' + $rootScope.current_loc);
+        console.log( 'range = ' + document.getElementById("myrange").value);
+        console.log( 'interest = ' + document.getElementById("myinterest").value);
+
+        var distance = parseInt(document.getElementById('myrange').value);
+        console.log( 'distance = ' + distance );
+        var dataStore = $kinvey.DataStore.getInstance('places', $kinvey.DataStoreType.Network);
+
+        var myzone = [$rootScope.current_loc[1], $rootScope.current_loc[0]];
+
+        var query = new $kinvey.Query();
+        query.equalTo('keyword', document.getElementById("myinterest").value).near('_geoloc', myzone, distance);
+        console.log(query);
+        //query.near('_geoloc', $rootScope.current_loc, document.getElementById("myrange"));
+        dataStore.find(query).then(function(places) {
+            console.log(places);
+            $scope.places = places;
+            $scope.$digest();
+            return;
+        });
+
+   }
+
+})
+
+
 .controller('MapCtrl', function($scope, $kinvey, $rootScope) {
     console.log('mapctrl');
     var gmarkers = [];
@@ -33,7 +64,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
             console.log('refresh');
             if (document.getElementById("myrange").value == "") {
                 console.log('no range');
-                var dataStore = $kinvey.DataStore.getInstance('Account');
+                var dataStore = $kinvey.DataStore.getInstance('Account', $kinvey.DataStoreType.Network);
 
                 dataStore.find().then(function(locations) {
                     console.log(locations);
@@ -78,12 +109,15 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 
                 console.log('getting position');
 
+
                 // Query for buildings close by.
                 var query = new $kinvey.Query();
-                var dataStore = $kinvey.DataStore.getInstance('Account');
+                var dataStore = $kinvey.DataStore.getInstance('Account', $kinvey.DataStoreType.Network);
                 query.near('_geoloc', $rootScope.current_loc, myrange);
+                //debugger;
                 var promise = dataStore.find(query);
                 promise.then(function(models) {
+                    console.log( models );
 
                     console.log('num markers = ' + models.length);
                     for (i = 0; i < gmarkers.length; i++) {
@@ -96,9 +130,9 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
                         var mylat = parseInt(models[i]._geoloc[0]);
                         var mylong = parseInt(models[i]._geoloc[1]);
                         console.log(mylat + ", " + mylong);
-                        console.log(models[i].company.name);
+                        console.log(models[i].accountcompany);
                         var info = new google.maps.InfoWindow({
-                            content: '<b>Who:</b> ' + models[i].name + '<br><b>Notes:</b> ' + models[i].company.name
+                            content: '<b>Who:</b> ' + models[i].accountname + '<br><b>Notes:</b> ' + models[i].accountcompany
                         });
 
                         var mapOptions = {
@@ -123,6 +157,8 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
                         })(info));
 
                     }
+                    $scope.$digest();
+                    return
                 }, function(err) {
                     console.log(err);
                 });
@@ -175,165 +211,6 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 
 
 })
-
-/*.controller('MapCtrl', function($scope, $kinvey, $rootScope) {
-
-    var gmarkers = [];
-
-    $scope.doRefresh = function() {
-            //check to see if a range has been specified
-            if (document.getElementById("myrange").value == "") {
-                console.log('no range');
-                $kinvey.DataStore.find('geo').then(function(locations) {
-                    console.log(locations);
-                    for (var i = 0; i < locations.length; i++) {
-                        var mylat = parseInt(locations[i]._geoloc[0]);
-                        var mylong = parseInt(locations[i]._geoloc[1]);
-                        console.log(mylat + ", " + mylong);
-                        console.log(locations[i].company.name);
-                        var info = new google.maps.InfoWindow({
-                            content: '<b>Who:</b> ' + locations[i].name + '<br><b>Notes:</b> ' + locations[i].company.name
-                        });
-
-
-                        var mapOptions = {
-
-                            mapTypeId: google.maps.MapTypeId.ROADMAP
-                        };
-
-                        var myLatlng = new google.maps.LatLng(mylat, mylong);
-                        var marker = new google.maps.Marker({
-                            position: myLatlng,
-                            map: $rootScope.map,
-                            title: locations[i].name
-                        });
-                        gmarkers.push(marker);
-                        google.maps.event.addListener(marker, 'click', (function(info) {
-                            return function() {
-                                info.open($rootScope.map, this);
-                            }
-                        })(info));
-
-                    }
-
-                });
-            } else {
-                console.log('range specified');
-                console.log('gmarker len = ' + gmarkers.length);
-                console.log($rootScope.current_loc);
-
-                var myrange = document.getElementById("myrange").value;
-
-                console.log('getting position');
-
-                // Query for buildings close by.
-                var query = new $kinvey.Query();
-                query.near('_geoloc', $rootScope.current_loc, myrange);
-                var promise = $kinvey.DataStore.find('geo', query);
-                promise.then(function(models) {
-
-                    console.log('num markers = ' + models.length);
-                    for (i = 0; i < gmarkers.length; i++) {
-                        console.log('clearing marker...');
-                        gmarkers[i].setMap(null);
-                    }
-
-
-                    for (var i = 0; i < models.length; i++) {
-                        var mylat = parseInt(models[i]._geoloc[0]);
-                        var mylong = parseInt(models[i]._geoloc[1]);
-                        console.log(mylat + ", " + mylong);
-                        console.log(models[i].company.name);
-                        var info = new google.maps.InfoWindow({
-                            content: '<b>Who:</b> ' + models[i].name + '<br><b>Notes:</b> ' + models[i].company.name
-                        });
-
-                        var mapOptions = {
-                            //center: myLatlng,
-                            //zoom: 3,
-                            mapTypeId: google.maps.MapTypeId.ROADMAP
-                        };
-
-                        var myLatlng = new google.maps.LatLng(mylat, mylong);
-                        var marker = new google.maps.Marker({
-                            position: myLatlng,
-                            map: $rootScope.map,
-                            title: models[i].name
-                        });
-
-                        gmarkers.push(marker);
-
-                        google.maps.event.addListener(marker, 'click', (function(info) {
-                            return function() {
-                                info.open($rootScope.map, this);
-                            }
-                        })(info));
-
-                    }
-                }, function(err) {
-                    console.log(err);
-                });
-
-            }
-
-        } // end doRefresh
-
-
-
-    $scope.$on('$ionicView.beforeEnter', function() {
-
-        $kinvey.DataStore.find('geo').then(function(locations) {
-            console.log(locations);
-            for (var i = 0; i < locations.length; i++) {
-                var mylat = parseInt(locations[i]._geoloc[0]);
-                var mylong = parseInt(locations[i]._geoloc[1]);
-                console.log(mylat + ", " + mylong);
-                var info = new google.maps.InfoWindow({
-                    content: '<b>Who:</b> ' + locations[i].name + '<br><b>Notes:</b> ' + locations[i].company.name
-                });
-
-                var mapOptions = {
-
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                };
-
-                var myLatlng = new google.maps.LatLng(mylat, mylong);
-                var marker = new google.maps.Marker({
-                    position: myLatlng,
-                    map: $rootScope.map,
-                    title: locations[i].name
-                });
-                gmarkers.push(marker);
-                google.maps.event.addListener(marker, 'click', (function(info) {
-                    return function() {
-                        info.open($rootScope.map, this);
-                    }
-                })(info));
-
-            }
-
-        });
-    });
-
-
-    $scope.initialize = function() {
-
-        console.log('initializing map');
-
-        var myLatlng = new google.maps.LatLng(39.8282109, -98.5795706);
-        //$scope.mybrand = mybrand;
-        var mapOptions = {
-            center: myLatlng,
-            zoom: 3,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        $rootScope.map = new google.maps.Map(document.getElementById("mymap"),
-            mapOptions);
-    }
-
-})*/
-
-
 
 
 .controller('SearchCtrl', function($scope, $kinvey, $sce) {
@@ -456,27 +333,22 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 
     $scope.doRefresh = function() {
         console.log('todorefresh');
-        var dataStore = $kinvey.DataStore.getInstance('todo');
+        var dataStore = $kinvey.DataStore.getInstance('todo', $kinvey.DataStoreType.Network);
 
         dataStore.find(null, {
             useDeltaFetch: false
         }).then(function(result) {
-            var tasks = result.cache;
+            var tasks = result;
             console.log(tasks);
             $scope.tasks = tasks;
             $scope.$digest();
-            return result.networkPromise;
-        }).then(function(tasks) {
-            console.log(tasks);
-            $scope.tasks = tasks;
-            $scope.$digest();
-            return;
-        });
-    }
+           
+    })
+}
 
     $scope.$on('$ionicView.beforeEnter', function() {
         console.log('todo load view');
-        var dataStore = $kinvey.DataStore.getInstance('todo');
+        var dataStore = $kinvey.DataStore.getInstance('todo', $kinvey.DataStoreType.Network);
 
         // pass null and the useDeltaFetch option because some of the delta fetch options for
         // rapid connectors might not be there in SharePoint today
@@ -484,19 +356,14 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
         dataStore.find(null, {
             useDeltaFetch: false
         }).then(function(result) {
-            var tasks = result.cache;
+            var tasks = result;
             console.log(tasks);
             $scope.tasks = tasks;
             $scope.$digest();
-            // use networkPromise with new library
-            return result.networkPromise;
-        }).then(function(tasks) {
-            $scope.tasks = tasks;
-            $scope.$digest();
-            return;
-        });
+           
     });
 
+})
 })
 
 .controller('RefCtrl', function($scope, $kinvey) {
@@ -538,44 +405,52 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
     });
 })
 
+.controller('PartnerDetailCtrl', function($scope, $kinvey, $stateParams) {
+    console.log( 'inside partnerdetailctrl');
+    console.log( $stateParams.partnerId );
+
+    var dataStore = $kinvey.DataStore.getInstance('Account', $kinvey.DataStoreType.Network);
+
+        dataStore.findById($stateParams.partnerId).then(function(result) {
+            //var invoices = result;
+            console.log(result);
+            $scope.invoices = result.invoice;
+            $scope.$digest();
+            //$scope.$digest();
+        }).catch(function(error) {
+            console.log(error);
+        });
+})
+
 .controller('PartnerCtrl', function($scope, $kinvey) {
 
     $scope.doRefresh = function() {
         console.log('refresh');
 
-        var dataStore = $kinvey.DataStore.getInstance('Account');
+        var dataStore = $kinvey.DataStore.getInstance('Account', $kinvey.DataStoreType.Network);
 
         dataStore.find(null, {
             useDeltaFetch: false
         }).then(function(result) {
             console.log(result);
-            var accounts = result.cache;
-            console.log(accounts);
-            $scope.accounts = accounts;
-            return result.networkPromise;
-        }).then(function(accounts) {
-            $scope.accounts = accounts;
+            
+            $scope.accounts = result;
             $scope.$digest();
         });
     }
 
     $scope.$on('$ionicView.beforeEnter', function() {
         console.log('account load view');
-        var dataStore = $kinvey.DataStore.getInstance('Account');
+        var dataStore = $kinvey.DataStore.getInstance('Account', $kinvey.DataStoreType.Network);
         dataStore.find(null, {
             useDeltaFetch: false
         }).then(function(result) {
-            var accounts = result.cache;
-            console.log(accounts);
-            $scope.accounts = accounts;
-            return result.networkPromise;
-        }).then(function(accounts) {
-            $scope.accounts = accounts;
+            
+            $scope.accounts = result;
             $scope.$digest();
-            return;
-        });
     });
 
+})
 })
 
 
@@ -621,12 +496,16 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 .controller('HomeCtrl', function($scope, $kinvey, $ionicSideMenuDelegate, $rootScope, $state) {
     console.log('home');
 
+    try {
      navigator.geolocation.getCurrentPosition(function(loc) {
                 console.log('getting position');
                 var coord = [loc.coords.latitude, loc.coords.longitude];
                 console.log(coord);
                 $rootScope.current_loc = coord;
         });
+ } catch(evt) {
+    alert( 'fail' + evt.message);
+ }
 
 
     $scope.$on('$ionicView.beforeEnter', function() {
@@ -721,7 +600,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
             $scope.submittedError = false;
             console.log(user);
 
-            return $kinvey.Push.register();
+            //return $kinvey.Push.register();
 
         }).catch(function(error) {
             console.log(error);

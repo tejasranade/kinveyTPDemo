@@ -53,4 +53,9 @@
     <splash src="resources/ios/splash/Default~iphone.png" width="320" height="480"/>
   </platform>
   <icon src="resources/ios/icon/icon-small@3x.png"/>
+  <gap:config-file platform="ios" parent="NSLocationAlwaysUsageDescription" overwrite="true">
+
+        <string>WE RE LIKE TOTALLY TRACKING YOU OMG</string>
+
+</gap:config-file>
 </widget>

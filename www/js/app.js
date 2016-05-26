@@ -6,14 +6,6 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 
-/*var config = {
-    appKey: 'kid_ZJk02vOUFg',
-    appSecret: '141c7b602f724af9b3d159eb6f546214',
-    sync: {
-        enable: true
-    },
-    initialized: false
-};*/
 
 angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWebViewPatch', 'ngCordova'])
 
@@ -115,6 +107,16 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
         }
     })
 
+    .state('menu.partner-detail', {
+        url: '/partner/:partnerId',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/partner-detail.html',
+                controller: 'PartnerDetailCtrl'
+            }
+        }
+    })
+
     .state('menu.ref', {
         url: '/ref',
         views: {
@@ -157,6 +159,16 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
         }
     })
 
+.state('menu.places', {
+        url: "/places",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/places.html",
+                controller: 'PlacesCtrl'
+            }
+        }
+    })
+
 
 
     .state('menu.tabs.products', {
@@ -178,6 +190,7 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
             }
         }
     })
+
 
 
     .state('menu.tabs.account', {
