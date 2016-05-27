@@ -15,9 +15,9 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
     $rootScope.productsname = "Products";
     determineBehavior($kinvey, $rootScope, $state);
 
-    $kinvey.Push.onNotification(function(notification) {
+    /*$kinvey.Push.onNotification(function(notification) {
       console.log(notification);
-    });
+    });*/
 
     
 
@@ -45,8 +45,8 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
     // Each state's controller can be found in controllers.js
 
     $kinveyProvider.init({
-        appKey: 'kid_ZJk02vOUFg',
-        appSecret: 'c1a32d5b3c474d0fa20a6f33fef396d5'
+        appKey: 'kid_r1op_6rX',
+        appSecret: '6271b0be9268495fa1544b6e5cf0b748'
     });
 
 
@@ -238,7 +238,7 @@ console.log( 'INSIDE DETERMINEBEHAVIOR');
     query.equalTo('ActiveBrand', true);
 
     var mybrand = $kinvey.DataStore.getInstance('DemoBrandingData', $kinvey.DataStoreType.Network);
-    mybrand.find('DemoBrandingData', query).then(function(brand) {
+    mybrand.find(query).subscribe(function(brand) {
         console.log(brand);
         $rootScope.primarycolor = brand[0].PrimaryColor;
 

@@ -11,23 +11,30 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 .controller('PlacesCtrl', function($kinvey, $scope, $rootScope) {
 
    console.log('places ctrl');
+   $scope.placesData = {
+        range: "",
+        interest: ""
+    };
 
    $scope.doRefresh = function() {
         console.log( 'current_loc = ' + $rootScope.current_loc);
-        console.log( 'range = ' + document.getElementById("myrange").value);
-        console.log( 'interest = ' + document.getElementById("myinterest").value);
+        console.log( $scope.placesData.range );
+        console.log( $scope.placesData.interest );
+        //console.log( 'range = ' + document.getElementById("myrange").value);
+        //console.log( 'interest = ' + document.getElementById("myinterest").value);
 
-        var distance = parseInt(document.getElementById('myrange').value);
+
+        var distance = parseInt($scope.placesData.range);
         console.log( 'distance = ' + distance );
         var dataStore = $kinvey.DataStore.getInstance('places', $kinvey.DataStoreType.Network);
 
         var myzone = [$rootScope.current_loc[1], $rootScope.current_loc[0]];
 
         var query = new $kinvey.Query();
-        query.equalTo('keyword', document.getElementById("myinterest").value).near('_geoloc', myzone, distance);
+        query.equalTo('keyword', $scope.placesData.interest).near('_geoloc', myzone, distance);
         console.log(query);
         //query.near('_geoloc', $rootScope.current_loc, document.getElementById("myrange"));
-        dataStore.find(query).then(function(places) {
+        dataStore.find(query).subscribe(function(places) {
             console.log(places);
             $scope.places = places;
             $scope.$digest();
@@ -66,7 +73,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
                 console.log('no range');
                 var dataStore = $kinvey.DataStore.getInstance('Account', $kinvey.DataStoreType.Network);
 
-                dataStore.find().then(function(locations) {
+                dataStore.find().subscribe(function(locations) {
                     console.log(locations);
                     locations = locations.cache;
                     for (var i = 0; i < locations.length; i++) {
@@ -106,6 +113,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
                 console.log($rootScope.current_loc);
 
                 var myrange = document.getElementById("myrange").value;
+                console.log( 'myrange = '+ myrange);
 
                 console.log('getting position');
 
@@ -115,8 +123,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
                 var dataStore = $kinvey.DataStore.getInstance('Account', $kinvey.DataStoreType.Network);
                 query.near('_geoloc', $rootScope.current_loc, myrange);
                 //debugger;
-                var promise = dataStore.find(query);
-                promise.then(function(models) {
+                var promise = dataStore.find(query).subscribe(function(models) {
                     console.log( models );
 
                     console.log('num markers = ' + models.length);
@@ -172,9 +179,9 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
         console.log( 'before entering map view');
         var dataStore = $kinvey.DataStore.getInstance('Account');
 
-        dataStore.find().then(function(locations) {
-            console.log(locations.cache);
-            locations = locations.cache;
+        dataStore.find().subscribe(function(locations) {
+            console.log(locations);
+            locations = locations;
             console.log(locations.length);
             for (var i = 0; i < locations.length; i++) {
                 var mylat = parseInt(locations[i]._geoloc[0]);
@@ -220,10 +227,11 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 
         var dataStore = $kinvey.DataStore.getInstance('Products');
 
-        dataStore.find().then(function(result) {
-            var products = result.cache;
+        dataStore.find().subscribe(function(result) {
+            var products = result;
             console.log(products);
             $scope.products = products;
+            $scope.$digest();
         });
     });
 
@@ -236,18 +244,18 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 
         var query = new $kinvey.Query();
         query.equalTo('title', document.getElementById("chosenProduct").value);
-        dataStore.find(query).then(function(result) {
-            var thisproduct = result.cache;
+        dataStore.find(query).subscribe(function(result) {
+            var thisproduct = result;
             console.log(thisproduct);
             $scope.thisproduct = thisproduct;
             $scope.$digest();
-            return result.networkPromise;
-        }).then(function(thisproduct) {
+            return; //result.networkPromise;
+        });/*.then(function(thisproduct) {
             $scope.thisproduct = thisproduct;
             $scope.$digest();
 
             return;
-        });
+        });*/
     };
 })
 
@@ -284,7 +292,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
         data.Title = "Personal Task";
         console.log(JSON.stringify(data));
 
-        var dataStore = $kinvey.DataStore.getInstance('todo');
+        var dataStore = $kinvey.DataStore.getInstance('todo', $kinvey.DataStoreType.Sync);
 
         dataStore.save(data).then(function(result) {
             console.log(result);
@@ -311,18 +319,12 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 
         console.log('inside productctrl');
 
-        dataStore.find().then(function(result) {
-            var products = result.cache;
+        dataStore.find().subscribe(function(result) {
+            var products = result;
             console.log(products);
             $scope.products = products;
             $scope.$digest();
             return result.networkPromise;
-        }).then(function(products) {
-
-            console.log(products);
-            $scope.products = products;
-            $scope.$digest();
-            return;
         });
     });
 })
@@ -333,12 +335,13 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 
     $scope.doRefresh = function() {
         console.log('todorefresh');
-        var dataStore = $kinvey.DataStore.getInstance('todo', $kinvey.DataStoreType.Network);
+        var dataStore = $kinvey.DataStore.getInstance('todo', $kinvey.DataStoreType.Sync);
 
-        dataStore.find(null, {
+        dataStore.sync(null, {
             useDeltaFetch: false
         }).then(function(result) {
-            var tasks = result;
+            var tasks = result.pull;
+            tasks.concat(result.push)
             console.log(tasks);
             $scope.tasks = tasks;
             $scope.$digest();
@@ -348,14 +351,14 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 
     $scope.$on('$ionicView.beforeEnter', function() {
         console.log('todo load view');
-        var dataStore = $kinvey.DataStore.getInstance('todo', $kinvey.DataStoreType.Network);
+        var dataStore = $kinvey.DataStore.getInstance('todo', $kinvey.DataStoreType.Sync);
 
         // pass null and the useDeltaFetch option because some of the delta fetch options for
         // rapid connectors might not be there in SharePoint today
         //
         dataStore.find(null, {
             useDeltaFetch: false
-        }).then(function(result) {
+        }).subscribe(function(result) {
             var tasks = result;
             console.log(tasks);
             $scope.tasks = tasks;
@@ -394,9 +397,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 
         var query = new $kinvey.Query();
         query.greaterThan('size', 0);
-        var promise = fileStore.find(query);
-        promise.then(function(result) {
-            console.log(result);
+        fileStore.find(query).subscribe(function(result) {
             var files = result;
             console.log(files);
             $scope.files = files;
@@ -411,7 +412,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 
     var dataStore = $kinvey.DataStore.getInstance('Account', $kinvey.DataStoreType.Network);
 
-        dataStore.findById($stateParams.partnerId).then(function(result) {
+        dataStore.findById($stateParams.partnerId).subscribe(function(result) {
             //var invoices = result;
             console.log(result);
             $scope.invoices = result.invoice;
@@ -431,7 +432,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 
         dataStore.find(null, {
             useDeltaFetch: false
-        }).then(function(result) {
+        }).subscribe(function(result) {
             console.log(result);
             
             $scope.accounts = result;
@@ -444,7 +445,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
         var dataStore = $kinvey.DataStore.getInstance('Account', $kinvey.DataStoreType.Network);
         dataStore.find(null, {
             useDeltaFetch: false
-        }).then(function(result) {
+        }).subscribe(function(result) {
             
             $scope.accounts = result;
             $scope.$digest();
@@ -525,7 +526,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
         var dataStore = $kinvey.DataStore.getInstance('DemoBrandingData', $kinvey.DataStoreType.Network);
 
 
-        dataStore.find(query).then(function(result) {
+        dataStore.find(query).subscribe(function(result) {
             console.log(result);
             var brand = result;
             console.log(brand);
@@ -546,8 +547,6 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
             $rootScope.productsname = brand[0].ProductsName;
             $scope.$digest();
             return result.networkPromise;
-        }).catch(function(error) {
-            console.log(error);
         });
     });
 

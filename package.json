@@ -17,10 +17,10 @@
   },
   "cordovaPlugins": [
     "cordova-plugin-inappbrowser",
-    "phonegap-plugin-push",
     "cordova-plugin-console",
     "cordova-plugin-device",
-    "ionic-plugin-keyboard"
+    "ionic-plugin-keyboard",
+    "cordova-plugin-transport-security"
   ],
   "cordovaPlatforms": []
 }
