@@ -53,8 +53,8 @@
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
     </platform>
     <icon src="resources/ios/icon/icon-small@3x.png" />
-    <gap:config-file overwrite="true" parent="NSLocationAlwaysUsageDescription" platform="ios">
+    <!--<gap:config-file overwrite="true" parent="NSLocationAlwaysUsageDescription" platform="ios">
         <string>WE RE LIKE TOTALLY TRACKING YOU OMG</string>
     </gap:config-file>
-    <plugin name="cordova-plugin-transport-security" spec="^0.1.2" />
+    <plugin name="cordova-plugin-transport-security" spec="^0.1.2" />-->
 </widget>

@@ -15,9 +15,9 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
     $rootScope.productsname = "Products";
     determineBehavior($kinvey, $rootScope, $state);
 
-    /*$kinvey.Push.onNotification(function(notification) {
-      console.log(notification);
-    });*/
+    $kinvey.Push.onNotification(function(notification) {
+      alert(notification.message);
+    });
 
     
 
@@ -230,11 +230,11 @@ console.log( 'INSIDE DETERMINEBEHAVIOR');
     } else {
       //we have an active user
       console.log("activeUser not null");
-      $state.go('menu.tabs.home');
+      $state.go('menu.tabs.home', null, {reload:true});
     
 
     // we're authenticated, grab logo and color scheme
-    var query = new $kinvey.Query();
+    /*var query = new $kinvey.Query();
     query.equalTo('ActiveBrand', true);
 
     var mybrand = $kinvey.DataStore.getInstance('DemoBrandingData', $kinvey.DataStoreType.Network);
@@ -254,6 +254,6 @@ console.log( 'INSIDE DETERMINEBEHAVIOR');
         $rootScope.tasksname = brand[0].TasksName;
         $rootScope.addtaskname = brand[0].AddTaskName;
         $rootScope.calcname = brand[0].CalculatorName;
-    });
+    });*/
   }
 }

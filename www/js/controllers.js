@@ -296,6 +296,8 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 
         dataStore.save(data).then(function(result) {
             console.log(result);
+        }).catch(function(error) {
+            console.log( error );
         });
 
         $ionicLoading.show({
@@ -346,7 +348,9 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
             $scope.tasks = tasks;
             $scope.$digest();
            
-    })
+        }).catch(function(error) {
+            console.log(error);
+        });
 }
 
     $scope.$on('$ionicView.beforeEnter', function() {
@@ -356,15 +360,17 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
         // pass null and the useDeltaFetch option because some of the delta fetch options for
         // rapid connectors might not be there in SharePoint today
         //
-        dataStore.find(null, {
+        dataStore.sync(null, {
             useDeltaFetch: false
-        }).subscribe(function(result) {
-            var tasks = result;
+        }).then(function(result) {
+            var tasks = result.pull;
             console.log(tasks);
             $scope.tasks = tasks;
             $scope.$digest();
            
-    });
+    }).catch(function(error) {
+        console.log(error);
+});
 
 })
 })
@@ -418,8 +424,6 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
             $scope.invoices = result.invoice;
             $scope.$digest();
             //$scope.$digest();
-        }).catch(function(error) {
-            console.log(error);
         });
 })
 
@@ -571,19 +575,19 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
         });
         promise.then(
             function(response) {
+                     debugger;
                 //Kinvey login finished with success
                 $scope.submittedError = false;
-                console.log('logged in with KinveyAuth');
+                console.log('logged in with KinveyAuth2');
                 $state.go('menu.tabs.home');
                 return $kinvey.Push.register();
-            },
+            }).catch(
             function(error) {
                 //Kinvey login finished with error
                 $scope.submittedError = true;
                 $scope.errorDescription = error.description;
                 console.log("Error login " + error.description); //
-            }
-        );
+                     });
     };
 
 
@@ -599,7 +603,8 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
             $scope.submittedError = false;
             console.log(user);
 
-            //return $kinvey.Push.register();
+            var push = new $kinvey.Push();
+            return push.register();
 
         }).catch(function(error) {
             console.log(error);

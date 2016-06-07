@@ -1,5 +1,5 @@
 {
-  "name": "ionic-seed",
+  "name": "sdeangular3",
   "version": "1.0.0",
   "description": "ionic-seed: An Ionic project",
   "dependencies": {
@@ -20,7 +20,12 @@
     "cordova-plugin-console",
     "cordova-plugin-device",
     "ionic-plugin-keyboard",
-    "cordova-plugin-transport-security"
+    "phonegap-plugin-push",
+    "cordova-plugin-dialogs",
+    "cordova-plugin-vibration",
+    "phonegap-plugin-push"
   ],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [
+    "ios"
+  ]
 }
