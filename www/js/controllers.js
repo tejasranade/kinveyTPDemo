@@ -383,7 +383,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
     //
     $scope.doRefreshRef = function() {
         console.log('ref refresh view');
-        var fileStore = $kinvey.DataStore.getInstance(null, $kinvey.DataStoreType.File);
+        /*var fileStore = $kinvey.DataStore.getInstance(null, $kinvey.DataStoreType.File);
 
         var query = new $kinvey.Query();
         query.greaterThan('size', 0);
@@ -394,12 +394,20 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
             console.log(files);
             $scope.files = files;
             $scope.$digest();
-        });
+        });*/
+var fileStore = new $kinvey.FileStore();
+var query = new $kinvey.Query();
+query.greaterThan('size', 0);
+fileStore.find(query).then(function(files) {
+  console.log(files);
+  $scope.files = files;
+  $scope.$digest();  
+});
     }
 
     $scope.$on('$ionicView.beforeEnter', function() {
         console.log('ref load view');
-        var fileStore = $kinvey.DataStore.getInstance(null, $kinvey.DataStoreType.File);
+        /*var fileStore = $kinvey.DataStore.getInstance(null, $kinvey.DataStoreType.File);
 
         var query = new $kinvey.Query();
         query.greaterThan('size', 0);
@@ -408,7 +416,15 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
             console.log(files);
             $scope.files = files;
             $scope.$digest();
-        });
+        });*/
+    var fileStore = new $kinvey.FileStore();
+var query = new $kinvey.Query();
+query.greaterThan('size', 0);
+fileStore.find(query).then(function(files) {
+  console.log(files);
+  $scope.files = files;
+  $scope.$digest();  
+});
     });
 })
 
