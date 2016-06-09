@@ -159,6 +159,16 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
         }
     })
 
+      .state('menu.patient', {
+        url: "/patient",
+        views: {
+            'menuContent': {
+                templateUrl: "templates/patient.html",
+                controller: 'PatientCtrl'
+            }
+        }
+    })
+
 .state('menu.places', {
         url: "/places",
         views: {
@@ -232,28 +242,5 @@ console.log( 'INSIDE DETERMINEBEHAVIOR');
       console.log("activeUser not null");
       $state.go('menu.tabs.home', null, {reload:true});
     
-
-    // we're authenticated, grab logo and color scheme
-    /*var query = new $kinvey.Query();
-    query.equalTo('ActiveBrand', true);
-
-    var mybrand = $kinvey.DataStore.getInstance('DemoBrandingData', $kinvey.DataStoreType.Network);
-    mybrand.find(query).subscribe(function(brand) {
-        console.log(brand);
-        $rootScope.primarycolor = brand[0].PrimaryColor;
-
-        if (brand[0].LogoFileName.indexOf('http') == -1) {
-            console.log('local path');
-            brand[0].LogoFileName = "img/" + brand[0].LogoFileName;
-        }
-        $rootScope.logo = brand[0].LogoFileName;
-        $rootScope.screenText = brand[0].HomeScreenText;
-        $rootScope.textColor = brand[0].PrimaryTextColor;
-        $rootScope.customer = brand[0].CustomerName;
-        $rootScope.accountsname = brand[0].AccountsName;
-        $rootScope.tasksname = brand[0].TasksName;
-        $rootScope.addtaskname = brand[0].AddTaskName;
-        $rootScope.calcname = brand[0].CalculatorName;
-    });*/
   }
 }

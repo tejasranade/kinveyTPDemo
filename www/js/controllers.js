@@ -10,22 +10,22 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 
 .controller('PlacesCtrl', function($kinvey, $scope, $rootScope) {
 
-   console.log('places ctrl');
-   $scope.placesData = {
+    console.log('places ctrl');
+    $scope.placesData = {
         range: "",
         interest: ""
     };
 
-   $scope.doRefresh = function() {
-        console.log( 'current_loc = ' + $rootScope.current_loc);
-        console.log( $scope.placesData.range );
-        console.log( $scope.placesData.interest );
+    $scope.doRefresh = function() {
+        console.log('current_loc = ' + $rootScope.current_loc);
+        console.log($scope.placesData.range);
+        console.log($scope.placesData.interest);
         //console.log( 'range = ' + document.getElementById("myrange").value);
         //console.log( 'interest = ' + document.getElementById("myinterest").value);
 
 
         var distance = parseInt($scope.placesData.range);
-        console.log( 'distance = ' + distance );
+        console.log('distance = ' + distance);
         var dataStore = $kinvey.DataStore.getInstance('places', $kinvey.DataStoreType.Network);
 
         var myzone = [$rootScope.current_loc[1], $rootScope.current_loc[0]];
@@ -41,7 +41,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
             return;
         });
 
-   }
+    }
 
 })
 
@@ -52,21 +52,21 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 
     $scope.initialize = function() {
 
-        console.log('initializing map');
+            console.log('initializing map');
 
-        var myLatlng = new google.maps.LatLng(39.8282109, -98.5795706);
-        //$scope.mybrand = mybrand;
-        var mapOptions = {
-            center: myLatlng,
-            zoom: 3,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        $rootScope.map = new google.maps.Map(document.getElementById("mymap"),
-            mapOptions);
-    } // end initialize
+            var myLatlng = new google.maps.LatLng(39.8282109, -98.5795706);
+            //$scope.mybrand = mybrand;
+            var mapOptions = {
+                center: myLatlng,
+                zoom: 3,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            $rootScope.map = new google.maps.Map(document.getElementById("mymap"),
+                mapOptions);
+        } // end initialize
 
 
-     $scope.doRefresh = function() {
+    $scope.doRefresh = function() {
             //check to see if a range has been specified
             console.log('refresh');
             if (document.getElementById("myrange").value == "") {
@@ -113,7 +113,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
                 console.log($rootScope.current_loc);
 
                 var myrange = document.getElementById("myrange").value;
-                console.log( 'myrange = '+ myrange);
+                console.log('myrange = ' + myrange);
 
                 console.log('getting position');
 
@@ -124,7 +124,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
                 query.near('_geoloc', $rootScope.current_loc, myrange);
                 //debugger;
                 var promise = dataStore.find(query).subscribe(function(models) {
-                    console.log( models );
+                    console.log(models);
 
                     console.log('num markers = ' + models.length);
                     for (i = 0; i < gmarkers.length; i++) {
@@ -174,9 +174,9 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 
         } // end doRefresh
 
-     $scope.$on('$ionicView.beforeEnter', function() {
+    $scope.$on('$ionicView.beforeEnter', function() {
 
-        console.log( 'before entering map view');
+        console.log('before entering map view');
         var dataStore = $kinvey.DataStore.getInstance('Account');
 
         dataStore.find().subscribe(function(locations) {
@@ -250,12 +250,13 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
             $scope.thisproduct = thisproduct;
             $scope.$digest();
             return; //result.networkPromise;
-        });/*.then(function(thisproduct) {
-            $scope.thisproduct = thisproduct;
-            $scope.$digest();
+        });
+        /*.then(function(thisproduct) {
+                    $scope.thisproduct = thisproduct;
+                    $scope.$digest();
 
-            return;
-        });*/
+                    return;
+                });*/
     };
 })
 
@@ -297,7 +298,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
         dataStore.save(data).then(function(result) {
             console.log(result);
         }).catch(function(error) {
-            console.log( error );
+            console.log(error);
         });
 
         $ionicLoading.show({
@@ -331,6 +332,51 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
     });
 })
 
+.controller('PatientCtrl', function($scope, $kinvey) {
+
+    console.log('inside patientctrl');
+
+    $scope.patient = {
+        _id: "",
+        MaritalStatus: "",
+        FirstName: "",
+        LastName: "",
+        DOB: "",
+        Nickname: "",
+        SSN: "",
+        Sex: ""
+    };
+
+    var patientStore = $kinvey.DataStore.getInstance('Patient',$kinvey.DataStoreType.Network);
+
+    $scope.searchme = function() {
+        console.log('inside searchme');
+
+        console.log( $scope.patient.FirstName);
+        console.log( $scope.patient.LastName);
+
+        var query = new $kinvey.Query();
+    query.equalTo('FirstName',$scope.patient.FirstName)
+         .equalTo('LastName',$scope.patient.LastName);
+         //.equalTo('DOB',$scope.patient.DOB);
+    patientStore.find(query).subscribe(function(models) {
+        console.log("subscribe fired "+JSON.stringify(models));
+        if (models.length == 1) {
+          console.log("updating view");
+          $scope.patient = models[0];
+          $scope.$digest();
+        } else {
+          alert("no results found, please specify First, Last, DOB")
+        }
+    }, function(err) {
+      console.log("err "+JSON.stringify(err));
+    }, function(res) {
+      console.log("subscribe complete");
+    });
+    }
+
+})
+
 
 
 .controller('ProjectsCtrl', function($scope, $kinvey) {
@@ -347,11 +393,11 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
             console.log(tasks);
             $scope.tasks = tasks;
             $scope.$digest();
-           
+
         }).catch(function(error) {
             console.log(error);
         });
-}
+    }
 
     $scope.$on('$ionicView.beforeEnter', function() {
         console.log('todo load view');
@@ -367,12 +413,12 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
             console.log(tasks);
             $scope.tasks = tasks;
             $scope.$digest();
-           
-    }).catch(function(error) {
-        console.log(error);
-});
 
-})
+        }).catch(function(error) {
+            console.log(error);
+        });
+
+    })
 })
 
 .controller('RefCtrl', function($scope, $kinvey) {
@@ -383,64 +429,43 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
     //
     $scope.doRefreshRef = function() {
         console.log('ref refresh view');
-        /*var fileStore = $kinvey.DataStore.getInstance(null, $kinvey.DataStoreType.File);
-
+        var fileStore = new $kinvey.FileStore();
         var query = new $kinvey.Query();
         query.greaterThan('size', 0);
-        var promise = fileStore.find(query);
-        promise.then(function(result) {
-            console.log(result);
-            var files = result;
+        fileStore.find(query).then(function(files) {
             console.log(files);
             $scope.files = files;
             $scope.$digest();
-        });*/
-var fileStore = new $kinvey.FileStore();
-var query = new $kinvey.Query();
-query.greaterThan('size', 0);
-fileStore.find(query).then(function(files) {
-  console.log(files);
-  $scope.files = files;
-  $scope.$digest();  
-});
+        });
     }
 
     $scope.$on('$ionicView.beforeEnter', function() {
         console.log('ref load view');
-        /*var fileStore = $kinvey.DataStore.getInstance(null, $kinvey.DataStoreType.File);
 
+        var fileStore = new $kinvey.FileStore();
         var query = new $kinvey.Query();
         query.greaterThan('size', 0);
-        fileStore.find(query).subscribe(function(result) {
-            var files = result;
+        fileStore.find(query).then(function(files) {
             console.log(files);
             $scope.files = files;
             $scope.$digest();
-        });*/
-    var fileStore = new $kinvey.FileStore();
-var query = new $kinvey.Query();
-query.greaterThan('size', 0);
-fileStore.find(query).then(function(files) {
-  console.log(files);
-  $scope.files = files;
-  $scope.$digest();  
-});
+        });
     });
 })
 
 .controller('PartnerDetailCtrl', function($scope, $kinvey, $stateParams) {
-    console.log( 'inside partnerdetailctrl');
-    console.log( $stateParams.partnerId );
+    console.log('inside partnerdetailctrl');
+    console.log($stateParams.partnerId);
 
     var dataStore = $kinvey.DataStore.getInstance('Account', $kinvey.DataStoreType.Network);
 
-        dataStore.findById($stateParams.partnerId).subscribe(function(result) {
-            //var invoices = result;
-            console.log(result);
-            $scope.invoices = result.invoice;
-            $scope.$digest();
-            //$scope.$digest();
-        });
+    dataStore.findById($stateParams.partnerId).subscribe(function(result) {
+        //var invoices = result;
+        console.log(result);
+        $scope.invoices = result.invoice;
+        $scope.$digest();
+        //$scope.$digest();
+    });
 })
 
 .controller('PartnerCtrl', function($scope, $kinvey) {
@@ -454,7 +479,7 @@ fileStore.find(query).then(function(files) {
             useDeltaFetch: false
         }).subscribe(function(result) {
             console.log(result);
-            
+
             $scope.accounts = result;
             $scope.$digest();
         });
@@ -466,12 +491,12 @@ fileStore.find(query).then(function(files) {
         dataStore.find(null, {
             useDeltaFetch: false
         }).subscribe(function(result) {
-            
+
             $scope.accounts = result;
             $scope.$digest();
-    });
+        });
 
-})
+    })
 })
 
 
@@ -518,15 +543,15 @@ fileStore.find(query).then(function(files) {
     console.log('home');
 
     try {
-     navigator.geolocation.getCurrentPosition(function(loc) {
-                console.log('getting position');
-                var coord = [loc.coords.latitude, loc.coords.longitude];
-                console.log(coord);
-                $rootScope.current_loc = coord;
+        navigator.geolocation.getCurrentPosition(function(loc) {
+            console.log('getting position');
+            var coord = [loc.coords.latitude, loc.coords.longitude];
+            console.log(coord);
+            $rootScope.current_loc = coord;
         });
- } catch(evt) {
-    alert( 'fail' + evt.message);
- }
+    } catch (evt) {
+        alert('fail' + evt.message);
+    }
 
 
     $scope.$on('$ionicView.beforeEnter', function() {
@@ -591,7 +616,7 @@ fileStore.find(query).then(function(files) {
         });
         promise.then(
             function(response) {
-                     debugger;
+                debugger;
                 //Kinvey login finished with success
                 $scope.submittedError = false;
                 console.log('logged in with KinveyAuth2');
@@ -603,7 +628,7 @@ fileStore.find(query).then(function(files) {
                 $scope.submittedError = true;
                 $scope.errorDescription = error.description;
                 console.log("Error login " + error.description); //
-                     });
+            });
     };
 
 
