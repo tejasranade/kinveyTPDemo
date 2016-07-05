@@ -23,7 +23,10 @@
     "phonegap-plugin-push",
     "cordova-plugin-dialogs",
     "cordova-plugin-vibration",
-    "phonegap-plugin-push"
+    "phonegap-plugin-push",
+    "phonegap-plugin-push@1.2.3"
   ],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [
+    "ios"
+  ]
 }

@@ -54,6 +54,7 @@
     </platform>
     <icon src="resources/ios/icon/icon-small@3x.png" />
     <allow-navigation href="*" />
+    <preference name="deployment-target" value="7.0" />
     <!--<gap:config-file overwrite="true" parent="NSLocationAlwaysUsageDescription" platform="ios">
         <string>WE RE LIKE TOTALLY TRACKING YOU OMG</string>
     </gap:config-file>

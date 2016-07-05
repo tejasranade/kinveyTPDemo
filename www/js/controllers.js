@@ -327,7 +327,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
             console.log(products);
             $scope.products = products;
             $scope.$digest();
-            return result.networkPromise;
+            //return result.networkPromise;
         });
     });
 })
@@ -591,7 +591,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
             $rootScope.calcname = brand[0].CalculatorName;
             $rootScope.productsname = brand[0].ProductsName;
             $scope.$digest();
-            return result.networkPromise;
+            //return result.networkPromise;
         });
     });
 
@@ -616,7 +616,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
         });
         promise.then(
             function(response) {
-                debugger;
+                //debugger;
                 //Kinvey login finished with success
                 $scope.submittedError = false;
                 console.log('logged in with KinveyAuth2');
@@ -644,8 +644,8 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
             $scope.submittedError = false;
             console.log(user);
 
-            var push = new $kinvey.Push();
-            return push.register();
+            
+            return $kinvey.Push.register();
 
         }).catch(function(error) {
             console.log(error);
