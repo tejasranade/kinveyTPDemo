@@ -23455,7 +23455,7 @@
 	                  url: _url2.default.format({
 	                    protocol: this.client.protocol,
 	                    host: this.client.host,
-	                    pathname: this.pathname,
+	                    pathname: this.backendPathname,
 	                    query: options.query
 	                  }),
 	                  properties: options.properties,

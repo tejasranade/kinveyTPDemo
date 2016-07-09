@@ -87,12 +87,12 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
     })
 
 
-    .state('menu.projects', {
-        url: '/projects',
+    .state('menu.tasks', {
+        url: '/tasks',
         views: {
             'menuContent': {
-                templateUrl: 'templates/projects.html',
-                controller: 'ProjectsCtrl'
+                templateUrl: 'templates/tasks.html',
+                controller: 'TasksCtrl'
             }
         }
     })
@@ -139,12 +139,12 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
     })
 
 
-    .state('menu.newticket', {
-        url: "/newticket",
+    .state('menu.newtask', {
+        url: "/newtask",
         views: {
             'menuContent': {
-                templateUrl: "templates/newticket.html",
-                controller: 'InsertTicketCtrl'
+                templateUrl: "templates/newtask.html",
+                controller: 'InsertTaskCtrl'
             }
         }
     })
