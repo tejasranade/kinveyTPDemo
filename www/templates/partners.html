@@ -1,4 +1,4 @@
-<ion-view view-title="{{accountsname}}">
+<ion-view view-title="{{doctorsname}}">
     <ion-nav-bar title="Hello" ng-style="{'background-color': primarycolor}">
 
         <ion-nav-buttons side="left">
@@ -15,9 +15,9 @@
 
   
     <ion-list>
-      <ion-item class="item-remove-animate  item-icon-right" ng-repeat="account in accounts" type="item-text-wrap" href="#/menu/partner/{{account._id}}">
-        <h2>{{account.accountname}}</h2>
-    <p>{{account.accountcompany}}</p>
+      <ion-item class="item-remove-animate  item-icon-right" ng-repeat="doctor in doctors" type="item-text-wrap" href="#/menu/partner/{{doctors._id}}">
+        <h2>{{doctor.doctorname}}</h2>
+    <p>{{doctor.doctorcompany}}</p>
         <i class="icon ion-android-contact icon-accessory"></i>
       </ion-item>
     </ion-list>
