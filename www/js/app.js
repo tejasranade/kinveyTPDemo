@@ -45,8 +45,8 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
     // Each state's controller can be found in controllers.js
 
     $kinveyProvider.init({
-        appKey: 'kid_S1V4s-6U',
-        appSecret: '8cdfcc3fa81e4ca9a1fcd8eae49a34d7'
+        appKey: 'kid_SyvKVZev',
+        appSecret: '6b1ed8b3b4b645bcad06d1753a930f32'
     });
 
 
