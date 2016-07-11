@@ -45,8 +45,8 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
     // Each state's controller can be found in controllers.js
 
     $kinveyProvider.init({
-        appKey: 'kid_SyvKVZev',
-        appSecret: '6b1ed8b3b4b645bcad06d1753a930f32'
+        appKey: 'kid_B1GYmVgv',
+        appSecret: '154116c482eb4e029d8296e8e1485c35'
     });
 
 
@@ -107,16 +107,6 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
         }
     })
 
-    .state('menu.partner-detail', {
-        url: '/partner/:partnerId',
-        views: {
-            'menuContent': {
-                templateUrl: 'templates/partner-detail.html',
-                controller: 'PartnerDetailCtrl'
-            }
-        }
-    })
-
     .state('menu.ref', {
         url: '/ref',
         views: {
@@ -149,17 +139,7 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
         }
     })
 
-    .state('menu.geo', {
-        url: "/geo",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/map.html",
-                controller: 'MapCtrl'
-            }
-        }
-    })
-
-      .state('menu.patient', {
+    .state('menu.patient', {
         url: "/patient",
         views: {
             'menuContent': {
@@ -168,18 +148,6 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
             }
         }
     })
-
-.state('menu.places', {
-        url: "/places",
-        views: {
-            'menuContent': {
-                templateUrl: "templates/places.html",
-                controller: 'PlacesCtrl'
-            }
-        }
-    })
-
-
 
     .state('menu.tabs.products', {
         url: '/products',
