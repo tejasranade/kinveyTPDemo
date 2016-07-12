@@ -45,10 +45,15 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
     // Each state's controller can be found in controllers.js
 
     $kinveyProvider.init({
-        appKey: 'kid_B1GYmVgv',
-        appSecret: '154116c482eb4e029d8296e8e1485c35'
+        appKey: 'kid_SkQ41nzP',
+        appSecret: '7d2923a2b5d84e1596abe50c1523f6ae'
     });
 
+//  Development
+    // $kinveyProvider.init({
+    //     appKey: 'kid_S1V4s-6U',
+    //     appSecret: '8cdfcc3fa81e4ca9a1fcd8eae49a34d7'
+    // });
 
     $stateProvider
         .state('menu', {
@@ -97,12 +102,12 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
         }
     })
 
-    .state('menu.partner', {
-        url: '/partner',
+    .state('menu.doctor', {
+        url: '/doctor',
         views: {
             'menuContent': {
-                templateUrl: 'templates/partners.html',
-                controller: 'PartnerCtrl'
+                templateUrl: 'templates/doctors.html',
+                controller: 'DoctorsCtrl'
             }
         }
     })
