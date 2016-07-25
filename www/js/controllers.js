@@ -58,31 +58,29 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 })
 
 
-.controller('DoctorsCtrl', function($scope, $kinvey) {
+// .controller('DoctorsCtrl', function($scope, $kinvey) {
 
-    function fetchDoctors() {
-        var dataStore = $kinvey.DataStore.getInstance('Doctor', $kinvey.DataStoreType.Network);
+//     function fetchDoctors() {
+//         var dataStore = $kinvey.DataStore.getInstance('Doctor', $kinvey.DataStoreType.Network);
         
-        dataStore.find().subscribe(function(result) { 
+//         dataStore.find().subscribe(function(result) { 
         
-            $scope.doctors = result;
-            $scope.$digest();
+//             $scope.doctors = result;
+//             $scope.$digest();
 
-        }, function(error) {
-            console.log(error);
-        });
-
-
-    }
+//         }, function(error) {
+//             console.log(error);
+//         });
+//     }
     
-    $scope.$on('$ionicView.beforeEnter', fetchDoctors);
+//     $scope.$on('$ionicView.beforeEnter', fetchDoctors);
 
-    $scope.doRefresh = function() {
+//     $scope.doRefresh = function() {
         
-        fetchDoctors();
-    }
+//         fetchDoctors();
+//     }
 
-})
+// })
 
 .controller('InsertTaskCtrl', function($scope, $kinvey, $ionicLoading) {
     $scope.insertme = function() {
@@ -126,81 +124,81 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
     };
 })
 
-.controller('TasksCtrl', function($scope, $kinvey, $ionicLoading) {
+// .controller('TasksCtrl', function($scope, $kinvey, $ionicLoading) {
 
-    $scope.doRefresh = function() {
+//     $scope.doRefresh = function() {
         
-        var dataStore = $kinvey.DataStore.getInstance('Task', $kinvey.DataStoreType.Sync);
+//         var dataStore = $kinvey.DataStore.getInstance('Task', $kinvey.DataStoreType.Sync);
         
-        dataStore.sync().then(function(result) {
+//         dataStore.sync().then(function(result) {
             
-            $scope.tasks = result.pull;
-            console.log (result);
-            $scope.$digest();
-            $ionicLoading.show({template: 'sync completed',noBackdrop: true,duration: 2000
-        }).catch(function(error) {
-            console.log(error);
-        });
-        })
-    }
+//             $scope.tasks = result.pull;
+//             console.log (result);
+//             $scope.$digest();
+//             $ionicLoading.show({template: 'sync completed',noBackdrop: true,duration: 2000
+//         }).catch(function(error) {
+//             console.log(error);
+//         });
+//         })
+//     }
 
-    $scope.$on('$ionicView.beforeEnter', function() {
+//     $scope.$on('$ionicView.beforeEnter', function() {
         
-        var dataStore = $kinvey.DataStore.getInstance('Task', $kinvey.DataStoreType.Sync);
-        dataStore.pull().then(function (result){
-            $scope.tasks = result;
-            $scope.$digest();
-        }, function(err) {
-             console.log("err "+JSON.stringify(err));
-        });
+//         var dataStore = $kinvey.DataStore.getInstance('Task', $kinvey.DataStoreType.Sync);
+//         dataStore.pull().then(function (result){
+//             $scope.tasks = result;
+//             $scope.$digest();
+//         }, function(err) {
+//              console.log("err "+JSON.stringify(err));
+//         });
 
-    })
-})
+//     })
+// })
     
-.controller('PatientCtrl', function($scope, $kinvey) {
+// .controller('PatientCtrl', function($scope, $kinvey) {
 
-    console.log('inside patientctrl');
+//     console.log('inside patientctrl');
 
-    $scope.patient = {
-        _id: "",
-        MaritalStatus: "",
-        FirstName: "",
-        LastName: "",
-        DOB: "",
-        Nickname: "",
-        SSN: "",
-        Sex: ""
-    };
+//     $scope.patient = {
+//         _id: "",
+//         MaritalStatus: "",
+//         FirstName: "",
+//         LastName: "",
+//         DOB: "",
+//         Nickname: "",
+//         SSN: "",
+//         Sex: ""
+//     };
 
-    var patientStore = $kinvey.DataStore.getInstance('Patient',$kinvey.DataStoreType.Network);
+//     var patientStore = $kinvey.DataStore.getInstance('Patient',$kinvey.DataStoreType.Network);
 
-    $scope.searchme = function() {
-        console.log('inside searchme');
+//     $scope.searchme = function() {
+//         console.log('inside searchme');
 
-        console.log( $scope.patient.FirstName);
-        console.log( $scope.patient.LastName);
+//         console.log( $scope.patient.FirstName);
+//         console.log( $scope.patient.LastName);
 
-        var query = new $kinvey.Query();
-    query.equalTo('FirstName',$scope.patient.FirstName)
-         .equalTo('LastName',$scope.patient.LastName);
-         //.equalTo('DOB',$scope.patient.DOB);
-    patientStore.find(query).subscribe(function(models) {
-        console.log("subscribe fired "+JSON.stringify(models));
-        if (models.length == 1) {
-          console.log("updating view");
-          $scope.patient = models[0];
-          $scope.$digest();
-        } else {
-          alert("no results found, please specify First, Last, DOB")
-        }
-    }, function(err) {
-      console.log("err "+JSON.stringify(err));
-    }, function(res) {
-      console.log("subscribe complete");
-    });
-    }
+//         var query = new $kinvey.Query();
+//     query.equalTo('FirstName',$scope.patient.FirstName)
+//          .equalTo('LastName',$scope.patient.LastName);
+//          //.equalTo('DOB',$scope.patient.DOB);
+//     patientStore.find(query).subscribe(function(models) {
+//         console.log("subscribe fired "+JSON.stringify(models));
+//         if (models.length == 1) {
+//           console.log("updating view");
+//           $scope.patient = models[0];
+//           $scope.$digest();
+//         } else {
+//           alert("no results found, please specify First, Last, DOB")
+//         }
+//     }, function(err) {
+//       console.log("err "+JSON.stringify(err));
+//     }, function(res) {
+//       console.log("subscribe complete");
+//     });
+//     }
 
-})
+// })
 
 
 
@@ -279,85 +277,82 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 
 })
 
-.controller('AccountCtrl', function($scope, $state, $kinvey, $cordovaPush, $http) {
-    $scope.userData = {
-        email: "",
-        password: ""
-    };
+// .controller('AccountCtrl', function($scope, $state, $kinvey, $cordovaPush, $http) {
+//     $scope.userData = {
+//         email: "",
+//         password: ""
+//     };
 
-    $scope.validateUser = function() {
-        console.log ("logging in user");
+//     $scope.validateUser = function() {
+//         console.log ("logging in user");
         
-        var credentials = {username: $scope.userData.email, password: $scope.userData.password};
-        // TODO - copy paste here
+//         var credentials = {username: $scope.userData.email, password: $scope.userData.password};
+//         // TODO - copy paste here
+
+//         var promise = $kinvey.User.login(credentials);
+//         promise.then(function(user) {
+//           successHandler(user);
+//         }).catch(function(error) {
+//           errorHandler(error);
+//         });
 
 
-        function successHandler(user) {
-            $scope.submittedError = false;
-            console.log('logged in with KinveyAuth2');
-            $state.go('menu.tabs.home');
-            $kinvey.Push.register();
-        }
+//         function successHandler(user) {
+//             $scope.submittedError = false;
+//             console.log('logged in with KinveyAuth2');
+//             $state.go('menu.tabs.home');
+//             $kinvey.Push.register();
+//         }
 
-        function errorHandler(error) {
-            console.log("Error login " + error); 
+//         function errorHandler(error) {
+//             console.log("Error login " + error); 
 
-            $scope.submittedError = true;
-            $scope.errorDescription = error;
+//             $scope.submittedError = true;
+//             $scope.errorDescription = error;
 
-        }
-
-        var user = new $kinvey.User();
-        var promise = user.login(credentials);
-        promise.then(function(user) {
-            successHandler();
-        }).catch(function(error) {
-            errorHandler();
-        });
+//         }
  
-    };
+//     };
 
-    $scope.validateUserMIC = function() {
+//     $scope.validateUserMIC = function() {
         
-        var user = new $kinvey.User();
-        user.loginWithMIC('http://localhost:8100', $kinvey.AuthorizationGrant.AuthorizationCodeLoginPage, {
-            version: 2
-        }).then(function(user) {
+//         var user = new $kinvey.User();
+//         user.loginWithMIC('http://localhost:8100', $kinvey.AuthorizationGrant.AuthorizationCodeLoginPage, {
+//             version: 2
+//         }).then(function(user) {
             
-            $scope.submittedError = false;
-            console.log(user);
-            return $kinvey.Push.register();
+//             $scope.submittedError = false;
+//             console.log(user);
+//             return $kinvey.Push.register();
 
-        }).catch(function(error) {
-            console.log(error);
-            return null;
-        }).then(function() {
-            $state.go('menu.tabs.home');
-        }, function(err) {
-            console.log("error logging in");
-            $scope.submittedError = true;
-            $scope.errorDescription = err.description;
-            console.log(err);
-            console.log("Error login " + err.description);
-            $state.go('menu.tabs.account');
-        });
+//         }).catch(function(error) {
+//             console.log(error);
+//             return null;
+//         }).then(function() {
+//             $state.go('menu.tabs.home');
+//         }, function(err) {
+//             console.log("error logging in");
+//             $scope.submittedError = true;
+//             $scope.errorDescription = err.description;
+//             console.log(err);
+//             console.log("Error login " + err.description);
+//             $state.go('menu.tabs.account');
+//         });
 
-
-
-    };
+//     };
 
 
-    $scope.logout = function() {
-        console.log('logout user');
-        //Kinvey logout starts
-        var user = $kinvey.User.getActiveUser();
-        if (user) {
-            return user.logout().catch(function(error) {
-                //Kinvey logout finished with error
-                alert("Error logout: " + JSON.stringify(error));
-            });
-        }
+//     $scope.logout = function() {
+//         console.log('logout user');
+//         //Kinvey logout starts
+//         var user = $kinvey.User.getActiveUser();
+//         if (user) {
+//             return user.logout().catch(function(error) {
+//                 //Kinvey logout finished with error
+//                 alert("Error logout: " + JSON.stringify(error));
+//             });
+//         }
 
-    }
+//     }
 
-});
+// });
