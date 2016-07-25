@@ -147,19 +147,16 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
     $scope.$on('$ionicView.beforeEnter', function() {
         
         var dataStore = $kinvey.DataStore.getInstance('Task', $kinvey.DataStoreType.Sync);
-        
-        dataStore.find().subscribe(function(result) {
-            
+        dataStore.pull().then(function (result){
             $scope.tasks = result;
             $scope.$digest();
-
-        },function(err) {
-            console.log("err "+JSON.stringify(err));
+        }, function(err) {
+             console.log("err "+JSON.stringify(err));
         });
 
     })
 })
-
+    
 .controller('PatientCtrl', function($scope, $kinvey) {
 
     console.log('inside patientctrl');
@@ -289,6 +286,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
     };
 
     $scope.validateUser = function() {
+        console.log ("logging in user");
         
         var credentials = {username: $scope.userData.email, password: $scope.userData.password};
         // TODO - copy paste here
@@ -309,13 +307,13 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 
         }
 
-        // var user = new $kinvey.User();
-        // var promise = user.login(credentials);
-        // promise.then(function(user) {
-        //     successHandler();
-        // }).catch(function(error) {
-        //     errorHandler();
-        // });
+        var user = new $kinvey.User();
+        var promise = user.login(credentials);
+        promise.then(function(user) {
+            successHandler();
+        }).catch(function(error) {
+            errorHandler();
+        });
  
     };
 
