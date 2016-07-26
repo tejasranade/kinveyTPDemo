@@ -1,4 +1,13 @@
    <ion-view cache-view="false" title="{{customer}}">
+    <ion-nav-bar title="Doctors" ng-style="{'background-color': primarycolor}">
+
+        <ion-nav-buttons side="left">
+          <button class="button button-icon button-clear ion-navicon" ng-click="toggleLeft()"></button>
+          <h1 class="title"></h1>
+        </ion-nav-buttons>
+
+    </ion-nav-bar>
+
       <ion-content class="padding">
        <div class="item item-body">
     <img class="full-image" src="{{logo}}" width="100%"></div>

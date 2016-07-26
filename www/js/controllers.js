@@ -13,18 +13,6 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
     };
 })
 
-.controller('ProductCtrl', function($scope, $kinvey) {
-
-    $scope.$on('$ionicView.beforeEnter', function() {
-
-        var dataStore = $kinvey.DataStore.getInstance('Product');
- 
-        dataStore.find().subscribe(function(products) {
-            $scope.products = products;
-            $scope.$digest();
-        });
-    });
-})
 
 .controller('SearchCtrl', function($scope, $kinvey, $sce) {
 
@@ -56,150 +44,6 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
         
     };
 })
-
-
-// .controller('DoctorsCtrl', function($scope, $kinvey) {
-
-//     function fetchDoctors() {
-//         var dataStore = $kinvey.DataStore.getInstance('Doctor', $kinvey.DataStoreType.Network);
-        
-//         dataStore.find().subscribe(function(result) { 
-        
-//             $scope.doctors = result;
-//             $scope.$digest();
-
-//         }, function(error) {
-//             console.log(error);
-//         });
-//     }
-    
-//     $scope.$on('$ionicView.beforeEnter', fetchDoctors);
-
-//     $scope.doRefresh = function() {
-        
-//         fetchDoctors();
-//     }
-
-// })
-
-.controller('InsertTaskCtrl', function($scope, $kinvey, $ionicLoading) {
-    $scope.insertme = function() {
-        var mytask = document.getElementById("task").value;
-        document.getElementById("task").value = "";
-        
-        var myduedate = document.getElementById("duedate").value;
-        console.log(duedate);
-        document.getElementById("duedate").value = "";
-
-
-
-        var mycomplete = document.getElementById("completed").checked;
-        console.log(mycomplete);
-
-        var complete = false;
-        if (mycomplete == true) {
-            complete = true;
-        } else {
-            complete = false;
-        }
-
-
-        var data = {};
-
-        data.action = mytask;
-        data.duedate = myduedate;
-        data.completed = complete;
-        data.class = "personal";
-        data.Title = "Personal Task";
-        console.log(JSON.stringify(data));
-
-        var dataStore = $kinvey.DataStore.getInstance('Task', $kinvey.DataStoreType.Sync);
-
-        dataStore.save(data).then(function(result) {
-            $ionicLoading.show({template: 'task inserted',noBackdrop: true,duration: 2000});
-            
-        }).catch(function(error) {
-            console.log(error);
-        });
-    };
-})
-
-// .controller('TasksCtrl', function($scope, $kinvey, $ionicLoading) {
-
-//     $scope.doRefresh = function() {
-        
-//         var dataStore = $kinvey.DataStore.getInstance('Task', $kinvey.DataStoreType.Sync);
-        
-//         dataStore.sync().then(function(result) {
-            
-//             $scope.tasks = result.pull;
-//             console.log (result);
-//             $scope.$digest();
-//             $ionicLoading.show({template: 'sync completed',noBackdrop: true,duration: 2000
-//         }).catch(function(error) {
-//             console.log(error);
-//         });
-//         })
-//     }
-
-//     $scope.$on('$ionicView.beforeEnter', function() {
-        
-//         var dataStore = $kinvey.DataStore.getInstance('Task', $kinvey.DataStoreType.Sync);
-//         dataStore.pull().then(function (result){
-//             $scope.tasks = result;
-//             $scope.$digest();
-//         }, function(err) {
-//              console.log("err "+JSON.stringify(err));
-//         });
-
-//     })
-// })
-    
-// .controller('PatientCtrl', function($scope, $kinvey) {
-
-//     console.log('inside patientctrl');
-
-//     $scope.patient = {
-//         _id: "",
-//         MaritalStatus: "",
-//         FirstName: "",
-//         LastName: "",
-//         DOB: "",
-//         Nickname: "",
-//         SSN: "",
-//         Sex: ""
-//     };
-
-//     var patientStore = $kinvey.DataStore.getInstance('Patient',$kinvey.DataStoreType.Network);
-
-//     $scope.searchme = function() {
-//         console.log('inside searchme');
-
-//         console.log( $scope.patient.FirstName);
-//         console.log( $scope.patient.LastName);
-
-//         var query = new $kinvey.Query();
-//     query.equalTo('FirstName',$scope.patient.FirstName)
-//          .equalTo('LastName',$scope.patient.LastName);
-//          //.equalTo('DOB',$scope.patient.DOB);
-//     patientStore.find(query).subscribe(function(models) {
-//         console.log("subscribe fired "+JSON.stringify(models));
-//         if (models.length == 1) {
-//           console.log("updating view");
-//           $scope.patient = models[0];
-//           $scope.$digest();
-//         } else {
-//           alert("no results found, please specify First, Last, DOB")
-//         }
-//     }, function(err) {
-//       console.log("err "+JSON.stringify(err));
-//     }, function(res) {
-//       console.log("subscribe complete");
-//     });
-//     }
-
-// })
-
 
 
 .controller('BrandCtrl', function($scope, $kinvey) {
@@ -258,7 +102,7 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 
         if (!activeUser) {
             // activeUser is null, go to account tab
-            $state.go('menu.tabs.account');
+            $state.go('menu.account');
             return;
         }
         
@@ -277,82 +121,190 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 
 })
 
-// .controller('AccountCtrl', function($scope, $state, $kinvey, $cordovaPush, $http) {
-//     $scope.userData = {
-//         email: "",
-//         password: ""
-//     };
 
-//     $scope.validateUser = function() {
-//         console.log ("logging in user");
-        
-//         var credentials = {username: $scope.userData.email, password: $scope.userData.password};
-//         // TODO - copy paste here
+.controller('MapCtrl', function($scope, $state, $cordovaGeolocation, $kinvey, $ionicPopover) {
+  var options = {
+    timeout: 10000,
+    enableHighAccuracy: true
+  };
 
-//         var promise = $kinvey.User.login(credentials);
-//         promise.then(function(user) {
-//           successHandler(user);
-//         }).catch(function(error) {
-//           errorHandler(error);
-//         });
+  $cordovaGeolocation.getCurrentPosition(options).then(function(position) {
+    var currentLocationLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    var mapOptions = {
+      center: currentLocationLatLng,
+      zoom: 15,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      disableDefaultUI: true
+    };
 
+    // Create a map
+    $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-//         function successHandler(user) {
-//             $scope.submittedError = false;
-//             console.log('logged in with KinveyAuth2');
-//             $state.go('menu.tabs.home');
-//             $kinvey.Push.register();
-//         }
+    // Wait until the map is loaded
+    google.maps.event.addListenerOnce($scope.map, 'idle', function() {
+        var currentLocationIcon = {
+            url: './img/current_position.png',
+            size: new google.maps.Size(60, 60),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(0, 0),
+            scaledSize: new google.maps.Size(30, 30)
+        };
 
-//         function errorHandler(error) {
-//             console.log("Error login " + error); 
+        var currentLocationMarker = new google.maps.Marker({
+            map: $scope.map,
+            animation: google.maps.Animation.DROP,
+            position: currentLocationLatLng,
+            icon: currentLocationIcon
+        });
 
-//             $scope.submittedError = true;
-//             $scope.errorDescription = error;
+        var infoWindow = new google.maps.InfoWindow({
+            content: 'Your location'
+        });
 
-//         }
- 
-//     };
+        // Listen for a click event on the current location marker
+        google.maps.event.addListener(currentLocationMarker, 'click', function() {
+            infoWindow.open($scope.map, currentLocationMarker);
+        });
 
-//     $scope.validateUserMIC = function() {
-        
-//         var user = new $kinvey.User();
-//         user.loginWithMIC('http://localhost:8100', $kinvey.AuthorizationGrant.AuthorizationCodeLoginPage, {
-//             version: 2
-//         }).then(function(user) {
-            
-//             $scope.submittedError = false;
-//             console.log(user);
-//             return $kinvey.Push.register();
+        var busMarkers = {};
+        var store = $kinvey.DataStore.collection('Bus');
 
-//         }).catch(function(error) {
-//             console.log(error);
-//             return null;
-//         }).then(function() {
-//             $state.go('menu.tabs.home');
-//         }, function(err) {
-//             console.log("error logging in");
-//             $scope.submittedError = true;
-//             $scope.errorDescription = err.description;
-//             console.log(err);
-//             console.log("Error login " + err.description);
-//             $state.go('menu.tabs.account');
-//         });
+        store.find().subscribe(function(buses){
+            buses.forEach (function (bus) {
+                var busMarker = busMarkers[bus._id];
+                var latitude = bus.location[1];
+                var longitude = bus.location[0];
+                var busLatLng = new google.maps.LatLng(latitude, longitude);
 
-//     };
+                if (!busMarker){
+                    //create a bus marker
+                    busMarker = new google.maps.Marker({
+                        map: $scope.map,
+                        animation: google.maps.Animation.DROP,
+                        position: busLatLng
+                    });
+                    busMarkers[bus._id] = busMarker;
 
+                    var infoWindow = new google.maps.InfoWindow({
+                        content: bus.name
+                    });
 
-//     $scope.logout = function() {
-//         console.log('logout user');
-//         //Kinvey logout starts
-//         var user = $kinvey.User.getActiveUser();
-//         if (user) {
-//             return user.logout().catch(function(error) {
-//                 //Kinvey logout finished with error
-//                 alert("Error logout: " + JSON.stringify(error));
-//             });
-//         }
+                    google.maps.event.addListener(busMarker, 'click', function(){
+                        infoWindow.open($scope.map, busMarker);
+                    });
+                }
 
-//     }
+                busMarker.setPosition(busLatLng);
 
-// });
+            });
+
+        });
+
+      // store.find().then(function(response) {
+      //   var buses = response.cache;
+      //   buses.forEach(function(bus) {
+      //     var busMarker = busMarkers[bus._id];
+      //     var latitude = bus.location[1];
+      //     var longitude = bus.location[0];
+      //     var busLatLng = new google.maps.LatLng(latitude, longitude);
+
+      //     if (!busMarker) {
+      //       // Create a bus marker
+      //       busMarker = new google.maps.Marker({
+      //         map: $scope.map,
+      //         animation: google.maps.Animation.DROP,
+      //         position: busLatLng
+      //       });
+      //       busMarkers[bus._id] = busMarker;
+
+      //       var infoWindow = new google.maps.InfoWindow({
+      //         content: bus.name
+      //       });
+
+      //       // Listen for a click event on the bus marker
+      //       google.maps.event.addListener(busMarker, 'click', function() {
+      //         infoWindow.open($scope.map, busMarker);
+      //       });
+      //     }
+
+      //     busMarker.setPosition(busLatLng);
+      //   });
+
+      //   return response.networkPromise;
+      // }).then(function(buses) {
+      //   console.log(buses);
+      //   buses.forEach(function(bus) {
+      //     var busMarker = busMarkers[bus._id];
+      //     var latitude = bus.location[1];
+      //     var longitude = bus.location[0];
+      //     var busLatLng = new google.maps.LatLng(latitude, longitude);
+
+      //     if (!busMarker) {
+      //       // Create a bus marker
+      //       busMarker = new google.maps.Marker({
+      //         map: $scope.map,
+      //         animation: google.maps.Animation.DROP,
+      //         position: busLatLng
+      //       });
+      //       busMarkers[bus._id] = busMarker;
+
+      //       var infoWindow = new google.maps.InfoWindow({
+      //         content: bus.name
+      //       });
+
+      //       // Listen for a click event on the bus marker
+      //       google.maps.event.addListener(busMarker, 'click', function() {
+      //         infoWindow.open($scope.map, busMarker);
+      //       });
+      //     }
+
+      //     busMarker.setPosition(busLatLng);
+      //   });
+
+      //   // Subscribe for updates to the buses
+      //   return store.subscribe();
+      // }).then(function(subscription) {
+      //   console.log('Subscription url: ' + subscription.url);
+      //   console.log('Subscription readyState: ' + subscription.readyState);
+
+      //   subscription.onerror = function(error) {
+      //     console.log(error);
+      //   };
+
+      //   subscription.onopen = function(data) {
+      //     console.log('Subscription is open.');
+      //   };
+
+      //   subscription.onmessage = function(message) {
+      //     console.log('Received message', message);
+
+      //     try {
+      //       var data = JSON.parse(message.data);
+      //       var op = data.op;
+      //       var bus = data.data;
+
+      //       if (op ==='update' && bus) {
+      //         var busMarker = busMarkers[bus._id];
+
+      //         if (busMarker) {
+      //           var latitude = bus.location[1];
+      //           var longitude = bus.location[0];
+      //           var busLatLng = new google.maps.LatLng(latitude, longitude);
+      //           busMarker.setPosition(busLatLng);
+      //         }
+      //       }
+      //     } catch (error) {
+      //       console.log(error);
+      //     }
+      //   };
+      // });
+    });
+  }, function(error) {
+    console.log('Could not get location', error);
+  });
+})
+
+.controller('BusCtrl', function(bus, $scope) {
+  $scope.bus = bus;
+});
+

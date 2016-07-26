@@ -253,9 +253,29 @@
   overflow: hidden;
 }
 
-#mymap {
-    width: 320px;
-    height: 500px;
+.scroll {
+    height: 100%;
 }
 
+#loadingMap {
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 50px;
+  position: absolute;
+  text-align: center;
+  background-color: #EEE;
+  margin: -25px 0 0 -200px;
+}
+
+#loadingMap > h3 {
+  color: #BBB;
+  text-shadow: -1px -1px 0px rgba(150, 150, 150, 1);
+}
+
+#map {
+    background-color: #EEE;
+    width: 100%;
+    height: 100%;
+}
 

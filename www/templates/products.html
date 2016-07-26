@@ -1,4 +1,14 @@
 <ion-view cache-view="false" view-title="Products">
+
+  <ion-nav-bar title="Products" ng-style="{'background-color': primarycolor}">
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" ng-click="toggleLeft()"></button>
+        <h1 class="title"></h1>
+      </ion-nav-buttons>
+
+  </ion-nav-bar>
+
   <ion-content class="has-header padding">
     <ion-list>
       <ion-item class="item-remove-animate item-leftitem-icon-right pane" ng-repeat="product in products" type="item-text-wrap">
