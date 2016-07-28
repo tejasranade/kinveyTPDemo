@@ -1,8 +1,8 @@
 angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 
-// twilio 
-// AC03d32d0449ef71318aee67eb83598377
-// 265b6c1d62ed48ecb104b5512ce16020
+// jikku's twilio 
+// ACa22283862df085181d5799358348ccba
+// 82e6dddd386152148bd7ef44587faa88
 // 18573056054
 
 .controller('DashCtrl', function($scope) {

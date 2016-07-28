@@ -33,7 +33,7 @@ angular.module('starter.controllers').controller('MapCtrl', function($scope, $st
       });
 
       var infoWindow = new google.maps.InfoWindow({
-        content: 'Your location'
+        content: 'My location'
       });
 
       // Listen for a click event on the current location marker
@@ -43,147 +43,100 @@ angular.module('starter.controllers').controller('MapCtrl', function($scope, $st
 
       var busMarkers = {};
 
+
+      var busIcon = {
+        url: './img/bus2.png',
+        size: new google.maps.Size(60, 60),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(15, 15),
+        scaledSize: new google.maps.Size(30, 30)
+      };
+
+
+      function updateBusMarker(data){
+        var op = data.op;
+        var bus = data.data;
+
+        if (op ==='update' && bus) {
+          var busMarker = busMarkers[bus._id];
+          if (!busMarker){
+              //create a bus marker
+              busMarker = new google.maps.Marker({
+                  map: $scope.map,
+                  animation: google.maps.Animation.DROP,
+                  position: busLatLng,
+                  icon: busIcon
+              });
+              busMarkers[bus._id] = busMarker;
+
+              var infoWindow = new google.maps.InfoWindow({
+                  content: bus.name
+              });
+
+              google.maps.event.addListener(busMarker, 'click', function(){
+                  infoWindow.open($scope.map, busMarker);
+              });
+          }
+
+          if (busMarker) {
+            var latitude = bus.location[1];
+            var longitude = bus.location[0];
+            var busLatLng = new google.maps.LatLng(latitude, longitude);
+            busMarker.setPosition(busLatLng);
+          }
+        }      
+      }
+
       var store = $kinvey.DataStore.collection('Bus');
-
-      store.find().subscribe(function(buses){
-          buses.forEach (function (bus) {
-              var busMarker = busMarkers[bus._id];
-              var latitude = bus.location[1];
-              var longitude = bus.location[0];
-              var busLatLng = new google.maps.LatLng(latitude, longitude);
-
-              if (!busMarker){
-                  //create a bus marker
-                  busMarker = new google.maps.Marker({
-                      map: $scope.map,
-                      animation: google.maps.Animation.DROP,
-                      position: busLatLng
-                  });
-                  busMarkers[bus._id] = busMarker;
-
-                  var infoWindow = new google.maps.InfoWindow({
-                      content: bus.name
-                  });
-
-                  google.maps.event.addListener(busMarker, 'click', function(){
-                      infoWindow.open($scope.map, busMarker);
-                  });
-              }
-
-              busMarker.setPosition(busLatLng);
-
-          });
-      });
-
-      store.live().subscribe(function onSuccess(){
-
-
-      }, function onError(error){
-
-      });
-
-
       
-      //var store = $kinvey.DataStore.collection('Bus');
+      store.subscribe({
+        onNext: function(data) {
+          updateBusMarker(data);
+        }, 
+        onError: function (error) {
+          console.log(error);
+        }, 
+        onComplete: function (){
+          console.log("onComplete");
+        }
+      });
 
-      // store.find().then(function(response) {
-      //   var buses = response.cache;
-      //   buses.forEach(function(bus) {
-      //     var busMarker = busMarkers[bus._id];
-      //     var latitude = bus.location[1];
-      //     var longitude = bus.location[0];
-      //     var busLatLng = new google.maps.LatLng(latitude, longitude);
 
-      //     if (!busMarker) {
-      //       // Create a bus marker
-      //       busMarker = new google.maps.Marker({
-      //         map: $scope.map,
-      //         animation: google.maps.Animation.DROP,
-      //         position: busLatLng
-      //       });
-      //       busMarkers[bus._id] = busMarker;
+      // var source = new EventSource('https://kls.kinvey.com/appdata/kid_HJzzcsRP/Bus');
 
-      //       var infoWindow = new google.maps.InfoWindow({
-      //         content: bus.name
-      //       });
+      // source.onerror = function(error) {
+      //   console.log(error);
+      //   //observer.onError(error);
+      // };
 
-      //       // Listen for a click event on the bus marker
-      //       google.maps.event.addListener(busMarker, 'click', function() {
-      //         infoWindow.open($scope.map, busMarker);
-      //       });
-      //     }
+      // source.onopen = function(data) {
+      //   console.log('Subscription is open.');
+      //   //observer.onNext(data);
+      // };
 
-      //     busMarker.setPosition(busLatLng);
-      //   });
+      // source.onmessage = function(message) {
+      //   console.log('Received message', message);
+      //  // observer.onNext(message);
+      //   try {
+      //     var data = JSON.parse(message.data);
+      //     var op = data.op;
+      //     var bus = data.data;
 
-      //   return response.networkPromise;
-      // }).then(function(buses) {
-      //   console.log(buses);
-      //   buses.forEach(function(bus) {
-      //     var busMarker = busMarkers[bus._id];
-      //     var latitude = bus.location[1];
-      //     var longitude = bus.location[0];
-      //     var busLatLng = new google.maps.LatLng(latitude, longitude);
+      //     if (op ==='update' && bus) {
+      //       var busMarker = busMarkers[bus._id];
 
-      //     if (!busMarker) {
-      //       // Create a bus marker
-      //       busMarker = new google.maps.Marker({
-      //         map: $scope.map,
-      //         animation: google.maps.Animation.DROP,
-      //         position: busLatLng
-      //       });
-      //       busMarkers[bus._id] = busMarker;
-
-      //       var infoWindow = new google.maps.InfoWindow({
-      //         content: bus.name
-      //       });
-
-      //       // Listen for a click event on the bus marker
-      //       google.maps.event.addListener(busMarker, 'click', function() {
-      //         infoWindow.open($scope.map, busMarker);
-      //       });
-      //     }
-
-      //     busMarker.setPosition(busLatLng);
-      //   });
-
-      //   // Subscribe for updates to the buses
-      //   return store.subscribe();
-      // }).then(function(subscription) {
-      //   console.log('Subscription url: ' + subscription.url);
-      //   console.log('Subscription readyState: ' + subscription.readyState);
-
-      //   subscription.onerror = function(error) {
-      //     console.log(error);
-      //   };
-
-      //   subscription.onopen = function(data) {
-      //     console.log('Subscription is open.');
-      //   };
-
-      //   subscription.onmessage = function(message) {
-      //     console.log('Received message', message);
-
-      //     try {
-      //       var data = JSON.parse(message.data);
-      //       var op = data.op;
-      //       var bus = data.data;
-
-      //       if (op ==='update' && bus) {
-      //         var busMarker = busMarkers[bus._id];
-
-      //         if (busMarker) {
-      //           var latitude = bus.location[1];
-      //           var longitude = bus.location[0];
-      //           var busLatLng = new google.maps.LatLng(latitude, longitude);
-      //           busMarker.setPosition(busLatLng);
-      //         }
+      //       if (busMarker) {
+      //         var latitude = bus.location[1];
+      //         var longitude = bus.location[0];
+      //         var busLatLng = new google.maps.LatLng(latitude, longitude);
+      //         busMarker.setPosition(busLatLng);
       //       }
-      //     } catch (error) {
-      //       console.log(error);
       //     }
-      //   };
-      // });
+      //   } catch (error) {
+      //     console.log(error);
+      //   }
+      // };
+
     });
   }, function(error) {
     console.log('Could not get location', error);

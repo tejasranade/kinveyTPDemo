@@ -9,11 +9,11 @@
 
 angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWebViewPatch', 'ngCordova'])
 
-.run(function($ionicPlatform, $kinvey, $rootScope, $state, $location) {
+.run(function($ionicPlatform, $kinvey, $rootScope, $state, $ionicModal, $location) {
 
     $rootScope.primarycolor = "#D44B2B";
     $rootScope.productsname = "Products";
-    determineBehavior($kinvey, $rootScope, $state);
+    determineBehavior($kinvey, $rootScope, $state, $ionicModal);
 
     $kinvey.Push.onNotification(function(notification) {
       alert(notification.message);
@@ -229,18 +229,28 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
 
 
 //function selects the desired behavior depending on whether the user is logged or not
-function determineBehavior($kinvey, $rootScope, $state, $scope) {
+function determineBehavior($kinvey, $rootScope, $state, $ionicModal) {
     //var activeUser = new $kinvey.User();
     //activeUser = activeUser.getActiveUser();
-console.log( 'INSIDE DETERMINEBEHAVIOR');
+    console.log( 'INSIDE DETERMINEBEHAVIOR');
     //console.log( activeUser );
     console.log("$state.current.name: " + $state.current.name);
     var activeUser = $kinvey.User.getActiveUser();
-
+    var $scope = $rootScope.$new();
     if (!activeUser) {
       console.log("activeUser null redirecting");
       if ($state.current.name != 'menu.account') {
-          $state.go('menu.account');
+          //$state.go('menu.account');
+        // Create the login modal and show it
+          $ionicModal.fromTemplateUrl('templates/tab-account.html', {
+            scope: $scope,
+            animation: 'slide-in-up',
+            backdropClickToClose: false,
+            hardwareBackButtonClose: false
+          }).then(function(modal) {
+            modal.show();
+            $scope.modal = modal;
+          });
       }
       return;
     } else {
