@@ -1,13 +1,16 @@
 angular.module('starter.controllers').controller('DoctorsCtrl', function($scope, $kinvey) {
 
+    function render(data){
+        $scope.doctors = result;
+        $scope.$digest();
+    }
+
     function fetchDoctors() {
+        //get doctors from the backend
         var dataStore = $kinvey.DataStore.getInstance('Doctor', $kinvey.DataStoreType.Network);
         
         dataStore.find().subscribe(function(result) { 
-        
-            $scope.doctors = result;
-            $scope.$digest();
-
+            render(result);        
         }, function(error) {
             console.log(error);
         });
