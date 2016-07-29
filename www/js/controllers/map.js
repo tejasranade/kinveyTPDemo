@@ -45,7 +45,7 @@ angular.module('starter.controllers').controller('MapCtrl', function($scope, $st
 
 
       var busIcon = {
-        url: './img/bus2.png',
+        url: './img/bus_icon.png',
         size: new google.maps.Size(60, 60),
         origin: new google.maps.Point(0, 0),
         anchor: new google.maps.Point(15, 15),
@@ -100,42 +100,6 @@ angular.module('starter.controllers').controller('MapCtrl', function($scope, $st
           console.log("onComplete");
         }
       });
-
-
-      // var source = new EventSource('https://kls.kinvey.com/appdata/kid_HJzzcsRP/Bus');
-
-      // source.onerror = function(error) {
-      //   console.log(error);
-      //   //observer.onError(error);
-      // };
-
-      // source.onopen = function(data) {
-      //   console.log('Subscription is open.');
-      //   //observer.onNext(data);
-      // };
-
-      // source.onmessage = function(message) {
-      //   console.log('Received message', message);
-      //  // observer.onNext(message);
-      //   try {
-      //     var data = JSON.parse(message.data);
-      //     var op = data.op;
-      //     var bus = data.data;
-
-      //     if (op ==='update' && bus) {
-      //       var busMarker = busMarkers[bus._id];
-
-      //       if (busMarker) {
-      //         var latitude = bus.location[1];
-      //         var longitude = bus.location[0];
-      //         var busLatLng = new google.maps.LatLng(latitude, longitude);
-      //         busMarker.setPosition(busLatLng);
-      //       }
-      //     }
-      //   } catch (error) {
-      //     console.log(error);
-      //   }
-      // };
 
     });
   }, function(error) {

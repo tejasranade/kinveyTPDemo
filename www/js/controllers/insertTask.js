@@ -1,5 +1,11 @@
 angular.module('starter.controllers').controller('InsertTaskCtrl', function($scope, $kinvey, $ionicLoading) {
     
+    var dataStore = $kinvey.DataStore.getInstance('Task', $kinvey.DataStoreType.Sync);
+
+    function showCompletedMessage(){
+        $ionicLoading.show({template: 'task inserted',noBackdrop: true,duration: 2000});            
+    }
+
     $scope.insertme = function() {
         var mytask = document.getElementById("task").value;
         document.getElementById("task").value = "";
@@ -8,16 +14,14 @@ angular.module('starter.controllers').controller('InsertTaskCtrl', function($sco
         console.log(duedate);
         document.getElementById("duedate").value = "";
 
+        var mystatus = document.getElementById("completed").checked;
+        console.log(mystatus);
 
-
-        var mycomplete = document.getElementById("completed").checked;
-        console.log(mycomplete);
-
-        var complete = false;
-        if (mycomplete == true) {
-            complete = true;
+        var status = "active";
+        if (mystatus == true) {
+            status = "complete";
         } else {
-            complete = false;
+            status = false;
         }
 
 
@@ -25,18 +29,22 @@ angular.module('starter.controllers').controller('InsertTaskCtrl', function($sco
 
         data.action = mytask;
         data.duedate = myduedate;
-        data.completed = complete;
+        data.status = status;
         data.class = "personal";
         data.Title = "Personal Task";
         console.log(JSON.stringify(data));
 
-        var dataStore = $kinvey.DataStore.getInstance('Task', $kinvey.DataStoreType.Sync);
+        saveToStore(data);
 
-        dataStore.save(data).then(function(result) {
-            $ionicLoading.show({template: 'task inserted',noBackdrop: true,duration: 2000});
-            
+    };
+
+    function saveToStore(task){
+        //save the task to the store
+        dataStore.save(task).then(function(result) {
+            showCompletedMessage();
         }).catch(function(error) {
             console.log(error);
         });
-    };
+
+    }
 })

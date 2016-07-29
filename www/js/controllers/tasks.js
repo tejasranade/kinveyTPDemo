@@ -1,30 +1,34 @@
 angular.module('starter.controllers').controller('TasksCtrl', function($scope, $kinvey, $ionicLoading) {
 
-    $scope.doRefresh = function() {
-        
-        var dataStore = $kinvey.DataStore.getInstance('Task', $kinvey.DataStoreType.Sync);
-        
-        dataStore.sync().then(function(result) {
-            
-            $scope.tasks = result.pull;
-            console.log (result);
-            $scope.$digest();
-            $ionicLoading.show({template: 'sync completed',noBackdrop: true,duration: 2000
+    const dataStore = $kinvey.DataStore.getInstance('Task', $kinvey.DataStoreType.Sync);
+    
+    function refreshData(newData){
+        $scope.tasks = newData;
+        $scope.$digest();
+    }
+
+    $scope.updateTaskStatus = function(task){
+        //save a task
+        dataStore.save(task);
+    }
+
+    $scope.doSync = function() {
+        //sync tasks
+        dataStore.sync().then(function(result) {            
+            refreshData(result.pull);
         }).catch(function(error) {
             console.log(error);
-        });
-        })
+        });        
     }
 
     $scope.$on('$ionicView.beforeEnter', function() {
-        
-        var dataStore = $kinvey.DataStore.getInstance('Task', $kinvey.DataStoreType.Sync);
+        //get the data to populate this view
         dataStore.pull().then(function (result){
-            $scope.tasks = result;
-            $scope.$digest();
+            refreshData(result);
         }, function(err) {
              console.log("err "+JSON.stringify(err));
-        });
-
+        });            
+        
     })
+
 })

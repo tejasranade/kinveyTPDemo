@@ -1,4 +1,4 @@
-angular.module('starter.controllers').controller('AccountCtrl', function($scope, $state, $kinvey, $cordovaPush, $http) {
+angular.module('starter.controllers').controller('LoginCtrl', function($scope, $state, $kinvey, $cordovaPush, $http) {
     
     $scope.userData = {
         email: "",
@@ -22,8 +22,7 @@ angular.module('starter.controllers').controller('AccountCtrl', function($scope,
         function successHandler(user) {
             $scope.submittedError = false;
             console.log('logged in with KinveyAuth2');
-            $state.go('menu.tabs.home');
-            $kinvey.Push.register();
+            $state.go('menu.home');
         }
 
         function errorHandler(error) {
@@ -51,14 +50,14 @@ angular.module('starter.controllers').controller('AccountCtrl', function($scope,
             console.log(error);
             return null;
         }).then(function() {
-            $state.go('menu.tabs.home');
+            $state.go('menu.home');
         }, function(err) {
             console.log("error logging in");
             $scope.submittedError = true;
             $scope.errorDescription = err.description;
             console.log(err);
             console.log("Error login " + err.description);
-            $state.go('menu.tabs.account');
+            $state.go('menu.logout');
         });
 
     };

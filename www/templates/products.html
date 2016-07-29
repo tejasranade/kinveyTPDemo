@@ -11,13 +11,19 @@
 
   <ion-content class="has-header padding">
     <ion-list>
-      <ion-item class="item-remove-animate item-leftitem-icon-right pane" ng-repeat="product in products" type="item-text-wrap">
+<!--       <ion-item class="item-remove-animate item-leftitem-icon-right pane" ng-repeat="product in products" type="item-text-wrap">
       <center><img ng-src="img/{{product.thumbimg}}" height="100">
        <div class="item item-text-wrap">
         <h2 class="item-text-wrap"><b>{{product.title}}</b></h2></div>
-
-        <!--<p style="white-space:normal">{{burner.desc}}</p></center>-->
        
+      </ion-item>
+ -->
+      <ion-item ng-repeat="product in products"
+        class="item-thumbnail-left">
+
+        <img ng-src="img/{{product.thumbimg}}">
+        <h2>{{product.title}}</h2>
+        <div class="item item-text-wrap" ng-bind-html="product.description"></div>
       </ion-item>
     </ion-list>
   </ion-content>

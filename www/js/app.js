@@ -12,13 +12,12 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
 .run(function($ionicPlatform, $kinvey, $rootScope, $state, $ionicModal, $location) {
 
     $rootScope.primarycolor = "#D44B2B";
-    $rootScope.productsname = "Products";
+    //$rootScope.productsname = "Products";
     determineBehavior($kinvey, $rootScope, $state, $ionicModal);
 
-    $kinvey.Push.onNotification(function(notification) {
-      alert(notification.message);
-    });
-
+    // $kinvey.Push.onNotification(function(notification) {
+    //   alert(notification.message);
+    // });
     
 
     $ionicPlatform.ready(function() {
@@ -33,9 +32,6 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
         }
     });
 })
-
-
-
 
 .config(function($stateProvider, $urlRouterProvider, $kinveyProvider) {
 
@@ -63,23 +59,6 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
             controller: 'MenuCtrl'
         })
 
-        // .state('menu.tab', {
-        //     url: "/tab",
-        //     views: {
-        //         'menuContent': {
-        //             templateUrl: "templates/tabs.html"
-        //         }
-        //     }
-        // })
-
-        // // setup an abstract state for the tabs directive
-        // .state('tab', {
-        //     url: "/tab",
-        //     abstract: true,
-        //     templateUrl: "templates/tabs.html"
-        // })
-
-        // Each tab has its own nav history stack:
 
         .state('menu.home', {
             url: '/home',
@@ -89,8 +68,17 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
                     controller: 'HomeCtrl'
                 }
             }
-        })
+        })  
 
+        .state('menu.logout', {
+            url: '/logout',
+            views: {
+                'menuContent': {
+                    templateUrl: '',
+                    controller: 'LogoutCtrl'
+                }
+            }
+        })
 
         .state('menu.tasks', {
             url: '/tasks',
@@ -164,24 +152,22 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
             }
         })
 
-        .state('menu.search', {
-            url: '/search',
+        // .state('menu.search', {
+        //     url: '/search',
+        //     views: {
+        //         'menuContent': {
+        //             templateUrl: 'templates/search.html',
+        //             controller: 'SearchCtrl'
+        //         }
+        //     }
+        // })
+
+        .state('menu.login', {
+            url: '/login',
             views: {
                 'menuContent': {
-                    templateUrl: 'templates/search.html',
-                    controller: 'SearchCtrl'
-                }
-            }
-        })
-
-
-
-        .state('menu.account', {
-            url: '/account',
-            views: {
-                'menuContent': {
-                    templateUrl: 'templates/tab-account.html',
-                    controller: 'AccountCtrl'
+                    templateUrl: 'templates/login.html',
+                    controller: 'LoginCtrl'
                 }
             }
         })
@@ -197,30 +183,29 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
             }
         })
 
-        .state('menu.bus', {
-            authenticate: true,
-            url: '/bus/:id',
-            views: {
-                'menuContent': {
-                    templateUrl: 'templates/bus.html',
-                    controller: 'BusCtrl',
-                    resolve: {
-                        bus: ['$kinvey', '$stateParams', function($kinvey, $stateParams) {
-                            var store = $kinvey.DataStore.collection('Bus');
+        // .state('menu.bus', {
+        //     authenticate: true,
+        //     url: '/bus/:id',
+        //     views: {
+        //         'menuContent': {
+        //             templateUrl: 'templates/bus.html',
+        //             controller: 'BusCtrl',
+        //             resolve: {
+        //                 bus: ['$kinvey', '$stateParams', function($kinvey, $stateParams) {
+        //                     var store = $kinvey.DataStore.collection('Bus');
 
-                            return store.findById($stateParams.id).subscribe(function onNext(response) {
-                                //TODO what to do?
-                                return response;
-                            });
-                        }]
-                    }
-                }
-            }
-        });
-
+        //                     return store.findById($stateParams.id).subscribe(function onNext(response) {
+        //                         //TODO what to do?
+        //                         return response;
+        //                     });
+        //                 }]
+        //             }
+        //         }
+        //     }
+        // });
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('menu/tab/home');
+    $urlRouterProvider.otherwise('menu/home');
 
 });
 
@@ -235,28 +220,29 @@ function determineBehavior($kinvey, $rootScope, $state, $ionicModal) {
     console.log( 'INSIDE DETERMINEBEHAVIOR');
     //console.log( activeUser );
     console.log("$state.current.name: " + $state.current.name);
-    var activeUser = $kinvey.User.getActiveUser();
-    var $scope = $rootScope.$new();
+    var activeUser = $kinvey.User.getActiveUser();    
     if (!activeUser) {
-      console.log("activeUser null redirecting");
-      if ($state.current.name != 'menu.account') {
-          //$state.go('menu.account');
+        var $scope = $rootScope.$new();
+
+        console.log("activeUser null redirecting");
+        if ($state.current.name != 'menu.login') {
+            $state.go('menu.login');
         // Create the login modal and show it
-          $ionicModal.fromTemplateUrl('templates/tab-account.html', {
-            scope: $scope,
-            animation: 'slide-in-up',
-            backdropClickToClose: false,
-            hardwareBackButtonClose: false
-          }).then(function(modal) {
-            modal.show();
-            $scope.modal = modal;
-          });
+          // $ionicModal.fromTemplateUrl('templates/login.html', {
+          //   scope: $scope,
+          //   animation: 'slide-in-up',
+          //   backdropClickToClose: false,
+          //   hardwareBackButtonClose: false
+          // }).then(function(modal) {
+          //   modal.show();
+          //   $scope.modal = modal;
+          // });
       }
       return;
     } else {
-      //we have an active user
-      console.log("activeUser not null");
-      $state.go('menu.home', null, {reload:true});
+        //we have an active user
+        console.log("activeUser not null");
+        $state.go('menu.home', null, {reload:true});
     
   }
 }

@@ -63,8 +63,6 @@
    color: #f0582e !important;
 }
 
-
-
 .harleybutton {
    border-top: 1px solid #000000;
    background: #ff6600;
@@ -86,17 +84,19 @@
    font-family: "HelveticaNeueBlack", "HelveticaNeue-Black", "Helvetica Neue Black", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosBold', "Arial Black", sans-serif; font-weight:800; font-stretch:normal; 
    text-decoration: none;
    vertical-align: middle;
-   }
+}
+
 .harleybutton:hover {
    border-top-color: #333333;
    background: #ff6600;
    color: #000000;
-   }
+}
+
 .harleybutton:active {
    border-top-color: #1b435e;
    background: #ff6600;
    color: #000000;
-   }
+}
 
 .zeecobutton {
    border-top: 1px solid #000000;
@@ -246,9 +246,9 @@
 }
 
 
-   .login-background {
-    background: url('../img/splash.png') no-repeat center center fixed;
-    background-size: cover;
+.login-background {
+  background: url('../img/splash.png') no-repeat center center fixed;
+  background-size: cover;
   height: 100%;
   overflow: hidden;
 }
