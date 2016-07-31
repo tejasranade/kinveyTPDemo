@@ -12,6 +12,14 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
 .run(function($ionicPlatform, $kinvey, $rootScope, $state, $ionicModal, $location) {
 
     $rootScope.primarycolor = "#D44B2B";
+    
+    $rootScope.getActiveUser = function (){
+        if (undefined != $kinvey.User){
+            return $kinvey.User.getActiveUser();
+        }
+        return null;
+    }
+
     //$rootScope.productsname = "Products";
     determineBehavior($kinvey, $rootScope, $state, $ionicModal);
 
@@ -40,16 +48,21 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
     // Set up the various states which the app can be in.
     // Each state's controller can be found in controllers.js
 
-    $kinveyProvider.init({
-        appKey: 'kid_H1v5kzKO',
-        appSecret: '91d3f6bf760042b09f8aa7ef15eee6d4'
-    });
+    // $kinveyProvider.init({
+    //     appKey: 'appKey',
+    //     appSecret: 'appSecret'
+    // });
 
 //  Development
     // $kinveyProvider.init({
     //     appKey: 'kid_S1V4s-6U',
     //     appSecret: '8cdfcc3fa81e4ca9a1fcd8eae49a34d7'
     // });
+
+    $kinveyProvider.init({
+        appKey: 'kid_Sy8wcln_',
+        appSecret: '04ee5d1ff1d54f29bae9107e27706d7e'
+    });
 
     $stateProvider
         .state('menu', {
@@ -210,34 +223,24 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
 });
 
 
-
-
-
 //function selects the desired behavior depending on whether the user is logged or not
 function determineBehavior($kinvey, $rootScope, $state, $ionicModal) {
-    //var activeUser = new $kinvey.User();
-    //activeUser = activeUser.getActiveUser();
-    console.log( 'INSIDE DETERMINEBEHAVIOR');
-    //console.log( activeUser );
-    console.log("$state.current.name: " + $state.current.name);
-    var activeUser = $kinvey.User.getActiveUser();    
+
+    // //var activeUser = new $kinvey.User();
+    // //activeUser = activeUser.getActiveUser();
+    // console.log( 'INSIDE DETERMINEBEHAVIOR');
+    // //console.log( activeUser );
+    // console.log("$state.current.name: " + $state.current.name);
+
+    var activeUser = $rootScope.getActiveUser();
+    var activeUser = null;
     if (!activeUser) {
         var $scope = $rootScope.$new();
 
         console.log("activeUser null redirecting");
         if ($state.current.name != 'menu.login') {
             $state.go('menu.login');
-        // Create the login modal and show it
-          // $ionicModal.fromTemplateUrl('templates/login.html', {
-          //   scope: $scope,
-          //   animation: 'slide-in-up',
-          //   backdropClickToClose: false,
-          //   hardwareBackButtonClose: false
-          // }).then(function(modal) {
-          //   modal.show();
-          //   $scope.modal = modal;
-          // });
-      }
+        }
       return;
     } else {
         //we have an active user

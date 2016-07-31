@@ -14,58 +14,6 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 })
 
 
-// .controller('SearchCtrl', function($scope, $kinvey, $sce) {
-
-//     $scope.$on('$ionicView.beforeEnter', function() {
-        
-//         var dataStore = $kinvey.DataStore.getInstance('Product');
-
-//         dataStore.find().subscribe(function(result) {
-//             var products = result;
-//             $scope.products = products;
-//             $scope.$digest();
-//         });
-//     });
-
-
-//     $scope.searchme = function() {
-        
-//         var dataStore = $kinvey.DataStore.getInstance('Product');
-
-//         var selection = document.getElementById("chosenProduct").value
-//         dataStore.find().subscribe(function(result) {
-//             $scope.thisproduct = result;
-//             $scope.$digest();
-//             return; 
-//         });
-
-//         // 'title'
-        
-        
-//     };
-// })
-
-
-// .controller('BrandCtrl', function($scope, $kinvey) {
-
-//     $scope.doRefreshBrand = function() {
-//         console.log('refresh brand');
-//         $kinvey.DataStore.find('brand').then(function(mybrand) {
-//             console.log(mybrand);
-//             $scope.mybrand = mybrand;
-//         });
-//     }
-
-//     $scope.$on('$ionicView.beforeEnter', function() {
-//         console.log('partner load view');
-//         $kinvey.DataStore.find('brand').then(function(brand) {
-//             console.log(brand);
-//             $scope.mybrand = brand;
-//         });
-//     });
-
-// })
-
 .controller('MenuCtrl', function($scope, $kinvey, $ionicSideMenuDelegate, $ionicModal) {
     console.log('inside menuctrl');
     $scope.toggleLeft = function() {
@@ -98,7 +46,8 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
     $scope.$on('$ionicView.beforeEnter', function() {
         // we're authenticated, grab logo and color scheme
         console.log('home');
-        var activeUser = $kinvey.User.getActiveUser();
+        //var activeUser = $kinvey.User.getActiveUser();
+        var activeUser = $rootScope.getActiveUser();
 
         if (!activeUser) {
             $state.go('menu.login');

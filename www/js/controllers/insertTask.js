@@ -2,9 +2,11 @@ angular.module('starter.controllers').controller('InsertTaskCtrl', function($sco
     
     var dataStore = $kinvey.DataStore.getInstance('Task', $kinvey.DataStoreType.Sync);
 
-    function showCompletedMessage(result){
-
-        $ionicLoading.show({template:'task inserted',noBackdrop: true,duration: 2000});            
+    function render(result){
+        const resultArr = [].concat(result);
+        $ionicLoading.show({template:'' + resultArr.length + ' task(s) inserted',
+            noBackdrop: true,
+            duration: 2000});            
     }
 
     $scope.autoCreate = function (n) {
@@ -55,10 +57,9 @@ angular.module('starter.controllers').controller('InsertTaskCtrl', function($sco
     function saveToStore(data){
         //save the task to the store
         dataStore.save(data).then(function(result) {
-            showCompletedMessage(result);
+            render(result);
         }).catch(function(error) {
             console.log(error);
         });
-
     }
 })
