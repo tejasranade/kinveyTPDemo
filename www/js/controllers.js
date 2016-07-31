@@ -46,25 +46,25 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 // })
 
 
-.controller('BrandCtrl', function($scope, $kinvey) {
+// .controller('BrandCtrl', function($scope, $kinvey) {
 
-    $scope.doRefreshBrand = function() {
-        console.log('refresh brand');
-        $kinvey.DataStore.find('brand').then(function(mybrand) {
-            console.log(mybrand);
-            $scope.mybrand = mybrand;
-        });
-    }
+//     $scope.doRefreshBrand = function() {
+//         console.log('refresh brand');
+//         $kinvey.DataStore.find('brand').then(function(mybrand) {
+//             console.log(mybrand);
+//             $scope.mybrand = mybrand;
+//         });
+//     }
 
-    $scope.$on('$ionicView.beforeEnter', function() {
-        console.log('partner load view');
-        $kinvey.DataStore.find('brand').then(function(brand) {
-            console.log(brand);
-            $scope.mybrand = brand;
-        });
-    });
+//     $scope.$on('$ionicView.beforeEnter', function() {
+//         console.log('partner load view');
+//         $kinvey.DataStore.find('brand').then(function(brand) {
+//             console.log(brand);
+//             $scope.mybrand = brand;
+//         });
+//     });
 
-})
+// })
 
 .controller('MenuCtrl', function($scope, $kinvey, $ionicSideMenuDelegate, $ionicModal) {
     console.log('inside menuctrl');
@@ -120,13 +120,13 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 
 })
 
-.controller('LogoutCtrl', function($scope, $kinvey, $state) {
-  $kinvey.User.getActiveUser().logout().then(function (){
-    $state.go('menu.home');
-  })  
-})
+// .controller('LogoutCtrl', function($scope, $kinvey, $state) {
+//   $kinvey.User.getActiveUser().logout().then(function (){
+//     $state.go('menu.home');
+//   })  
+// })
 
-.controller('BusCtrl', function(bus, $scope) {
-  $scope.bus = bus;
-});
+// .controller('BusCtrl', function(bus, $scope) {
+//   $scope.bus = bus;
+// });
 

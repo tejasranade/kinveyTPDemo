@@ -1,7 +1,7 @@
 angular.module('starter.controllers').controller('DoctorsCtrl', function($scope, $kinvey) {
 
     function render(data){
-        $scope.doctors = result;
+        $scope.doctors = data;
         $scope.$digest();
     }
 
@@ -19,7 +19,6 @@ angular.module('starter.controllers').controller('DoctorsCtrl', function($scope,
     $scope.$on('$ionicView.beforeEnter', fetchDoctors);
 
     $scope.doRefresh = function() {
-        
         fetchDoctors();
     }
 

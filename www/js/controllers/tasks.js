@@ -7,7 +7,7 @@ angular.module('starter.controllers').controller('TasksCtrl', function($scope, $
         $scope.$digest();
     }
 
-    $scope.updateTaskStatus = function(task){
+    $scope.doSave = function(task){
         //save a task
         dataStore.save(task);
     }
@@ -21,12 +21,13 @@ angular.module('starter.controllers').controller('TasksCtrl', function($scope, $
         });        
     }
 
+
     $scope.$on('$ionicView.beforeEnter', function() {
         //get the data to populate this view
-        dataStore.pull().then(function (result){
+        dataStore.find().subscribe(function onNext(result){
             refreshData(result);
         }, function(err) {
-             console.log("err "+JSON.stringify(err));
+            console.log("err "+JSON.stringify(err));
         });            
         
     })

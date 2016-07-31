@@ -88,9 +88,11 @@ angular.module('starter.controllers').controller('MapCtrl', function($scope, $st
       }
 
       var store = $kinvey.DataStore.collection('Bus');
+      console.log("subscribing");
       
       store.subscribe({
         onNext: function(data) {
+          console.log("onnext");
           updateBusMarker(data);
         }, 
         onError: function (error) {

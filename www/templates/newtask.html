@@ -19,7 +19,7 @@
                 </label>
                 <label class="item item-input item-thumbnail-left">
                     <i class="icon ion-ios-list-outline placeholder-icon"></i>
-                    <input type="text" placeholder="Due Date" id="duedate">
+                    <input type="date" placeholder="Due Date" id="duedate">
                 </label>
                 
                 <li class="item item-checkbox bar-energized">
@@ -30,7 +30,12 @@
                 </li>
                 
             </div>
-            <a class="button button-small kinveybutton" ng-click="insertme();">save</a>
+            <a class="button button-small kinveybutton" ng-click="insert();">Save</a>
+            <a class="button button-small kinveybutton" ng-click="autoCreate(100);">Autogenerate</a>
+            <!-- <div class="list card">
+                <input type="number" placeholder="Count" id="count"></input>
+                
+            </div> -->
         </div>
     </ion-content>
     <div class="bar bar-footer bar-kinvey">

@@ -2,11 +2,26 @@ angular.module('starter.controllers').controller('InsertTaskCtrl', function($sco
     
     var dataStore = $kinvey.DataStore.getInstance('Task', $kinvey.DataStoreType.Sync);
 
-    function showCompletedMessage(){
-        $ionicLoading.show({template: 'task inserted',noBackdrop: true,duration: 2000});            
+    function showCompletedMessage(result){
+
+        $ionicLoading.show({template:'task inserted',noBackdrop: true,duration: 2000});            
     }
 
-    $scope.insertme = function() {
+    $scope.autoCreate = function (n) {
+        var tasks = [];
+        for (var i = 0; i < n; i++) {
+            const task = {
+                "Title": "Sample Task" + i,
+                "action" : "Sample Action" + i,
+                "priority": "Normal",
+                "status": "active"
+            }
+            tasks.push(task);
+        }
+        saveToStore(tasks);
+    }
+
+    $scope.insert = function() {
         var mytask = document.getElementById("task").value;
         document.getElementById("task").value = "";
         
@@ -25,23 +40,22 @@ angular.module('starter.controllers').controller('InsertTaskCtrl', function($sco
         }
 
 
-        var data = {};
-
-        data.action = mytask;
-        data.duedate = myduedate;
-        data.status = status;
-        data.class = "personal";
-        data.Title = "Personal Task";
-        console.log(JSON.stringify(data));
+        var data = {
+            "action": mytask,
+            "duedate": myduedate,
+            "status": status,
+            "class": "personal",
+            "Title": "Personal Task"
+        };
 
         saveToStore(data);
 
     };
 
-    function saveToStore(task){
+    function saveToStore(data){
         //save the task to the store
-        dataStore.save(task).then(function(result) {
-            showCompletedMessage();
+        dataStore.save(data).then(function(result) {
+            showCompletedMessage(result);
         }).catch(function(error) {
             console.log(error);
         });

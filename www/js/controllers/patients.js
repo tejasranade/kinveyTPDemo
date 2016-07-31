@@ -21,11 +21,9 @@ angular.module('starter.controllers').controller('PatientCtrl', function($scope,
       }
     }
 
-    var patientStore = $kinvey.DataStore.getInstance('Patient',$kinvey.DataStoreType.Network);
-
     $scope.search = function(firstName, lastName) {      
       //Build Kinvey query for the patient and execute it on the store
-
+      var patientStore = $kinvey.DataStore.getInstance('Patient',$kinvey.DataStoreType.Network);
       var query = new $kinvey.Query();
 
       query.equalTo('FirstName', firstName)

@@ -8,10 +8,12 @@ angular.module('starter.controllers').controller('LoginCtrl', function($scope, $
     $scope.validateUser = function() {
         console.log ("logging in user");
         
-        var credentials = {username: $scope.userData.email, password: $scope.userData.password};
-        // TODO - copy paste here
+        const username = $scope.userData.email;
+        const password = $scope.userData.password;
+        //var credentials = {username: $scope.userData.email, password: $scope.userData.password};
 
-        var promise = $kinvey.User.login(credentials);
+        //Log a user into Kinvey
+        var promise = $kinvey.User.login(username, password);
         promise.then(function(user) {
           successHandler(user);
         }).catch(function(error) {

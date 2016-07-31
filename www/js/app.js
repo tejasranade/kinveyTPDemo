@@ -41,8 +41,8 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
     // Each state's controller can be found in controllers.js
 
     $kinveyProvider.init({
-        appKey: 'kid_HJzzcsRP',
-        appSecret: '441d630c37624389a09c410cd6245a48'
+        appKey: 'kid_H1v5kzKO',
+        appSecret: '91d3f6bf760042b09f8aa7ef15eee6d4'
     });
 
 //  Development
@@ -70,15 +70,15 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
             }
         })  
 
-        .state('menu.logout', {
-            url: '/logout',
-            views: {
-                'menuContent': {
-                    templateUrl: '',
-                    controller: 'LogoutCtrl'
-                }
-            }
-        })
+        // .state('menu.logout', {
+        //     url: '/logout',
+        //     views: {
+        //         'menuContent': {
+        //             templateUrl: '',
+        //             controller: 'LogoutCtrl'
+        //         }
+        //     }
+        // })
 
         .state('menu.tasks', {
             url: '/tasks',
