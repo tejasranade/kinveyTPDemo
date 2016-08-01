@@ -60,8 +60,8 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
     // });
 
     $kinveyProvider.init({
-        appKey: 'kid_Sy8wcln_',
-        appSecret: '04ee5d1ff1d54f29bae9107e27706d7e'
+        appKey: 'kid_SJP-zgau',
+        appSecret: 'd1ffce25e5674ecfa05162ec5a4496fd'
     });
 
     $stateProvider

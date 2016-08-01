@@ -1,4 +1,4 @@
-angular.module('starter.controllers').controller('LoginCtrl', function($scope, $state, $kinvey, $cordovaPush, $http) {
+angular.module('starter.controllers').controller('LoginCtrl', function($scope, $state, $kinvey, $cordovaPush, $http, $rootScope) {
     
     $scope.userData = {
         email: "",
@@ -46,15 +46,18 @@ angular.module('starter.controllers').controller('LoginCtrl', function($scope, $
 
 
     $scope.logout = function() {
-        console.log('logout user');
+        
         //Kinvey logout starts
-        // var user = $kinvey.User.getActiveUser();
-        // if (user) {
-        //     return user.logout().catch(function(error) {
-        //         //Kinvey logout finished with error
-        //         alert("Error logout: " + JSON.stringify(error));
-        //     });
-        // }
+        
+        var user = $rootScope.getActiveUser();
+        
+        if (user) {
+            //Log the user out
+            return user.logout().catch(function(error) {
+                //Kinvey logout finished with error
+                alert("Error logout: " + JSON.stringify(error));
+            });
+        }
 
     }
 
