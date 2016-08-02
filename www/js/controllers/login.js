@@ -30,18 +30,24 @@ angular.module('starter.controllers').controller('LoginCtrl', function($scope, $
         }).catch(function(error) {
           onError(error);
         });
+        // var promise = $kinvey.User.login(username, password);
+        // promise.then(function(user) {
+        //   onSuccess(user);
+        // }).catch(function(error) {
+        //   onError(error);
+        // });
     };
 
     $scope.validateUserMIC = function() {
 
-        // var user = new $kinvey.User();
-        // user.loginWithMIC('http://localhost:8100', $kinvey.AuthorizationGrant.AuthorizationCodeLoginPage, {
-        //     version: 2
-        // }).then(function(user) {
-        //     onSuccess(user);        
-        // }).catch(function(error) {
-        //     onError(error);
-        // });
+        var user = new $kinvey.User();
+        user.loginWithMIC('http://localhost:8100', $kinvey.AuthorizationGrant.AuthorizationCodeLoginPage, {
+            version: 2
+        }).then(function(user) {
+            onSuccess(user);        
+        }).catch(function(error) {
+            onError(error);
+        });
     };
 
 
@@ -53,7 +59,9 @@ angular.module('starter.controllers').controller('LoginCtrl', function($scope, $
         
         if (user) {
             //Log the user out
-            return user.logout().catch(function(error) {
+            return user.logout().then(function (){
+                console.log("logout complete");
+            }).catch(function(error) {
                 //Kinvey logout finished with error
                 alert("Error logout: " + JSON.stringify(error));
             });

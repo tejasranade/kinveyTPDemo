@@ -69,13 +69,3 @@ angular.module('starter.controllers', ['kinvey', 'ngCordova'])
 
 })
 
-// .controller('LogoutCtrl', function($scope, $kinvey, $state) {
-//   $kinvey.User.getActiveUser().logout().then(function (){
-//     $state.go('menu.home');
-//   })  
-// })
-
-// .controller('BusCtrl', function(bus, $scope) {
-//   $scope.bus = bus;
-// });
-

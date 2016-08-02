@@ -21,5 +21,5 @@ angular.module('starter.controllers').controller('DoctorsCtrl', function($scope,
     $scope.doRefresh = function() {
         fetchDoctors();
     }
-
+    
 });

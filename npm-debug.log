@@ -49,603 +49,571 @@
 46 silly mapToRegistry using default registry
 47 silly mapToRegistry registry https://registry.npmjs.org/
 48 silly mapToRegistry uri https://registry.npmjs.org/kinvey-phonegap-angular-sdk
-49 verbose request uri https://registry.npmjs.org/kinvey-phonegap-angular-sdk
+49 verbose request uri https://registry.npmjs.org/gulp-minify-css
 50 verbose request no auth needed
-51 info attempt registry request try #1 at 4:02:34 PM
-52 verbose request id 830b1fc7cb0881f6
-53 http request GET https://registry.npmjs.org/kinvey-phonegap-angular-sdk
-54 verbose request uri https://registry.npmjs.org/gulp-sass
-55 verbose request no auth needed
-56 info attempt registry request try #1 at 4:02:34 PM
-57 verbose etag "4B9C59DQG5EXH7LYFWZFW5LP4"
-58 http request GET https://registry.npmjs.org/gulp-sass
-59 verbose request uri https://registry.npmjs.org/gulp-concat
-60 verbose request no auth needed
-61 info attempt registry request try #1 at 4:02:34 PM
-62 verbose etag "BLZ7KFIHL1RXSM5IRJR9YHD6R"
-63 http request GET https://registry.npmjs.org/gulp-concat
-64 verbose request uri https://registry.npmjs.org/gulp
-65 verbose request no auth needed
-66 info attempt registry request try #1 at 4:02:34 PM
-67 verbose etag "9PBNUOUEPM7C7MRLB9FX3DO73"
-68 http request GET https://registry.npmjs.org/gulp
-69 verbose request uri https://registry.npmjs.org/gulp-rename
-70 verbose request no auth needed
-71 info attempt registry request try #1 at 4:02:34 PM
-72 verbose etag "1R9YAGLUYM8S6RC1WU3H3J2DC"
-73 http request GET https://registry.npmjs.org/gulp-rename
-74 verbose request uri https://registry.npmjs.org/gulp-minify-css
-75 verbose request no auth needed
-76 info attempt registry request try #1 at 4:02:34 PM
-77 verbose etag "5TAGJ1G8U3H1RXWGPJCLNSGW6"
-78 http request GET https://registry.npmjs.org/gulp-minify-css
-79 http 304 https://registry.npmjs.org/gulp-rename
-80 verbose headers { date: 'Thu, 21 Jul 2016 20:02:35 GMT',
-80 verbose headers   via: '1.1 varnish',
-80 verbose headers   'cache-control': 'max-age=300',
-80 verbose headers   etag: '"1R9YAGLUYM8S6RC1WU3H3J2DC"',
-80 verbose headers   age: '79',
-80 verbose headers   connection: 'keep-alive',
-80 verbose headers   'x-served-by': 'cache-bos8231-BOS',
-80 verbose headers   'x-cache': 'HIT',
-80 verbose headers   'x-cache-hits': '1',
-80 verbose headers   'x-timer': 'S1469131355.566046,VS0,VE0',
-80 verbose headers   vary: 'Accept-Encoding' }
-81 silly get cb [ 304,
-81 silly get   { date: 'Thu, 21 Jul 2016 20:02:35 GMT',
-81 silly get     via: '1.1 varnish',
-81 silly get     'cache-control': 'max-age=300',
-81 silly get     etag: '"1R9YAGLUYM8S6RC1WU3H3J2DC"',
-81 silly get     age: '79',
-81 silly get     connection: 'keep-alive',
-81 silly get     'x-served-by': 'cache-bos8231-BOS',
-81 silly get     'x-cache': 'HIT',
-81 silly get     'x-cache-hits': '1',
-81 silly get     'x-timer': 'S1469131355.566046,VS0,VE0',
-81 silly get     vary: 'Accept-Encoding' } ]
-82 verbose etag https://registry.npmjs.org/gulp-rename from cache
-83 verbose get saving gulp-rename to /Users/tejas/.npm/registry.npmjs.org/gulp-rename/.cache.json
-84 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
-85 http 200 https://registry.npmjs.org/gulp-concat
-86 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-86 verbose headers   etag: '"1Q9OOODHP1CSMUKVUXQIX7PWE"',
-86 verbose headers   'content-type': 'application/json',
-86 verbose headers   'content-encoding': 'gzip',
-86 verbose headers   'cache-control': 'max-age=300',
-86 verbose headers   'content-length': '7718',
-86 verbose headers   'accept-ranges': 'bytes',
-86 verbose headers   date: 'Thu, 21 Jul 2016 20:02:35 GMT',
-86 verbose headers   via: '1.1 varnish',
-86 verbose headers   age: '281',
-86 verbose headers   connection: 'keep-alive',
-86 verbose headers   'x-served-by': 'cache-bos8226-BOS',
-86 verbose headers   'x-cache': 'HIT',
-86 verbose headers   'x-cache-hits': '2',
-86 verbose headers   'x-timer': 'S1469131355.559971,VS0,VE0',
-86 verbose headers   vary: 'Accept-Encoding' }
-87 silly get cb [ 200,
-87 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-87 silly get     etag: '"1Q9OOODHP1CSMUKVUXQIX7PWE"',
-87 silly get     'content-type': 'application/json',
-87 silly get     'content-encoding': 'gzip',
-87 silly get     'cache-control': 'max-age=300',
-87 silly get     'content-length': '7718',
-87 silly get     'accept-ranges': 'bytes',
-87 silly get     date: 'Thu, 21 Jul 2016 20:02:35 GMT',
-87 silly get     via: '1.1 varnish',
-87 silly get     age: '281',
-87 silly get     connection: 'keep-alive',
-87 silly get     'x-served-by': 'cache-bos8226-BOS',
-87 silly get     'x-cache': 'HIT',
-87 silly get     'x-cache-hits': '2',
-87 silly get     'x-timer': 'S1469131355.559971,VS0,VE0',
-87 silly get     vary: 'Accept-Encoding' } ]
-88 verbose get saving gulp-concat to /Users/tejas/.npm/registry.npmjs.org/gulp-concat/.cache.json
-89 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
-90 http 200 https://registry.npmjs.org/gulp-sass
-91 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-91 verbose headers   etag: '"4974BICKZ11FHIJHT5ECNEWCH"',
-91 verbose headers   'content-type': 'application/json',
-91 verbose headers   'content-encoding': 'gzip',
-91 verbose headers   'cache-control': 'max-age=300',
-91 verbose headers   'content-length': '9709',
-91 verbose headers   'accept-ranges': 'bytes',
-91 verbose headers   date: 'Thu, 21 Jul 2016 20:02:35 GMT',
-91 verbose headers   via: '1.1 varnish',
-91 verbose headers   age: '186',
-91 verbose headers   connection: 'keep-alive',
-91 verbose headers   'x-served-by': 'cache-bos8230-BOS',
-91 verbose headers   'x-cache': 'HIT',
-91 verbose headers   'x-cache-hits': '1',
-91 verbose headers   'x-timer': 'S1469131355.566023,VS0,VE0',
-91 verbose headers   vary: 'Accept-Encoding' }
-92 silly get cb [ 200,
-92 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-92 silly get     etag: '"4974BICKZ11FHIJHT5ECNEWCH"',
-92 silly get     'content-type': 'application/json',
-92 silly get     'content-encoding': 'gzip',
-92 silly get     'cache-control': 'max-age=300',
-92 silly get     'content-length': '9709',
-92 silly get     'accept-ranges': 'bytes',
-92 silly get     date: 'Thu, 21 Jul 2016 20:02:35 GMT',
-92 silly get     via: '1.1 varnish',
-92 silly get     age: '186',
-92 silly get     connection: 'keep-alive',
-92 silly get     'x-served-by': 'cache-bos8230-BOS',
-92 silly get     'x-cache': 'HIT',
-92 silly get     'x-cache-hits': '1',
-92 silly get     'x-timer': 'S1469131355.566023,VS0,VE0',
-92 silly get     vary: 'Accept-Encoding' } ]
-93 verbose get saving gulp-sass to /Users/tejas/.npm/registry.npmjs.org/gulp-sass/.cache.json
-94 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
-95 silly resolveWithNewModule gulp-rename@1.2.2 checking installable status
-96 silly cache add args [ 'gulp-rename@^1.2.0', null ]
-97 verbose cache add spec gulp-rename@^1.2.0
-98 silly cache add parsed spec Result {
-98 silly cache add   raw: 'gulp-rename@^1.2.0',
-98 silly cache add   scope: null,
-98 silly cache add   name: 'gulp-rename',
-98 silly cache add   rawSpec: '^1.2.0',
-98 silly cache add   spec: '>=1.2.0 <2.0.0',
-98 silly cache add   type: 'range' }
-99 silly addNamed gulp-rename@>=1.2.0 <2.0.0
-100 verbose addNamed ">=1.2.0 <2.0.0" is a valid semver range for gulp-rename
-101 silly addNameRange { name: 'gulp-rename', range: '>=1.2.0 <2.0.0', hasData: false }
-102 silly mapToRegistry name gulp-rename
-103 silly mapToRegistry using default registry
-104 silly mapToRegistry registry https://registry.npmjs.org/
-105 silly mapToRegistry uri https://registry.npmjs.org/gulp-rename
-106 verbose addNameRange registry:https://registry.npmjs.org/gulp-rename not in flight; fetching
-107 silly resolveWithNewModule gulp-sass@0.7.3 checking installable status
-108 silly cache add args [ 'gulp-sass@^0.7.1', null ]
-109 verbose cache add spec gulp-sass@^0.7.1
-110 silly cache add parsed spec Result {
-110 silly cache add   raw: 'gulp-sass@^0.7.1',
-110 silly cache add   scope: null,
-110 silly cache add   name: 'gulp-sass',
-110 silly cache add   rawSpec: '^0.7.1',
-110 silly cache add   spec: '>=0.7.1 <0.8.0',
-110 silly cache add   type: 'range' }
-111 silly addNamed gulp-sass@>=0.7.1 <0.8.0
-112 verbose addNamed ">=0.7.1 <0.8.0" is a valid semver range for gulp-sass
-113 silly addNameRange { name: 'gulp-sass', range: '>=0.7.1 <0.8.0', hasData: false }
-114 silly mapToRegistry name gulp-sass
-115 silly mapToRegistry using default registry
-116 silly mapToRegistry registry https://registry.npmjs.org/
-117 silly mapToRegistry uri https://registry.npmjs.org/gulp-sass
-118 verbose addNameRange registry:https://registry.npmjs.org/gulp-sass not in flight; fetching
-119 silly resolveWithNewModule gulp-concat@2.6.0 checking installable status
-120 silly cache add args [ 'gulp-concat@^2.2.0', null ]
-121 verbose cache add spec gulp-concat@^2.2.0
-122 silly cache add parsed spec Result {
-122 silly cache add   raw: 'gulp-concat@^2.2.0',
-122 silly cache add   scope: null,
-122 silly cache add   name: 'gulp-concat',
-122 silly cache add   rawSpec: '^2.2.0',
-122 silly cache add   spec: '>=2.2.0 <3.0.0',
-122 silly cache add   type: 'range' }
-123 silly addNamed gulp-concat@>=2.2.0 <3.0.0
-124 verbose addNamed ">=2.2.0 <3.0.0" is a valid semver range for gulp-concat
-125 silly addNameRange { name: 'gulp-concat', range: '>=2.2.0 <3.0.0', hasData: false }
-126 silly mapToRegistry name gulp-concat
-127 silly mapToRegistry using default registry
-128 silly mapToRegistry registry https://registry.npmjs.org/
-129 silly mapToRegistry uri https://registry.npmjs.org/gulp-concat
-130 verbose addNameRange registry:https://registry.npmjs.org/gulp-concat not in flight; fetching
-131 verbose get https://registry.npmjs.org/gulp-rename not expired, no request
-132 silly addNameRange number 2 { name: 'gulp-rename', range: '>=1.2.0 <2.0.0', hasData: true }
-133 silly addNameRange versions [ 'gulp-rename',
-133 silly addNameRange   [ '0.1.0', '0.2.1', '0.2.2', '1.0.0', '1.1.0', '1.2.0', '1.2.2' ] ]
-134 silly addNamed gulp-rename@1.2.2
-135 verbose addNamed "1.2.2" is a plain semver version for gulp-rename
-136 verbose get https://registry.npmjs.org/gulp-sass not expired, no request
-137 silly addNameRange number 2 { name: 'gulp-sass', range: '>=0.7.1 <0.8.0', hasData: true }
-138 silly addNameRange versions [ 'gulp-sass',
-138 silly addNameRange   [ '0.1.0',
-138 silly addNameRange     '0.2.1',
-138 silly addNameRange     '0.2.2',
-138 silly addNameRange     '0.2.3',
-138 silly addNameRange     '0.3.0',
-138 silly addNameRange     '0.4.0',
-138 silly addNameRange     '0.4.1',
-138 silly addNameRange     '0.5.0',
-138 silly addNameRange     '0.5.1',
-138 silly addNameRange     '0.5.2',
-138 silly addNameRange     '0.6.0',
-138 silly addNameRange     '0.7.0',
-138 silly addNameRange     '0.7.1',
-138 silly addNameRange     '0.7.2',
-138 silly addNameRange     '0.7.3',
-138 silly addNameRange     '1.0.0',
-138 silly addNameRange     '1.1.0',
-138 silly addNameRange     '1.2.0',
-138 silly addNameRange     '1.2.1',
-138 silly addNameRange     '1.2.2',
-138 silly addNameRange     '1.2.3',
-138 silly addNameRange     '1.2.4',
-138 silly addNameRange     '1.3.0',
-138 silly addNameRange     '1.3.1',
-138 silly addNameRange     '1.3.2',
-138 silly addNameRange     '1.3.3',
-138 silly addNameRange     '2.0.0-alpha.1',
-138 silly addNameRange     '2.0.0',
-138 silly addNameRange     '2.0.2',
-138 silly addNameRange     '2.0.3',
-138 silly addNameRange     '2.0.4',
-138 silly addNameRange     '2.1.0-beta',
-138 silly addNameRange     '2.1.0',
-138 silly addNameRange     '2.1.1',
-138 silly addNameRange     '2.2.0',
-138 silly addNameRange     '2.3.0-beta.1',
-138 silly addNameRange     '2.3.0',
-138 silly addNameRange     '2.3.1',
-138 silly addNameRange     '2.3.2' ] ]
-139 silly addNamed gulp-sass@0.7.3
-140 verbose addNamed "0.7.3" is a plain semver version for gulp-sass
-141 verbose get https://registry.npmjs.org/gulp-concat not expired, no request
-142 silly addNameRange number 2 { name: 'gulp-concat', range: '>=2.2.0 <3.0.0', hasData: true }
-143 silly addNameRange versions [ 'gulp-concat',
-143 silly addNameRange   [ '0.0.1',
-143 silly addNameRange     '1.0.0',
-143 silly addNameRange     '1.1.0',
-143 silly addNameRange     '2.0.0',
-143 silly addNameRange     '2.1.0',
-143 silly addNameRange     '2.1.1',
-143 silly addNameRange     '2.1.2',
-143 silly addNameRange     '2.1.3',
-143 silly addNameRange     '2.1.4',
-143 silly addNameRange     '2.1.5',
-143 silly addNameRange     '2.1.6',
-143 silly addNameRange     '2.1.7',
-143 silly addNameRange     '2.2.0',
-143 silly addNameRange     '2.3.0',
-143 silly addNameRange     '2.3.3',
-143 silly addNameRange     '2.3.4',
-143 silly addNameRange     '2.3.5',
-143 silly addNameRange     '2.4.0',
-143 silly addNameRange     '2.4.1',
-143 silly addNameRange     '2.4.2',
-143 silly addNameRange     '2.4.3',
-143 silly addNameRange     '2.5.0',
-143 silly addNameRange     '2.5.1',
-143 silly addNameRange     '2.5.2',
-143 silly addNameRange     '2.6.0' ] ]
-144 silly addNamed gulp-concat@2.6.0
-145 verbose addNamed "2.6.0" is a plain semver version for gulp-concat
-146 silly mapToRegistry name gulp-sass
-147 silly mapToRegistry using default registry
-148 silly mapToRegistry registry https://registry.npmjs.org/
-149 silly mapToRegistry uri https://registry.npmjs.org/gulp-sass
-150 verbose addRemoteTarball https://registry.npmjs.org/gulp-sass/-/gulp-sass-0.7.3.tgz not in flight; adding
-151 verbose addRemoteTarball [ 'https://registry.npmjs.org/gulp-sass/-/gulp-sass-0.7.3.tgz',
-151 verbose addRemoteTarball   '4bfbb4e4d95a40be8beeebe07e8e477e7f7a2edc' ]
-152 silly cache afterAdd gulp-rename@1.2.2
-153 verbose afterAdd /Users/tejas/.npm/gulp-rename/1.2.2/package/package.json not in flight; writing
-154 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
-155 silly cache afterAdd gulp-concat@2.6.0
-156 verbose afterAdd /Users/tejas/.npm/gulp-concat/2.6.0/package/package.json not in flight; writing
-157 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
-158 info retry fetch attempt 1 at 4:02:34 PM
-159 info attempt registry request try #1 at 4:02:34 PM
-160 http fetch GET https://registry.npmjs.org/gulp-sass/-/gulp-sass-0.7.3.tgz
-161 verbose afterAdd /Users/tejas/.npm/gulp-rename/1.2.2/package/package.json written
-162 verbose afterAdd /Users/tejas/.npm/gulp-concat/2.6.0/package/package.json written
-163 http 200 https://registry.npmjs.org/gulp-minify-css
-164 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-164 verbose headers   etag: '"BTYHQXZ0ILO0T9FWSP493YUVO"',
-164 verbose headers   'content-type': 'application/json',
-164 verbose headers   'content-encoding': 'gzip',
-164 verbose headers   'cache-control': 'max-age=300',
-164 verbose headers   'content-length': '9058',
-164 verbose headers   'accept-ranges': 'bytes',
-164 verbose headers   date: 'Thu, 21 Jul 2016 20:02:35 GMT',
-164 verbose headers   via: '1.1 varnish',
-164 verbose headers   age: '0',
-164 verbose headers   connection: 'keep-alive',
-164 verbose headers   'x-served-by': 'cache-bos8224-BOS',
-164 verbose headers   'x-cache': 'HIT',
-164 verbose headers   'x-cache-hits': '1',
-164 verbose headers   'x-timer': 'S1469131355.533581,VS0,VE152',
-164 verbose headers   vary: 'Accept-Encoding' }
-165 silly get cb [ 200,
-165 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-165 silly get     etag: '"BTYHQXZ0ILO0T9FWSP493YUVO"',
-165 silly get     'content-type': 'application/json',
-165 silly get     'content-encoding': 'gzip',
-165 silly get     'cache-control': 'max-age=300',
-165 silly get     'content-length': '9058',
-165 silly get     'accept-ranges': 'bytes',
-165 silly get     date: 'Thu, 21 Jul 2016 20:02:35 GMT',
-165 silly get     via: '1.1 varnish',
-165 silly get     age: '0',
-165 silly get     connection: 'keep-alive',
-165 silly get     'x-served-by': 'cache-bos8224-BOS',
-165 silly get     'x-cache': 'HIT',
-165 silly get     'x-cache-hits': '1',
-165 silly get     'x-timer': 'S1469131355.533581,VS0,VE152',
-165 silly get     vary: 'Accept-Encoding' } ]
-166 verbose get saving gulp-minify-css to /Users/tejas/.npm/registry.npmjs.org/gulp-minify-css/.cache.json
-167 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
-168 silly resolveWithNewModule gulp-minify-css@0.3.13 checking installable status
-169 silly cache add args [ 'gulp-minify-css@^0.3.0', null ]
-170 verbose cache add spec gulp-minify-css@^0.3.0
-171 silly cache add parsed spec Result {
-171 silly cache add   raw: 'gulp-minify-css@^0.3.0',
-171 silly cache add   scope: null,
-171 silly cache add   name: 'gulp-minify-css',
-171 silly cache add   rawSpec: '^0.3.0',
-171 silly cache add   spec: '>=0.3.0 <0.4.0',
-171 silly cache add   type: 'range' }
-172 silly addNamed gulp-minify-css@>=0.3.0 <0.4.0
-173 verbose addNamed ">=0.3.0 <0.4.0" is a valid semver range for gulp-minify-css
-174 silly addNameRange { name: 'gulp-minify-css',
-174 silly addNameRange   range: '>=0.3.0 <0.4.0',
-174 silly addNameRange   hasData: false }
-175 silly mapToRegistry name gulp-minify-css
-176 silly mapToRegistry using default registry
-177 silly mapToRegistry registry https://registry.npmjs.org/
-178 silly mapToRegistry uri https://registry.npmjs.org/gulp-minify-css
-179 verbose addNameRange registry:https://registry.npmjs.org/gulp-minify-css not in flight; fetching
-180 verbose get https://registry.npmjs.org/gulp-minify-css not expired, no request
-181 silly addNameRange number 2 { name: 'gulp-minify-css',
-181 silly addNameRange   range: '>=0.3.0 <0.4.0',
-181 silly addNameRange   hasData: true }
-182 silly addNameRange versions [ 'gulp-minify-css',
-182 silly addNameRange   [ '0.0.1',
-182 silly addNameRange     '0.1.0',
-182 silly addNameRange     '0.2.0',
-182 silly addNameRange     '0.3.0',
-182 silly addNameRange     '0.3.1',
-182 silly addNameRange     '0.3.2',
-182 silly addNameRange     '0.3.3',
-182 silly addNameRange     '0.3.4',
-182 silly addNameRange     '0.3.5',
-182 silly addNameRange     '0.3.6',
-182 silly addNameRange     '0.3.7',
-182 silly addNameRange     '0.3.8',
-182 silly addNameRange     '0.3.9',
-182 silly addNameRange     '0.3.10',
-182 silly addNameRange     '0.3.11',
-182 silly addNameRange     '0.3.12',
-182 silly addNameRange     '0.3.13',
-182 silly addNameRange     '0.4.0',
-182 silly addNameRange     '0.4.1',
-182 silly addNameRange     '0.4.2',
-182 silly addNameRange     '0.4.3',
-182 silly addNameRange     '0.4.4',
-182 silly addNameRange     '0.4.5',
-182 silly addNameRange     '0.4.6',
-182 silly addNameRange     '0.5.0',
-182 silly addNameRange     '0.5.1',
-182 silly addNameRange     '1.0.0',
-182 silly addNameRange     '1.1.0',
-182 silly addNameRange     '1.1.1',
-182 silly addNameRange     '1.1.2',
-182 silly addNameRange     '1.1.2-1',
-182 silly addNameRange     '1.1.3',
-182 silly addNameRange     '1.1.4',
-182 silly addNameRange     '1.1.5',
-182 silly addNameRange     '1.1.6',
-182 silly addNameRange     '1.2.0',
-182 silly addNameRange     '1.2.1',
-182 silly addNameRange     '1.2.2',
-182 silly addNameRange     '1.2.3',
-182 silly addNameRange     '1.2.4' ] ]
-183 silly addNamed gulp-minify-css@0.3.13
-184 verbose addNamed "0.3.13" is a plain semver version for gulp-minify-css
-185 warn deprecated gulp-minify-css@0.3.13: Please use gulp-clean-css
-186 silly cache afterAdd gulp-minify-css@0.3.13
-187 verbose afterAdd /Users/tejas/.npm/gulp-minify-css/0.3.13/package/package.json not in flight; writing
-188 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
-189 verbose afterAdd /Users/tejas/.npm/gulp-minify-css/0.3.13/package/package.json written
-190 http fetch 200 https://registry.npmjs.org/gulp-sass/-/gulp-sass-0.7.3.tgz
-191 silly fetchAndShaCheck shasum 4bfbb4e4d95a40be8beeebe07e8e477e7f7a2edc
-192 verbose addTmpTarball /var/folders/xf/74xzfbv17ds96cyk3v10f3t40000gn/T/npm-18519-6baece75/registry.npmjs.org/gulp-sass/-/gulp-sass-0.7.3.tgz not in flight; adding
-193 verbose addTmpTarball already have metadata; skipping unpack for gulp-sass@0.7.3
-194 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
-195 silly cache afterAdd gulp-sass@0.7.3
-196 verbose afterAdd /Users/tejas/.npm/gulp-sass/0.7.3/package/package.json not in flight; writing
-197 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
-198 verbose afterAdd /Users/tejas/.npm/gulp-sass/0.7.3/package/package.json written
-199 http 200 https://registry.npmjs.org/kinvey-phonegap-angular-sdk
-200 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-200 verbose headers   etag: '"6Q672M6ESTVIE75JGJJJSG9E4"',
-200 verbose headers   'content-type': 'application/json',
-200 verbose headers   'content-encoding': 'gzip',
-200 verbose headers   'cache-control': 'max-age=300',
-200 verbose headers   'content-length': '956',
-200 verbose headers   'accept-ranges': 'bytes',
-200 verbose headers   date: 'Thu, 21 Jul 2016 20:02:35 GMT',
-200 verbose headers   via: '1.1 varnish',
-200 verbose headers   age: '0',
-200 verbose headers   connection: 'keep-alive',
-200 verbose headers   'x-served-by': 'cache-bos8225-BOS',
-200 verbose headers   'x-cache': 'MISS',
-200 verbose headers   'x-cache-hits': '0',
-200 verbose headers   'x-timer': 'S1469131355.533539,VS0,VE429',
-200 verbose headers   vary: 'Accept-Encoding' }
-201 silly get cb [ 200,
-201 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-201 silly get     etag: '"6Q672M6ESTVIE75JGJJJSG9E4"',
-201 silly get     'content-type': 'application/json',
-201 silly get     'content-encoding': 'gzip',
-201 silly get     'cache-control': 'max-age=300',
-201 silly get     'content-length': '956',
-201 silly get     'accept-ranges': 'bytes',
-201 silly get     date: 'Thu, 21 Jul 2016 20:02:35 GMT',
-201 silly get     via: '1.1 varnish',
-201 silly get     age: '0',
-201 silly get     connection: 'keep-alive',
-201 silly get     'x-served-by': 'cache-bos8225-BOS',
-201 silly get     'x-cache': 'MISS',
-201 silly get     'x-cache-hits': '0',
-201 silly get     'x-timer': 'S1469131355.533539,VS0,VE429',
-201 silly get     vary: 'Accept-Encoding' } ]
-202 verbose get saving kinvey-phonegap-angular-sdk to /Users/tejas/.npm/registry.npmjs.org/kinvey-phonegap-angular-sdk/.cache.json
-203 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
-204 silly fetchPackageMetaData Error: No compatible version found: kinvey-phonegap-angular-sdk@3.0.0-beta.14
-204 silly fetchPackageMetaData Valid install targets:
-204 silly fetchPackageMetaData 0.0.1-security
-204 silly fetchPackageMetaData
-204 silly fetchPackageMetaData     at pickVersionFromRegistryDocument (/Users/tejas/.nvm/versions/node/v5.9.0/lib/node_modules/npm/lib/fetch-package-metadata.js:156:16)
-204 silly fetchPackageMetaData     at /Users/tejas/.nvm/versions/node/v5.9.0/lib/node_modules/npm/node_modules/iferr/index.js:13:50
-204 silly fetchPackageMetaData     at /Users/tejas/.nvm/versions/node/v5.9.0/lib/node_modules/npm/lib/utils/pulse-till-done.js:19:8
-204 silly fetchPackageMetaData     at saved (/Users/tejas/.nvm/versions/node/v5.9.0/lib/node_modules/npm/lib/cache/caching-client.js:168:7)
-204 silly fetchPackageMetaData     at /Users/tejas/.nvm/versions/node/v5.9.0/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:210:7
-204 silly fetchPackageMetaData     at FSReqWrap.oncomplete (fs.js:82:15)
-204 silly fetchPackageMetaData  error for kinvey-phonegap-angular-sdk@3.0.0-beta.14 [Error: No compatible version found: kinvey-phonegap-angular-sdk@3.0.0-beta.14
-204 silly fetchPackageMetaData Valid install targets:
-204 silly fetchPackageMetaData 0.0.1-security
-204 silly fetchPackageMetaData ]
-205 http 200 https://registry.npmjs.org/gulp
-206 verbose headers { server: 'CouchDB/1.6.1 (Erlang OTP/R16B03)',
-206 verbose headers   etag: '"4SE25LEKGJBZ8Q6EFR14Y2H9F"',
-206 verbose headers   'content-type': 'application/json',
-206 verbose headers   'content-encoding': 'gzip',
-206 verbose headers   'cache-control': 'max-age=300',
-206 verbose headers   'content-length': '18587',
-206 verbose headers   'accept-ranges': 'bytes',
-206 verbose headers   date: 'Thu, 21 Jul 2016 20:02:35 GMT',
-206 verbose headers   via: '1.1 varnish',
-206 verbose headers   age: '0',
-206 verbose headers   connection: 'keep-alive',
-206 verbose headers   'x-served-by': 'cache-bos8221-BOS',
-206 verbose headers   'x-cache': 'HIT',
-206 verbose headers   'x-cache-hits': '1',
-206 verbose headers   'x-timer': 'S1469131355.533977,VS0,VE442',
-206 verbose headers   vary: 'Accept-Encoding' }
-207 silly get cb [ 200,
-207 silly get   { server: 'CouchDB/1.6.1 (Erlang OTP/R16B03)',
-207 silly get     etag: '"4SE25LEKGJBZ8Q6EFR14Y2H9F"',
-207 silly get     'content-type': 'application/json',
-207 silly get     'content-encoding': 'gzip',
-207 silly get     'cache-control': 'max-age=300',
-207 silly get     'content-length': '18587',
-207 silly get     'accept-ranges': 'bytes',
-207 silly get     date: 'Thu, 21 Jul 2016 20:02:35 GMT',
-207 silly get     via: '1.1 varnish',
-207 silly get     age: '0',
-207 silly get     connection: 'keep-alive',
-207 silly get     'x-served-by': 'cache-bos8221-BOS',
-207 silly get     'x-cache': 'HIT',
-207 silly get     'x-cache-hits': '1',
-207 silly get     'x-timer': 'S1469131355.533977,VS0,VE442',
-207 silly get     vary: 'Accept-Encoding' } ]
-208 verbose get saving gulp to /Users/tejas/.npm/registry.npmjs.org/gulp/.cache.json
-209 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
-210 silly resolveWithNewModule gulp@3.9.1 checking installable status
-211 silly cache add args [ 'gulp@^3.5.6', null ]
-212 verbose cache add spec gulp@^3.5.6
-213 silly cache add parsed spec Result {
-213 silly cache add   raw: 'gulp@^3.5.6',
-213 silly cache add   scope: null,
-213 silly cache add   name: 'gulp',
-213 silly cache add   rawSpec: '^3.5.6',
-213 silly cache add   spec: '>=3.5.6 <4.0.0',
-213 silly cache add   type: 'range' }
-214 silly addNamed gulp@>=3.5.6 <4.0.0
-215 verbose addNamed ">=3.5.6 <4.0.0" is a valid semver range for gulp
-216 silly addNameRange { name: 'gulp', range: '>=3.5.6 <4.0.0', hasData: false }
-217 silly mapToRegistry name gulp
-218 silly mapToRegistry using default registry
-219 silly mapToRegistry registry https://registry.npmjs.org/
-220 silly mapToRegistry uri https://registry.npmjs.org/gulp
-221 verbose addNameRange registry:https://registry.npmjs.org/gulp not in flight; fetching
-222 verbose get https://registry.npmjs.org/gulp not expired, no request
-223 silly addNameRange number 2 { name: 'gulp', range: '>=3.5.6 <4.0.0', hasData: true }
-224 silly addNameRange versions [ 'gulp',
-224 silly addNameRange   [ '0.0.1',
-224 silly addNameRange     '0.0.2',
-224 silly addNameRange     '0.0.3',
-224 silly addNameRange     '0.0.4',
-224 silly addNameRange     '0.0.5',
-224 silly addNameRange     '0.0.7',
-224 silly addNameRange     '0.0.8',
-224 silly addNameRange     '0.0.9',
-224 silly addNameRange     '0.1.0',
-224 silly addNameRange     '0.2.0',
-224 silly addNameRange     '1.0.0',
-224 silly addNameRange     '1.1.0',
-224 silly addNameRange     '1.2.0',
-224 silly addNameRange     '1.2.1',
-224 silly addNameRange     '2.0.0',
-224 silly addNameRange     '2.0.1',
-224 silly addNameRange     '2.1.0',
-224 silly addNameRange     '2.2.0',
-224 silly addNameRange     '2.3.0',
-224 silly addNameRange     '2.4.0',
-224 silly addNameRange     '2.4.1',
-224 silly addNameRange     '2.6.0',
-224 silly addNameRange     '2.6.1',
-224 silly addNameRange     '2.7.0',
-224 silly addNameRange     '3.0.0',
-224 silly addNameRange     '3.1.1',
-224 silly addNameRange     '3.1.2',
-224 silly addNameRange     '3.1.3',
-224 silly addNameRange     '3.1.4',
-224 silly addNameRange     '3.2.0',
-224 silly addNameRange     '3.2.1',
-224 silly addNameRange     '3.2.2',
-224 silly addNameRange     '3.2.3',
-224 silly addNameRange     '3.2.4',
-224 silly addNameRange     '3.2.5',
-224 silly addNameRange     '3.3.0',
-224 silly addNameRange     '3.3.1',
-224 silly addNameRange     '3.3.2',
-224 silly addNameRange     '3.3.4',
-224 silly addNameRange     '3.4.0',
-224 silly addNameRange     '3.5.0',
-224 silly addNameRange     '3.5.1',
-224 silly addNameRange     '3.5.2',
-224 silly addNameRange     '3.5.5',
-224 silly addNameRange     '3.5.6',
-224 silly addNameRange     '3.6.0',
-224 silly addNameRange     '3.6.1',
-224 silly addNameRange     '3.6.2',
-224 silly addNameRange     '3.7.0',
-224 silly addNameRange     '3.8.0',
-224 silly addNameRange     '3.8.1',
-224 silly addNameRange     '3.8.2',
-224 silly addNameRange     '3.8.3',
-224 silly addNameRange     '3.8.4',
-224 silly addNameRange     '3.8.5',
-224 silly addNameRange     '3.8.6',
-224 silly addNameRange     '3.8.7',
-224 silly addNameRange     '3.8.8',
-224 silly addNameRange     '3.8.9',
-224 silly addNameRange     '3.8.10',
-224 silly addNameRange     '3.8.11',
-224 silly addNameRange     '3.9.0',
-224 silly addNameRange     '3.9.1' ] ]
-225 silly addNamed gulp@3.9.1
-226 verbose addNamed "3.9.1" is a plain semver version for gulp
-227 silly cache afterAdd gulp@3.9.1
-228 verbose afterAdd /Users/tejas/.npm/gulp/3.9.1/package/package.json not in flight; writing
-229 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
-230 verbose afterAdd /Users/tejas/.npm/gulp/3.9.1/package/package.json written
-231 silly rollbackFailedOptional Starting
-232 silly rollbackFailedOptional Finishing
-233 silly runTopLevelLifecycles Starting
-234 silly runTopLevelLifecycles Finishing
-235 silly install printInstalled
-236 verbose stack Error: No compatible version found: kinvey-phonegap-angular-sdk@3.0.0-beta.14
-236 verbose stack Valid install targets:
-236 verbose stack 0.0.1-security
-236 verbose stack
-236 verbose stack     at pickVersionFromRegistryDocument (/Users/tejas/.nvm/versions/node/v5.9.0/lib/node_modules/npm/lib/fetch-package-metadata.js:156:16)
-236 verbose stack     at /Users/tejas/.nvm/versions/node/v5.9.0/lib/node_modules/npm/node_modules/iferr/index.js:13:50
-236 verbose stack     at /Users/tejas/.nvm/versions/node/v5.9.0/lib/node_modules/npm/lib/utils/pulse-till-done.js:19:8
-236 verbose stack     at saved (/Users/tejas/.nvm/versions/node/v5.9.0/lib/node_modules/npm/lib/cache/caching-client.js:168:7)
-236 verbose stack     at /Users/tejas/.nvm/versions/node/v5.9.0/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:210:7
-236 verbose stack     at FSReqWrap.oncomplete (fs.js:82:15)
-237 verbose cwd /Users/tejas/codebase/sandbox/js/demo/tp
-238 error Darwin 15.5.0
-239 error argv "/Users/tejas/.nvm/versions/node/v5.9.0/bin/node" "/Users/tejas/.nvm/versions/node/v5.9.0/bin/npm" "install"
-240 error node v5.9.0
-241 error npm  v3.7.3
-242 error No compatible version found: kinvey-phonegap-angular-sdk@3.0.0-beta.14
-242 error Valid install targets:
-242 error 0.0.1-security
-243 error If you need help, you may report this error at:
-243 error     <https://github.com/npm/npm/issues>
-244 verbose exit [ 1, true ]
+51 info attempt registry request try #1 at 4:16:17 PM
+52 verbose request id cf1bafd505ab0da6
+53 verbose etag "BTYHQXZ0ILO0T9FWSP493YUVO"
+54 http request GET https://registry.npmjs.org/gulp-minify-css
+55 verbose request uri https://registry.npmjs.org/gulp-sass
+56 verbose request no auth needed
+57 info attempt registry request try #1 at 4:16:17 PM
+58 verbose etag "4974BICKZ11FHIJHT5ECNEWCH"
+59 http request GET https://registry.npmjs.org/gulp-sass
+60 verbose request uri https://registry.npmjs.org/gulp-concat
+61 verbose request no auth needed
+62 info attempt registry request try #1 at 4:16:17 PM
+63 verbose etag "1Q9OOODHP1CSMUKVUXQIX7PWE"
+64 http request GET https://registry.npmjs.org/gulp-concat
+65 verbose request uri https://registry.npmjs.org/gulp
+66 verbose request no auth needed
+67 info attempt registry request try #1 at 4:16:17 PM
+68 verbose etag "8NYUKJJ6HKG86LMK8KSNZK4SZ"
+69 http request GET https://registry.npmjs.org/gulp
+70 verbose request uri https://registry.npmjs.org/gulp-rename
+71 verbose request no auth needed
+72 info attempt registry request try #1 at 4:16:17 PM
+73 verbose etag "BD6QMXS7WUS4EPJ3RLCA9RUOI"
+74 http request GET https://registry.npmjs.org/gulp-rename
+75 verbose request uri https://registry.npmjs.org/kinvey-phonegap-angular-sdk
+76 verbose request no auth needed
+77 info attempt registry request try #1 at 4:16:17 PM
+78 verbose etag "6Q672M6ESTVIE75JGJJJSG9E4"
+79 http request GET https://registry.npmjs.org/kinvey-phonegap-angular-sdk
+80 http 304 https://registry.npmjs.org/gulp-minify-css
+81 verbose headers { date: 'Mon, 01 Aug 2016 20:16:18 GMT',
+81 verbose headers   via: '1.1 varnish',
+81 verbose headers   'cache-control': 'max-age=300',
+81 verbose headers   etag: '"BTYHQXZ0ILO0T9FWSP493YUVO"',
+81 verbose headers   age: '124',
+81 verbose headers   connection: 'keep-alive',
+81 verbose headers   'x-served-by': 'cache-bos8224-BOS',
+81 verbose headers   'x-cache': 'HIT',
+81 verbose headers   'x-cache-hits': '1',
+81 verbose headers   'x-timer': 'S1470082578.529478,VS0,VE0',
+81 verbose headers   vary: 'Accept-Encoding' }
+82 silly get cb [ 304,
+82 silly get   { date: 'Mon, 01 Aug 2016 20:16:18 GMT',
+82 silly get     via: '1.1 varnish',
+82 silly get     'cache-control': 'max-age=300',
+82 silly get     etag: '"BTYHQXZ0ILO0T9FWSP493YUVO"',
+82 silly get     age: '124',
+82 silly get     connection: 'keep-alive',
+82 silly get     'x-served-by': 'cache-bos8224-BOS',
+82 silly get     'x-cache': 'HIT',
+82 silly get     'x-cache-hits': '1',
+82 silly get     'x-timer': 'S1470082578.529478,VS0,VE0',
+82 silly get     vary: 'Accept-Encoding' } ]
+83 verbose etag https://registry.npmjs.org/gulp-minify-css from cache
+84 verbose get saving gulp-minify-css to /Users/tejas/.npm/registry.npmjs.org/gulp-minify-css/.cache.json
+85 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
+86 http 200 https://registry.npmjs.org/gulp-concat
+87 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+87 verbose headers   etag: '"4NQ7P2NES4GQ7L3KQM6NE9R3Y"',
+87 verbose headers   'content-type': 'application/json',
+87 verbose headers   'content-encoding': 'gzip',
+87 verbose headers   'cache-control': 'max-age=300',
+87 verbose headers   'content-length': '7727',
+87 verbose headers   'accept-ranges': 'bytes',
+87 verbose headers   date: 'Mon, 01 Aug 2016 20:16:18 GMT',
+87 verbose headers   via: '1.1 varnish',
+87 verbose headers   age: '12',
+87 verbose headers   connection: 'keep-alive',
+87 verbose headers   'x-served-by': 'cache-bos8223-BOS',
+87 verbose headers   'x-cache': 'HIT',
+87 verbose headers   'x-cache-hits': '104',
+87 verbose headers   'x-timer': 'S1470082578.528257,VS0,VE0',
+87 verbose headers   vary: 'Accept-Encoding' }
+88 silly get cb [ 200,
+88 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+88 silly get     etag: '"4NQ7P2NES4GQ7L3KQM6NE9R3Y"',
+88 silly get     'content-type': 'application/json',
+88 silly get     'content-encoding': 'gzip',
+88 silly get     'cache-control': 'max-age=300',
+88 silly get     'content-length': '7727',
+88 silly get     'accept-ranges': 'bytes',
+88 silly get     date: 'Mon, 01 Aug 2016 20:16:18 GMT',
+88 silly get     via: '1.1 varnish',
+88 silly get     age: '12',
+88 silly get     connection: 'keep-alive',
+88 silly get     'x-served-by': 'cache-bos8223-BOS',
+88 silly get     'x-cache': 'HIT',
+88 silly get     'x-cache-hits': '104',
+88 silly get     'x-timer': 'S1470082578.528257,VS0,VE0',
+88 silly get     vary: 'Accept-Encoding' } ]
+89 verbose get saving gulp-concat to /Users/tejas/.npm/registry.npmjs.org/gulp-concat/.cache.json
+90 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
+91 http 200 https://registry.npmjs.org/gulp-sass
+92 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+92 verbose headers   etag: '"BSASQ3QK6RCPXWNXJY2U8D7GV"',
+92 verbose headers   'content-type': 'application/json',
+92 verbose headers   'content-encoding': 'gzip',
+92 verbose headers   'cache-control': 'max-age=300',
+92 verbose headers   'content-length': '9709',
+92 verbose headers   'accept-ranges': 'bytes',
+92 verbose headers   date: 'Mon, 01 Aug 2016 20:16:18 GMT',
+92 verbose headers   via: '1.1 varnish',
+92 verbose headers   age: '294',
+92 verbose headers   connection: 'keep-alive',
+92 verbose headers   'x-served-by': 'cache-bos8234-BOS',
+92 verbose headers   'x-cache': 'HIT',
+92 verbose headers   'x-cache-hits': '1',
+92 verbose headers   'x-timer': 'S1470082578.522168,VS0,VE0',
+92 verbose headers   vary: 'Accept-Encoding' }
+93 silly get cb [ 200,
+93 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+93 silly get     etag: '"BSASQ3QK6RCPXWNXJY2U8D7GV"',
+93 silly get     'content-type': 'application/json',
+93 silly get     'content-encoding': 'gzip',
+93 silly get     'cache-control': 'max-age=300',
+93 silly get     'content-length': '9709',
+93 silly get     'accept-ranges': 'bytes',
+93 silly get     date: 'Mon, 01 Aug 2016 20:16:18 GMT',
+93 silly get     via: '1.1 varnish',
+93 silly get     age: '294',
+93 silly get     connection: 'keep-alive',
+93 silly get     'x-served-by': 'cache-bos8234-BOS',
+93 silly get     'x-cache': 'HIT',
+93 silly get     'x-cache-hits': '1',
+93 silly get     'x-timer': 'S1470082578.522168,VS0,VE0',
+93 silly get     vary: 'Accept-Encoding' } ]
+94 verbose get saving gulp-sass to /Users/tejas/.npm/registry.npmjs.org/gulp-sass/.cache.json
+95 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
+96 http 200 https://registry.npmjs.org/gulp
+97 verbose headers { server: 'CouchDB/1.6.1 (Erlang OTP/R16B03)',
+97 verbose headers   etag: '"C1VB7Z5JFBE2PGR2SPI191GGL"',
+97 verbose headers   'content-type': 'application/json',
+97 verbose headers   'content-encoding': 'gzip',
+97 verbose headers   'cache-control': 'max-age=300',
+97 verbose headers   'content-length': '18633',
+97 verbose headers   'accept-ranges': 'bytes',
+97 verbose headers   date: 'Mon, 01 Aug 2016 20:16:18 GMT',
+97 verbose headers   via: '1.1 varnish',
+97 verbose headers   age: '201',
+97 verbose headers   connection: 'keep-alive',
+97 verbose headers   'x-served-by': 'cache-bos8225-BOS',
+97 verbose headers   'x-cache': 'HIT',
+97 verbose headers   'x-cache-hits': '1',
+97 verbose headers   'x-timer': 'S1470082578.533820,VS0,VE0',
+97 verbose headers   vary: 'Accept-Encoding' }
+98 silly get cb [ 200,
+98 silly get   { server: 'CouchDB/1.6.1 (Erlang OTP/R16B03)',
+98 silly get     etag: '"C1VB7Z5JFBE2PGR2SPI191GGL"',
+98 silly get     'content-type': 'application/json',
+98 silly get     'content-encoding': 'gzip',
+98 silly get     'cache-control': 'max-age=300',
+98 silly get     'content-length': '18633',
+98 silly get     'accept-ranges': 'bytes',
+98 silly get     date: 'Mon, 01 Aug 2016 20:16:18 GMT',
+98 silly get     via: '1.1 varnish',
+98 silly get     age: '201',
+98 silly get     connection: 'keep-alive',
+98 silly get     'x-served-by': 'cache-bos8225-BOS',
+98 silly get     'x-cache': 'HIT',
+98 silly get     'x-cache-hits': '1',
+98 silly get     'x-timer': 'S1470082578.533820,VS0,VE0',
+98 silly get     vary: 'Accept-Encoding' } ]
+99 verbose get saving gulp to /Users/tejas/.npm/registry.npmjs.org/gulp/.cache.json
+100 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
+101 silly resolveWithNewModule gulp-concat@2.6.0 checking installable status
+102 silly cache add args [ 'gulp-concat@^2.2.0', null ]
+103 verbose cache add spec gulp-concat@^2.2.0
+104 silly cache add parsed spec Result {
+104 silly cache add   raw: 'gulp-concat@^2.2.0',
+104 silly cache add   scope: null,
+104 silly cache add   name: 'gulp-concat',
+104 silly cache add   rawSpec: '^2.2.0',
+104 silly cache add   spec: '>=2.2.0 <3.0.0',
+104 silly cache add   type: 'range' }
+105 silly addNamed gulp-concat@>=2.2.0 <3.0.0
+106 verbose addNamed ">=2.2.0 <3.0.0" is a valid semver range for gulp-concat
+107 silly addNameRange { name: 'gulp-concat', range: '>=2.2.0 <3.0.0', hasData: false }
+108 silly mapToRegistry name gulp-concat
+109 silly mapToRegistry using default registry
+110 silly mapToRegistry registry https://registry.npmjs.org/
+111 silly mapToRegistry uri https://registry.npmjs.org/gulp-concat
+112 verbose addNameRange registry:https://registry.npmjs.org/gulp-concat not in flight; fetching
+113 silly resolveWithNewModule gulp-minify-css@0.3.13 checking installable status
+114 silly cache add args [ 'gulp-minify-css@^0.3.0', null ]
+115 verbose cache add spec gulp-minify-css@^0.3.0
+116 silly cache add parsed spec Result {
+116 silly cache add   raw: 'gulp-minify-css@^0.3.0',
+116 silly cache add   scope: null,
+116 silly cache add   name: 'gulp-minify-css',
+116 silly cache add   rawSpec: '^0.3.0',
+116 silly cache add   spec: '>=0.3.0 <0.4.0',
+116 silly cache add   type: 'range' }
+117 silly addNamed gulp-minify-css@>=0.3.0 <0.4.0
+118 verbose addNamed ">=0.3.0 <0.4.0" is a valid semver range for gulp-minify-css
+119 silly addNameRange { name: 'gulp-minify-css',
+119 silly addNameRange   range: '>=0.3.0 <0.4.0',
+119 silly addNameRange   hasData: false }
+120 silly mapToRegistry name gulp-minify-css
+121 silly mapToRegistry using default registry
+122 silly mapToRegistry registry https://registry.npmjs.org/
+123 silly mapToRegistry uri https://registry.npmjs.org/gulp-minify-css
+124 verbose addNameRange registry:https://registry.npmjs.org/gulp-minify-css not in flight; fetching
+125 http 304 https://registry.npmjs.org/gulp-rename
+126 verbose headers { date: 'Mon, 01 Aug 2016 20:16:18 GMT',
+126 verbose headers   via: '1.1 varnish',
+126 verbose headers   'cache-control': 'max-age=300',
+126 verbose headers   etag: '"BD6QMXS7WUS4EPJ3RLCA9RUOI"',
+126 verbose headers   age: '0',
+126 verbose headers   connection: 'keep-alive',
+126 verbose headers   'x-served-by': 'cache-bos8220-BOS',
+126 verbose headers   'x-cache': 'HIT',
+126 verbose headers   'x-cache-hits': '1',
+126 verbose headers   'x-timer': 'S1470082578.528272,VS0,VE40',
+126 verbose headers   vary: 'Accept-Encoding' }
+127 silly get cb [ 304,
+127 silly get   { date: 'Mon, 01 Aug 2016 20:16:18 GMT',
+127 silly get     via: '1.1 varnish',
+127 silly get     'cache-control': 'max-age=300',
+127 silly get     etag: '"BD6QMXS7WUS4EPJ3RLCA9RUOI"',
+127 silly get     age: '0',
+127 silly get     connection: 'keep-alive',
+127 silly get     'x-served-by': 'cache-bos8220-BOS',
+127 silly get     'x-cache': 'HIT',
+127 silly get     'x-cache-hits': '1',
+127 silly get     'x-timer': 'S1470082578.528272,VS0,VE40',
+127 silly get     vary: 'Accept-Encoding' } ]
+128 verbose etag https://registry.npmjs.org/gulp-rename from cache
+129 verbose get saving gulp-rename to /Users/tejas/.npm/registry.npmjs.org/gulp-rename/.cache.json
+130 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
+131 silly resolveWithNewModule gulp-sass@0.7.3 checking installable status
+132 silly cache add args [ 'gulp-sass@^0.7.1', null ]
+133 verbose cache add spec gulp-sass@^0.7.1
+134 silly cache add parsed spec Result {
+134 silly cache add   raw: 'gulp-sass@^0.7.1',
+134 silly cache add   scope: null,
+134 silly cache add   name: 'gulp-sass',
+134 silly cache add   rawSpec: '^0.7.1',
+134 silly cache add   spec: '>=0.7.1 <0.8.0',
+134 silly cache add   type: 'range' }
+135 silly addNamed gulp-sass@>=0.7.1 <0.8.0
+136 verbose addNamed ">=0.7.1 <0.8.0" is a valid semver range for gulp-sass
+137 silly addNameRange { name: 'gulp-sass', range: '>=0.7.1 <0.8.0', hasData: false }
+138 silly mapToRegistry name gulp-sass
+139 silly mapToRegistry using default registry
+140 silly mapToRegistry registry https://registry.npmjs.org/
+141 silly mapToRegistry uri https://registry.npmjs.org/gulp-sass
+142 verbose addNameRange registry:https://registry.npmjs.org/gulp-sass not in flight; fetching
+143 verbose get https://registry.npmjs.org/gulp-minify-css not expired, no request
+144 silly addNameRange number 2 { name: 'gulp-minify-css',
+144 silly addNameRange   range: '>=0.3.0 <0.4.0',
+144 silly addNameRange   hasData: true }
+145 silly addNameRange versions [ 'gulp-minify-css',
+145 silly addNameRange   [ '0.0.1',
+145 silly addNameRange     '0.1.0',
+145 silly addNameRange     '0.2.0',
+145 silly addNameRange     '0.3.0',
+145 silly addNameRange     '0.3.1',
+145 silly addNameRange     '0.3.2',
+145 silly addNameRange     '0.3.3',
+145 silly addNameRange     '0.3.4',
+145 silly addNameRange     '0.3.5',
+145 silly addNameRange     '0.3.6',
+145 silly addNameRange     '0.3.7',
+145 silly addNameRange     '0.3.8',
+145 silly addNameRange     '0.3.9',
+145 silly addNameRange     '0.3.10',
+145 silly addNameRange     '0.3.11',
+145 silly addNameRange     '0.3.12',
+145 silly addNameRange     '0.3.13',
+145 silly addNameRange     '0.4.0',
+145 silly addNameRange     '0.4.1',
+145 silly addNameRange     '0.4.2',
+145 silly addNameRange     '0.4.3',
+145 silly addNameRange     '0.4.4',
+145 silly addNameRange     '0.4.5',
+145 silly addNameRange     '0.4.6',
+145 silly addNameRange     '0.5.0',
+145 silly addNameRange     '0.5.1',
+145 silly addNameRange     '1.0.0',
+145 silly addNameRange     '1.1.0',
+145 silly addNameRange     '1.1.1',
+145 silly addNameRange     '1.1.2',
+145 silly addNameRange     '1.1.2-1',
+145 silly addNameRange     '1.1.3',
+145 silly addNameRange     '1.1.4',
+145 silly addNameRange     '1.1.5',
+145 silly addNameRange     '1.1.6',
+145 silly addNameRange     '1.2.0',
+145 silly addNameRange     '1.2.1',
+145 silly addNameRange     '1.2.2',
+145 silly addNameRange     '1.2.3',
+145 silly addNameRange     '1.2.4' ] ]
+146 silly addNamed gulp-minify-css@0.3.13
+147 verbose addNamed "0.3.13" is a plain semver version for gulp-minify-css
+148 warn deprecated gulp-minify-css@0.3.13: Please use gulp-clean-css
+149 verbose get https://registry.npmjs.org/gulp-concat not expired, no request
+150 silly addNameRange number 2 { name: 'gulp-concat', range: '>=2.2.0 <3.0.0', hasData: true }
+151 silly addNameRange versions [ 'gulp-concat',
+151 silly addNameRange   [ '0.0.1',
+151 silly addNameRange     '1.0.0',
+151 silly addNameRange     '1.1.0',
+151 silly addNameRange     '2.0.0',
+151 silly addNameRange     '2.1.0',
+151 silly addNameRange     '2.1.1',
+151 silly addNameRange     '2.1.2',
+151 silly addNameRange     '2.1.3',
+151 silly addNameRange     '2.1.4',
+151 silly addNameRange     '2.1.5',
+151 silly addNameRange     '2.1.6',
+151 silly addNameRange     '2.1.7',
+151 silly addNameRange     '2.2.0',
+151 silly addNameRange     '2.3.0',
+151 silly addNameRange     '2.3.3',
+151 silly addNameRange     '2.3.4',
+151 silly addNameRange     '2.3.5',
+151 silly addNameRange     '2.4.0',
+151 silly addNameRange     '2.4.1',
+151 silly addNameRange     '2.4.2',
+151 silly addNameRange     '2.4.3',
+151 silly addNameRange     '2.5.0',
+151 silly addNameRange     '2.5.1',
+151 silly addNameRange     '2.5.2',
+151 silly addNameRange     '2.6.0' ] ]
+152 silly addNamed gulp-concat@2.6.0
+153 verbose addNamed "2.6.0" is a plain semver version for gulp-concat
+154 verbose get https://registry.npmjs.org/gulp-sass not expired, no request
+155 silly addNameRange number 2 { name: 'gulp-sass', range: '>=0.7.1 <0.8.0', hasData: true }
+156 silly addNameRange versions [ 'gulp-sass',
+156 silly addNameRange   [ '0.1.0',
+156 silly addNameRange     '0.2.1',
+156 silly addNameRange     '0.2.2',
+156 silly addNameRange     '0.2.3',
+156 silly addNameRange     '0.3.0',
+156 silly addNameRange     '0.4.0',
+156 silly addNameRange     '0.4.1',
+156 silly addNameRange     '0.5.0',
+156 silly addNameRange     '0.5.1',
+156 silly addNameRange     '0.5.2',
+156 silly addNameRange     '0.6.0',
+156 silly addNameRange     '0.7.0',
+156 silly addNameRange     '0.7.1',
+156 silly addNameRange     '0.7.2',
+156 silly addNameRange     '0.7.3',
+156 silly addNameRange     '1.0.0',
+156 silly addNameRange     '1.1.0',
+156 silly addNameRange     '1.2.0',
+156 silly addNameRange     '1.2.1',
+156 silly addNameRange     '1.2.2',
+156 silly addNameRange     '1.2.3',
+156 silly addNameRange     '1.2.4',
+156 silly addNameRange     '1.3.0',
+156 silly addNameRange     '1.3.1',
+156 silly addNameRange     '1.3.2',
+156 silly addNameRange     '1.3.3',
+156 silly addNameRange     '2.0.0-alpha.1',
+156 silly addNameRange     '2.0.0',
+156 silly addNameRange     '2.0.2',
+156 silly addNameRange     '2.0.3',
+156 silly addNameRange     '2.0.4',
+156 silly addNameRange     '2.1.0-beta',
+156 silly addNameRange     '2.1.0',
+156 silly addNameRange     '2.1.1',
+156 silly addNameRange     '2.2.0',
+156 silly addNameRange     '2.3.0-beta.1',
+156 silly addNameRange     '2.3.0',
+156 silly addNameRange     '2.3.1',
+156 silly addNameRange     '2.3.2' ] ]
+157 silly addNamed gulp-sass@0.7.3
+158 verbose addNamed "0.7.3" is a plain semver version for gulp-sass
+159 silly resolveWithNewModule gulp@3.9.1 checking installable status
+160 silly cache add args [ 'gulp@^3.5.6', null ]
+161 verbose cache add spec gulp@^3.5.6
+162 silly cache add parsed spec Result {
+162 silly cache add   raw: 'gulp@^3.5.6',
+162 silly cache add   scope: null,
+162 silly cache add   name: 'gulp',
+162 silly cache add   rawSpec: '^3.5.6',
+162 silly cache add   spec: '>=3.5.6 <4.0.0',
+162 silly cache add   type: 'range' }
+163 silly addNamed gulp@>=3.5.6 <4.0.0
+164 verbose addNamed ">=3.5.6 <4.0.0" is a valid semver range for gulp
+165 silly addNameRange { name: 'gulp', range: '>=3.5.6 <4.0.0', hasData: false }
+166 silly mapToRegistry name gulp
+167 silly mapToRegistry using default registry
+168 silly mapToRegistry registry https://registry.npmjs.org/
+169 silly mapToRegistry uri https://registry.npmjs.org/gulp
+170 verbose addNameRange registry:https://registry.npmjs.org/gulp not in flight; fetching
+171 silly resolveWithNewModule gulp-rename@1.2.2 checking installable status
+172 silly cache add args [ 'gulp-rename@^1.2.0', null ]
+173 verbose cache add spec gulp-rename@^1.2.0
+174 silly cache add parsed spec Result {
+174 silly cache add   raw: 'gulp-rename@^1.2.0',
+174 silly cache add   scope: null,
+174 silly cache add   name: 'gulp-rename',
+174 silly cache add   rawSpec: '^1.2.0',
+174 silly cache add   spec: '>=1.2.0 <2.0.0',
+174 silly cache add   type: 'range' }
+175 silly addNamed gulp-rename@>=1.2.0 <2.0.0
+176 verbose addNamed ">=1.2.0 <2.0.0" is a valid semver range for gulp-rename
+177 silly addNameRange { name: 'gulp-rename', range: '>=1.2.0 <2.0.0', hasData: false }
+178 silly mapToRegistry name gulp-rename
+179 silly mapToRegistry using default registry
+180 silly mapToRegistry registry https://registry.npmjs.org/
+181 silly mapToRegistry uri https://registry.npmjs.org/gulp-rename
+182 verbose addNameRange registry:https://registry.npmjs.org/gulp-rename not in flight; fetching
+183 verbose get https://registry.npmjs.org/gulp not expired, no request
+184 silly addNameRange number 2 { name: 'gulp', range: '>=3.5.6 <4.0.0', hasData: true }
+185 silly addNameRange versions [ 'gulp',
+185 silly addNameRange   [ '0.0.1',
+185 silly addNameRange     '0.0.2',
+185 silly addNameRange     '0.0.3',
+185 silly addNameRange     '0.0.4',
+185 silly addNameRange     '0.0.5',
+185 silly addNameRange     '0.0.7',
+185 silly addNameRange     '0.0.8',
+185 silly addNameRange     '0.0.9',
+185 silly addNameRange     '0.1.0',
+185 silly addNameRange     '0.2.0',
+185 silly addNameRange     '1.0.0',
+185 silly addNameRange     '1.1.0',
+185 silly addNameRange     '1.2.0',
+185 silly addNameRange     '1.2.1',
+185 silly addNameRange     '2.0.0',
+185 silly addNameRange     '2.0.1',
+185 silly addNameRange     '2.1.0',
+185 silly addNameRange     '2.2.0',
+185 silly addNameRange     '2.3.0',
+185 silly addNameRange     '2.4.0',
+185 silly addNameRange     '2.4.1',
+185 silly addNameRange     '2.6.0',
+185 silly addNameRange     '2.6.1',
+185 silly addNameRange     '2.7.0',
+185 silly addNameRange     '3.0.0',
+185 silly addNameRange     '3.1.1',
+185 silly addNameRange     '3.1.2',
+185 silly addNameRange     '3.1.3',
+185 silly addNameRange     '3.1.4',
+185 silly addNameRange     '3.2.0',
+185 silly addNameRange     '3.2.1',
+185 silly addNameRange     '3.2.2',
+185 silly addNameRange     '3.2.3',
+185 silly addNameRange     '3.2.4',
+185 silly addNameRange     '3.2.5',
+185 silly addNameRange     '3.3.0',
+185 silly addNameRange     '3.3.1',
+185 silly addNameRange     '3.3.2',
+185 silly addNameRange     '3.3.4',
+185 silly addNameRange     '3.4.0',
+185 silly addNameRange     '3.5.0',
+185 silly addNameRange     '3.5.1',
+185 silly addNameRange     '3.5.2',
+185 silly addNameRange     '3.5.5',
+185 silly addNameRange     '3.5.6',
+185 silly addNameRange     '3.6.0',
+185 silly addNameRange     '3.6.1',
+185 silly addNameRange     '3.6.2',
+185 silly addNameRange     '3.7.0',
+185 silly addNameRange     '3.8.0',
+185 silly addNameRange     '3.8.1',
+185 silly addNameRange     '3.8.2',
+185 silly addNameRange     '3.8.3',
+185 silly addNameRange     '3.8.4',
+185 silly addNameRange     '3.8.5',
+185 silly addNameRange     '3.8.6',
+185 silly addNameRange     '3.8.7',
+185 silly addNameRange     '3.8.8',
+185 silly addNameRange     '3.8.9',
+185 silly addNameRange     '3.8.10',
+185 silly addNameRange     '3.8.11',
+185 silly addNameRange     '3.9.0',
+185 silly addNameRange     '3.9.1' ] ]
+186 silly addNamed gulp@3.9.1
+187 verbose addNamed "3.9.1" is a plain semver version for gulp
+188 silly cache afterAdd gulp-minify-css@0.3.13
+189 verbose afterAdd /Users/tejas/.npm/gulp-minify-css/0.3.13/package/package.json not in flight; writing
+190 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
+191 silly cache afterAdd gulp-concat@2.6.0
+192 verbose afterAdd /Users/tejas/.npm/gulp-concat/2.6.0/package/package.json not in flight; writing
+193 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
+194 silly cache afterAdd gulp-sass@0.7.3
+195 verbose afterAdd /Users/tejas/.npm/gulp-sass/0.7.3/package/package.json not in flight; writing
+196 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
+197 verbose get https://registry.npmjs.org/gulp-rename not expired, no request
+198 silly addNameRange number 2 { name: 'gulp-rename', range: '>=1.2.0 <2.0.0', hasData: true }
+199 silly addNameRange versions [ 'gulp-rename',
+199 silly addNameRange   [ '0.1.0', '0.2.1', '0.2.2', '1.0.0', '1.1.0', '1.2.0', '1.2.2' ] ]
+200 silly addNamed gulp-rename@1.2.2
+201 verbose addNamed "1.2.2" is a plain semver version for gulp-rename
+202 verbose afterAdd /Users/tejas/.npm/gulp-minify-css/0.3.13/package/package.json written
+203 verbose afterAdd /Users/tejas/.npm/gulp-concat/2.6.0/package/package.json written
+204 silly cache afterAdd gulp@3.9.1
+205 verbose afterAdd /Users/tejas/.npm/gulp/3.9.1/package/package.json not in flight; writing
+206 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
+207 verbose afterAdd /Users/tejas/.npm/gulp-sass/0.7.3/package/package.json written
+208 silly cache afterAdd gulp-rename@1.2.2
+209 verbose afterAdd /Users/tejas/.npm/gulp-rename/1.2.2/package/package.json not in flight; writing
+210 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
+211 http 304 https://registry.npmjs.org/kinvey-phonegap-angular-sdk
+212 verbose headers { date: 'Mon, 01 Aug 2016 20:16:18 GMT',
+212 verbose headers   via: '1.1 varnish',
+212 verbose headers   'cache-control': 'max-age=300',
+212 verbose headers   etag: '"6Q672M6ESTVIE75JGJJJSG9E4"',
+212 verbose headers   age: '0',
+212 verbose headers   connection: 'keep-alive',
+212 verbose headers   'x-served-by': 'cache-bos8231-BOS',
+212 verbose headers   'x-cache': 'MISS',
+212 verbose headers   'x-cache-hits': '0',
+212 verbose headers   'x-timer': 'S1470082578.528204,VS0,VE117',
+212 verbose headers   vary: 'Accept-Encoding' }
+213 silly get cb [ 304,
+213 silly get   { date: 'Mon, 01 Aug 2016 20:16:18 GMT',
+213 silly get     via: '1.1 varnish',
+213 silly get     'cache-control': 'max-age=300',
+213 silly get     etag: '"6Q672M6ESTVIE75JGJJJSG9E4"',
+213 silly get     age: '0',
+213 silly get     connection: 'keep-alive',
+213 silly get     'x-served-by': 'cache-bos8231-BOS',
+213 silly get     'x-cache': 'MISS',
+213 silly get     'x-cache-hits': '0',
+213 silly get     'x-timer': 'S1470082578.528204,VS0,VE117',
+213 silly get     vary: 'Accept-Encoding' } ]
+214 verbose etag https://registry.npmjs.org/kinvey-phonegap-angular-sdk from cache
+215 verbose get saving kinvey-phonegap-angular-sdk to /Users/tejas/.npm/registry.npmjs.org/kinvey-phonegap-angular-sdk/.cache.json
+216 verbose correctMkdir /Users/tejas/.npm correctMkdir not in flight; initializing
+217 verbose afterAdd /Users/tejas/.npm/gulp/3.9.1/package/package.json written
+218 verbose afterAdd /Users/tejas/.npm/gulp-rename/1.2.2/package/package.json written
+219 silly fetchPackageMetaData Error: No compatible version found: kinvey-phonegap-angular-sdk@3.0.0-beta.14
+219 silly fetchPackageMetaData Valid install targets:
+219 silly fetchPackageMetaData 0.0.1-security
+219 silly fetchPackageMetaData
+219 silly fetchPackageMetaData     at pickVersionFromRegistryDocument (/Users/tejas/.nvm/versions/node/v5.9.0/lib/node_modules/npm/lib/fetch-package-metadata.js:156:16)
+219 silly fetchPackageMetaData     at /Users/tejas/.nvm/versions/node/v5.9.0/lib/node_modules/npm/node_modules/iferr/index.js:13:50
+219 silly fetchPackageMetaData     at /Users/tejas/.nvm/versions/node/v5.9.0/lib/node_modules/npm/lib/utils/pulse-till-done.js:19:8
+219 silly fetchPackageMetaData     at saved (/Users/tejas/.nvm/versions/node/v5.9.0/lib/node_modules/npm/lib/cache/caching-client.js:168:7)
+219 silly fetchPackageMetaData     at /Users/tejas/.nvm/versions/node/v5.9.0/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:210:7
+219 silly fetchPackageMetaData     at FSReqWrap.oncomplete (fs.js:82:15)
+219 silly fetchPackageMetaData  error for kinvey-phonegap-angular-sdk@3.0.0-beta.14 [Error: No compatible version found: kinvey-phonegap-angular-sdk@3.0.0-beta.14
+219 silly fetchPackageMetaData Valid install targets:
+219 silly fetchPackageMetaData 0.0.1-security
+219 silly fetchPackageMetaData ]
+220 silly rollbackFailedOptional Starting
+221 silly rollbackFailedOptional Finishing
+222 silly runTopLevelLifecycles Starting
+223 silly runTopLevelLifecycles Finishing
+224 silly install printInstalled
+225 verbose stack Error: No compatible version found: kinvey-phonegap-angular-sdk@3.0.0-beta.14
+225 verbose stack Valid install targets:
+225 verbose stack 0.0.1-security
+225 verbose stack
+225 verbose stack     at pickVersionFromRegistryDocument (/Users/tejas/.nvm/versions/node/v5.9.0/lib/node_modules/npm/lib/fetch-package-metadata.js:156:16)
+225 verbose stack     at /Users/tejas/.nvm/versions/node/v5.9.0/lib/node_modules/npm/node_modules/iferr/index.js:13:50
+225 verbose stack     at /Users/tejas/.nvm/versions/node/v5.9.0/lib/node_modules/npm/lib/utils/pulse-till-done.js:19:8
+225 verbose stack     at saved (/Users/tejas/.nvm/versions/node/v5.9.0/lib/node_modules/npm/lib/cache/caching-client.js:168:7)
+225 verbose stack     at /Users/tejas/.nvm/versions/node/v5.9.0/lib/node_modules/npm/node_modules/graceful-fs/polyfills.js:210:7
+225 verbose stack     at FSReqWrap.oncomplete (fs.js:82:15)
+226 verbose cwd /Users/tejas/codebase/sandbox/js/demo/tp
+227 error Darwin 15.5.0
+228 error argv "/Users/tejas/.nvm/versions/node/v5.9.0/bin/node" "/Users/tejas/.nvm/versions/node/v5.9.0/bin/npm" "install"
+229 error node v5.9.0
+230 error npm  v3.7.3
+231 error No compatible version found: kinvey-phonegap-angular-sdk@3.0.0-beta.14
+231 error Valid install targets:
+231 error 0.0.1-security
+232 error If you need help, you may report this error at:
+232 error     <https://github.com/npm/npm/issues>
+233 verbose exit [ 1, true ]

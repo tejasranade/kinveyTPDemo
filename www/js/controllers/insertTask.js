@@ -1,7 +1,5 @@
 angular.module('starter.controllers').controller('InsertTaskCtrl', function($scope, $kinvey, $ionicLoading) {
     
-    var dataStore = $kinvey.DataStore.getInstance('Task', $kinvey.DataStoreType.Sync);
-
     function render(result){
         const resultArr = [].concat(result);
         $ionicLoading.show({template:'' + resultArr.length + ' task(s) inserted',
@@ -54,6 +52,9 @@ angular.module('starter.controllers').controller('InsertTaskCtrl', function($sco
 
     };
 
+    
+    var dataStore = $kinvey.DataStore.getInstance('Task', $kinvey.DataStoreType.Sync);
+    
     function saveToStore(data){
         //save the task to the store
         dataStore.save(data).then(function(result) {

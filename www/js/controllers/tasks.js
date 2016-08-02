@@ -1,6 +1,6 @@
 angular.module('starter.controllers').controller('TasksCtrl', function($scope, $kinvey, $ionicLoading) {
 
-    const dataStore = $kinvey.DataStore.getInstance('Task', $kinvey.DataStoreType.Sync);
+
     
     function refreshData(newData){
         $scope.tasks = newData;
@@ -12,6 +12,8 @@ angular.module('starter.controllers').controller('TasksCtrl', function($scope, $
         dataStore.save(task);
     }
 
+    const dataStore = $kinvey.DataStore.getInstance('Task', $kinvey.DataStoreType.Sync);
+
     $scope.doSync = function() {
         //sync tasks
         dataStore.sync().then(function(result) {            
@@ -20,7 +22,6 @@ angular.module('starter.controllers').controller('TasksCtrl', function($scope, $
             console.log(error);
         });        
     }
-
 
     $scope.$on('$ionicView.beforeEnter', function() {
         //get the data to populate this view
