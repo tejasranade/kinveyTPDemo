@@ -23,19 +23,19 @@ angular.module('starter.controllers').controller('PatientCtrl', function($scope,
 
     $scope.search = function(firstName, lastName) {      
       //Build Kinvey query for the patient and execute it on the store
-      var patientStore = $kinvey.DataStore.getInstance('Patient',$kinvey.DataStoreType.Network);
-      var query = new $kinvey.Query();
+      // var patientStore = $kinvey.DataStore.getInstance('Patient',$kinvey.DataStoreType.Network);
+      // var query = new $kinvey.Query();
 
-      query.equalTo('FirstName', firstName)
-           .equalTo('LastName', lastName);
+      // query.equalTo('FirstName', firstName)
+      //      .equalTo('LastName', lastName);
 
-      patientStore.find(query).subscribe(function(models) {          
-          render(models);
-      }, function(err) {
-        console.log("err "+JSON.stringify(err));
-      }, function(res) {
-        console.log("subscribe complete");
-      });
+      // patientStore.find(query).subscribe(function(models) {          
+      //     render(models);
+      // }, function(err) {
+      //   console.log("err "+JSON.stringify(err));
+      // }, function(res) {
+      //   console.log("subscribe complete");
+      // });
     }
 
 })

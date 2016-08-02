@@ -7,13 +7,13 @@ angular.module('starter.controllers').controller('DoctorsCtrl', function($scope,
 
     function fetchDoctors() {
         //get doctors from the backend
-        var dataStore = $kinvey.DataStore.getInstance('Doctor', $kinvey.DataStoreType.Network);
+        // var dataStore = $kinvey.DataStore.getInstance('Doctor', $kinvey.DataStoreType.Network);
         
-        dataStore.find().subscribe(function(result) { 
-            render(result);        
-        }, function(error) {
-            console.log(error);
-        });
+        // dataStore.find().subscribe(function(result) { 
+        //     render(result);        
+        // }, function(error) {
+        //     console.log(error);
+        // });
     }
 
     $scope.$on('$ionicView.beforeEnter', fetchDoctors);

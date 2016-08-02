@@ -1,12 +1,13 @@
 angular.module('starter.controllers').controller('ProductCtrl', function($scope, $kinvey) {
 
+	function refreshData(products){
+		$scope.products = products;
+		$scope.$digest();
+	}
+
     $scope.$on('$ionicView.beforeEnter', function() {
 
-        var dataStore = $kinvey.DataStore.getInstance('Product');
- 
-        dataStore.find().subscribe(function(products) {
-            $scope.products = products;
-            $scope.$digest();
-        });
+    	//Read from the products datastore
+
     });
 })

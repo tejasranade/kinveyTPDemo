@@ -89,23 +89,22 @@ angular.module('starter.controllers').controller('MapCtrl', function($scope, $st
 
 
       //Subscribe to a bus update
-//Here we assume that the "Bus" collection is enabled for live updates
-      var store = $kinvey.DataStore.collection('Bus');
-      store.subscribe({
-          onNext: function(data) {
-              //Called when new data is available. 
-              //This is where you should write code to act on new data
-              updateBusMarker(data);
-          }, 
-          onError: function (error) {
-              //Called on errors
-               console.log(error);
-          }, 
-          onComplete: function () {
-              //Called when the stream completes
-              console.log("complete!");
-          }
-      });
+      // var store = $kinvey.DataStore.collection('Bus');
+      // store.subscribe({
+      //     onNext: function(data) {
+      //         //Called when new data is available. 
+      //         //This is where you should write code to act on new data
+      //         updateBusMarker(data);
+      //     }, 
+      //     onError: function (error) {
+      //         //Called on errors
+      //          console.log(error);
+      //     }, 
+      //     onComplete: function () {
+      //         //Called when the stream completes
+      //         console.log("complete!");
+      //     }
+      // });
 
 
     });

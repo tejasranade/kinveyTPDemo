@@ -53,14 +53,14 @@ angular.module('starter.controllers').controller('InsertTaskCtrl', function($sco
     };
 
     
-    var dataStore = $kinvey.DataStore.getInstance('Task', $kinvey.DataStoreType.Sync);
+    //var dataStore = $kinvey.DataStore.getInstance('Task', $kinvey.DataStoreType.Sync);
     
     function saveToStore(data){
         //save the task to the store
-        dataStore.save(data).then(function(result) {
-            render(result);
-        }).catch(function(error) {
-            console.log(error);
-        });
+        // dataStore.save(data).then(function(result) {
+        //     render(result);
+        // }).catch(function(error) {
+        //     console.log(error);
+        // });
     }
 })
