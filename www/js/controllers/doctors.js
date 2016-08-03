@@ -7,7 +7,7 @@ angular.module('starter.controllers').controller('DoctorsCtrl', function($scope,
 
     function fetchDoctors() {
         //get doctors from the backend
-        // var dataStore = $kinvey.DataStore.getInstance('Doctor', $kinvey.DataStoreType.Network);
+        // var dataStore = $kinvey.DataStore.getInstance('Doctor', $kinvey.DataStoreType.Cache);
         
         // dataStore.find().subscribe(function(result) { 
         //     render(result);        
