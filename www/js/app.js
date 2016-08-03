@@ -21,12 +21,7 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
     }
 
     //$rootScope.productsname = "Products";
-    determineBehavior($kinvey, $rootScope, $state, $ionicModal);
-
-    // $kinvey.Push.onNotification(function(notification) {
-    //   alert(notification.message);
-    // });
-    
+    determineBehavior($kinvey, $rootScope, $state, $ionicModal);    
 
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

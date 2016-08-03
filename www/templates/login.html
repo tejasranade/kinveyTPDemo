@@ -23,16 +23,16 @@
             <br><br>
            <span class="error acemtext" ng-show="submittedError">{{errorDescription}}</span>
 
-            <button class="button button-block kinveybutton" ng-click="validateUser()">
+            <button class="button button-block kinveybutton" ng-disabled="userPresent" ng-click="validateUser()">
                 Login
             </button>
-              <button class="button button-block kinveybutton" ng-click="validateUserMIC()">
+              <button class="button button-block kinveybutton" ng-disabled="userPresent" ng-click="validateUserMIC()">
                 Corp SSO Login
             </button>
            
         </div>
         <div class="padding">
-            <button class="button button-block kinveybutton" ng-click="logout()">
+            <button class="button button-block kinveybutton" ng-disabled="!userPresent" ng-click="logout()">
                 Logout
             </button>
             <span class="error" ng-show="submittedError">{{errorDescription}}</span>
