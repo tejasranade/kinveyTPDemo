@@ -89,7 +89,6 @@ angular.module('starter.controllers').controller('MapCtrl', function($scope, $st
 
 
       //Subscribe to a bus update
-//Here we assume that the "Bus" collection is enabled for live updates
       var store = $kinvey.DataStore.collection('Bus');
       store.subscribe({
           onNext: function(data) {

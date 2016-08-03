@@ -21,12 +21,7 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
     }
 
     //$rootScope.productsname = "Products";
-    determineBehavior($kinvey, $rootScope, $state, $ionicModal);
-
-    // $kinvey.Push.onNotification(function(notification) {
-    //   alert(notification.message);
-    // });
-    
+    determineBehavior($kinvey, $rootScope, $state, $ionicModal);    
 
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -50,10 +45,9 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
 
     //Initialize Kinvey
     $kinveyProvider.init({
-    appKey: 'kid_HkwVmXCO',
-    appSecret: '2327f0060d5c4a56a5df5aacd6a46cb9'
-  });
-
+        appKey: '<app key>',
+        appSecret: '<app secret>'
+    });
 
     $stateProvider
         .state('menu', {
@@ -74,15 +68,6 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
             }
         })  
 
-        // .state('menu.logout', {
-        //     url: '/logout',
-        //     views: {
-        //         'menuContent': {
-        //             templateUrl: '',
-        //             controller: 'LogoutCtrl'
-        //         }
-        //     }
-        // })
 
         .state('menu.tasks', {
             url: '/tasks',
@@ -156,16 +141,6 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
             }
         })
 
-        // .state('menu.search', {
-        //     url: '/search',
-        //     views: {
-        //         'menuContent': {
-        //             templateUrl: 'templates/search.html',
-        //             controller: 'SearchCtrl'
-        //         }
-        //     }
-        // })
-
         .state('menu.login', {
             url: '/login',
             views: {
@@ -186,27 +161,6 @@ angular.module('starter', ['ionic', 'kinvey', 'starter.controllers', 'ngIOS9UIWe
                 }
             }
         })
-
-        // .state('menu.bus', {
-        //     authenticate: true,
-        //     url: '/bus/:id',
-        //     views: {
-        //         'menuContent': {
-        //             templateUrl: 'templates/bus.html',
-        //             controller: 'BusCtrl',
-        //             resolve: {
-        //                 bus: ['$kinvey', '$stateParams', function($kinvey, $stateParams) {
-        //                     var store = $kinvey.DataStore.collection('Bus');
-
-        //                     return store.findById($stateParams.id).subscribe(function onNext(response) {
-        //                         //TODO what to do?
-        //                         return response;
-        //                     });
-        //                 }]
-        //             }
-        //         }
-        //     }
-        // });
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('menu/home');

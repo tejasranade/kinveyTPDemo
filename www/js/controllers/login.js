@@ -5,8 +5,11 @@ angular.module('starter.controllers').controller('LoginCtrl', function($scope, $
         password: ""
     };
 
+    $scope.userPresent = ($rootScope.getActiveUser() != null);    
+    
     function onSuccess(user) {
         $scope.submittedError = false;
+        $scope.userPresent = true;
         console.log(user);
         $state.go('menu.home');
     }
@@ -30,17 +33,13 @@ angular.module('starter.controllers').controller('LoginCtrl', function($scope, $
         }).catch(function(error) {
           onError(error);
         });
-        // var promise = $kinvey.User.login(username, password);
-        // promise.then(function(user) {
-        //   onSuccess(user);
-        // }).catch(function(error) {
-        //   onError(error);
-        // });
+
     };
 
     $scope.validateUserMIC = function() {
 
         var user = new $kinvey.User();
+        
         user.loginWithMIC('http://localhost:8100', $kinvey.AuthorizationGrant.AuthorizationCodeLoginPage, {
             version: 2
         }).then(function(user) {
@@ -58,6 +57,8 @@ angular.module('starter.controllers').controller('LoginCtrl', function($scope, $
         var user = $rootScope.getActiveUser();
         
         if (user) {
+            $scope.userPresent = false;
+
             //Log the user out
             return user.logout().then(function (){
                 console.log("logout complete");

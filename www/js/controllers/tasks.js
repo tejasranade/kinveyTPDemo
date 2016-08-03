@@ -1,6 +1,4 @@
 angular.module('starter.controllers').controller('TasksCtrl', function($scope, $kinvey, $ionicLoading) {
-
-
     
     function refreshData(newData){
         $scope.tasks = newData;
@@ -29,8 +27,6 @@ angular.module('starter.controllers').controller('TasksCtrl', function($scope, $
             refreshData(result);
         }, function(err) {
             console.log("err "+JSON.stringify(err));
-        });            
-        
+        });                    
     })
-
 })
